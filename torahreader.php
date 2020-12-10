@@ -55,6 +55,11 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  </head>
  <body>
  <form method="post">
+ <label for="cycles">Select a calendar:</label>
+ <select name="cycle" id="cycle">
+ <option value="Annual">Annual</option>
+ <option value="Triennial">Triennial</option>
+ </select>
  <label for="parshiyot">Select a parasha:</label>
  <select name="parasha" id="parasha">
  <option value="Bereshit">Bereshit</option>
@@ -83,6 +88,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  $ch = curl_init();
  $parasha = $_POST['parasha'];
  $aliyah = $_POST['aliyah'];
+ $cycle = $_POST['cycle'];
  if ($parasha == 'Bereshit' && $aliyah == '1') {
  $verses = 'Genesis.1.1-2.3';
  }
@@ -206,14 +212,15 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  $voice->setAttribute( "xml:lang" , "he-IL" );
  $voice->setAttribute( "xml:gender" , "Male" );
  $voice->setAttribute( "name" , "he-IL-Asaf");
- $text = $doc->createTextNode( $_SESSION['heb'] );
  $prosody = $doc->createElement( "prosody" );
- $prosody->setAttribute( "rate", "-30.00%" );
- $text->appendChild( $prosody );
- $voice->appendChild( $text );
+ $prosody->setAttribute( "rate", "x-slow" );
+ $text = $doc->createTextNode( $_SESSION['heb'] );
+ $prosody->appendChild( $text );
+ $voice->appendChild( $prosody );
  $root->appendChild( $voice );
  $doc->appendChild( $root );
  $data = $doc->saveXML();
+// $data = "<speak version='1.0' xml:lang='he-IL'><voice xml:lang='he-IL' xml:gender='Male' name='he-IL-Asaf'> ";
 
  $options = array(
  'http' => array(
