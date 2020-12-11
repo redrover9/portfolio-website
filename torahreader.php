@@ -91,69 +91,69 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  $aliyah = $_POST['aliyah'];
  $cycle = $_POST['cycle'];
  $year = $_POST['year'];
-  if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
-	   $verses = 'Genesis.1.1-5';
-	    }
+ if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
+ $verses = 'Genesis.1.1-5';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'One') {
-	  $verses = 'Genesis.1.6-8';
-	   }
+ $verses = 'Genesis.1.6-8';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'One') {
-	  $verses = 'Genesis.1.9-13';
-	   }
+ $verses = 'Genesis.1.9-13';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'One') {
-	  $verses = 'Genesis.1.14-19';
-	   }
+ $verses = 'Genesis.1.14-19';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'One') {
-	  $verses = 'Genesis.1.20-23';
-	   }
+ $verses = 'Genesis.1.20-23';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'One') {
-	  $verses = 'Genesis.1.24-31';
-	   }
+ $verses = 'Genesis.1.24-31';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'One') {
-	  $verses = 'Genesis.2.1-3';
-	   }
+ $verses = 'Genesis.2.1-3';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'Two') {
-	 $verses = 'Genesis.2.4-9';
-	   }
+ $verses = 'Genesis.2.4-9';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'Two') {
-	  $verses = 'Genesis.2.10-19';
-	   }
+ $verses = 'Genesis.2.10-19';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'Two') {
-	  $verses = 'Genesis.2.20-25';
-	   }
+ $verses = 'Genesis.2.20-25';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'Two') {
-	  $verses = 'Genesis.3.1-21';
-	   }
+ $verses = 'Genesis.3.1-21';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'Two') {
-	  $verses = 'Genesis.3.22-24';
-	   }
+ $verses = 'Genesis.3.22-24';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'Two') {
-	  $verses = 'Genesis.4.1-18';
-	   }
+ $verses = 'Genesis.4.1-18';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Two') {
-	  $verses = 'Genesis.4.19-26';
-	   }
+ $verses = 'Genesis.4.19-26';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'Three') {
-	  $verses = 'Genesis.5.1-5';
-	   }
+ $verses = 'Genesis.5.1-5';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'Three') {
-	  $verses = 'Genesis.5.6-8';
-	   }
+ $verses = 'Genesis.5.6-8';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'Three') {
-	  $verses = 'Genesis.5.9-14';
-	   }
+ $verses = 'Genesis.5.9-14';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'Three') {
-	  $verses = 'Genesis.5.15-20';
-	   }
+ $verses = 'Genesis.5.15-20';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'Three') {
-	  $verses = 'Genesis.5.21-24';
-	   }
+ $verses = 'Genesis.5.21-24';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'Three') {
-	  $verses = 'Genesis.5.25-31';
-	   }
+ $verses = 'Genesis.5.25-31';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Three') {
-	  $verses = 'Genesis.5.32-6.8';
-	   }
+ $verses = 'Genesis.5.32-6.8';
+ }
  elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Annual') {
  $verses = 'Genesis.1.1-2.3';
  }
@@ -190,7 +190,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  //elseif ($parasha == 'Noach' && $aliyah == '5' && $cycle == 'Annual') {
  //$verses = 'Genesis.9.8-17';
 // }
-// elseif ($parasha == 'Noach' && $aliyah == '6'  && $cycle == 'Annual') {
+// elseif ($parasha == 'Noach' && $aliyah == '6' && $cycle == 'Annual') {
 // $verses = 'Genesis.9.18-10.32';
 // }
 // elseif ($parasha == 'Noach' && $aliyah == '7' && $cycle == 'Annual') {
@@ -244,79 +244,79 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  $_SESSION['eng'] = $englishString;
 ?>
 <?php
-  $region = 'eastus';
-  $AccessTokenUri = "https://".$region.".api.cognitive.microsoft.com/sts/v1.0/issueToken";
-   $apiKey = 'fb5158e7a2b24abab5a6fa73ae9287e2';
+ $region = 'eastus';
+ $AccessTokenUri = "https://".$region.".api.cognitive.microsoft.com/sts/v1.0/issueToken";
+ $apiKey = 'fb5158e7a2b24abab5a6fa73ae9287e2';
 
-   $options = array(
-	    'http' => array(
-		     'header' => "Ocp-Apim-Subscription-Key: ".$apiKey."\r\n" .
-		      "content-length: 0\r\n",
-		       'method' => 'POST',
-		        ),
-			 );
+ $options = array(
+ 'http' => array(
+ 'header' => "Ocp-Apim-Subscription-Key: ".$apiKey."\r\n" .
+ "content-length: 0\r\n",
+ 'method' => 'POST',
+ ),
+ );
 
-    $context = stream_context_create($options);
+ $context = stream_context_create($options);
 
-    $access_token = file_get_contents($AccessTokenUri, false, $context);
+ $access_token = file_get_contents($AccessTokenUri, false, $context);
 
-     if (!$access_token) {
-	      throw new Exception("Problem with $AccessTokenUri, $php_errormsg");
-	       }
-     else{
+ if (!$access_token) {
+ throw new Exception("Problem with $AccessTokenUri, $php_errormsg");
+ }
+ else{
 
-	      $ttsServiceUri = "https://".$region.".tts.speech.microsoft.com/cognitiveservices/v1";
+ $ttsServiceUri = "https://".$region.".tts.speech.microsoft.com/cognitiveservices/v1";
 
-	       $doc = new DOMDocument();
+ $doc = new DOMDocument();
 
-	       $root = $doc->createElement( "speak" );
-	        $root->setAttribute( "version" , "1.0" );
-	        $root->setAttribute( "xml:lang" , "he-IL" );
+ $root = $doc->createElement( "speak" );
+ $root->setAttribute( "version" , "1.0" );
+ $root->setAttribute( "xml:lang" , "he-IL" );
 
-		 $voice = $doc->createElement( "voice" );
-		 $voice->setAttribute( "xml:lang" , "he-IL" );
-		  $voice->setAttribute( "xml:gender" , "Male" );
-		  $voice->setAttribute( "name" , "he-IL-Asaf");
-		   $prosody = $doc->createElement( "prosody" );
-		   $prosody->setAttribute( "rate", "x-slow" );
-		    $text = $doc->createTextNode( $_SESSION['heb'] );
-		    $prosody->appendChild( $text );
-		     $voice->appendChild( $prosody );
-		     $root->appendChild( $voice );
-		      $doc->appendChild( $root );
-		      $data = $doc->saveXML();
+ $voice = $doc->createElement( "voice" );
+ $voice->setAttribute( "xml:lang" , "he-IL" );
+ $voice->setAttribute( "xml:gender" , "Male" );
+ $voice->setAttribute( "name" , "he-IL-Asaf");
+ $prosody = $doc->createElement( "prosody" );
+ $prosody->setAttribute( "rate", "x-slow" );
+ $text = $doc->createTextNode( $_SESSION['heb'] );
+ $prosody->appendChild( $text );
+ $voice->appendChild( $prosody );
+ $root->appendChild( $voice );
+ $doc->appendChild( $root );
+ $data = $doc->saveXML();
 
-		       $options = array(
-			        'http' => array(
-					 'header' => "Content-type: application/ssml+xml\r\n" .
-					  "X-Microsoft-OutputFormat: audio-16khz-128kbitrate-mono-mp3\r\n" .
-					   "Authorization: "."Bearer ".$access_token."\r\n" .
-					    "X-Search-AppId: 07D3234E49CE426DAA29772419F436CA\r\n" .
-					     "X-Search-ClientID: 1ECFAE91408841A480F00935DC390960\r\n" .
-					      "User-Agent: TTSPHP\r\n" .
-					       "content-length: ".strlen($data)."\r\n",
-					        'method' => 'POST',
-						 'content' => $data,
+ $options = array(
+ 'http' => array(
+ 'header' => "Content-type: application/ssml+xml\r\n" .
+ "X-Microsoft-OutputFormat: audio-16khz-128kbitrate-mono-mp3\r\n" .
+ "Authorization: "."Bearer ".$access_token."\r\n" .
+ "X-Search-AppId: 07D3234E49CE426DAA29772419F436CA\r\n" .
+ "X-Search-ClientID: 1ECFAE91408841A480F00935DC390960\r\n" .
+ "User-Agent: TTSPHP\r\n" .
+ "content-length: ".strlen($data)."\r\n",
+ 'method' => 'POST',
+ 'content' => $data,
 
-						  ),
+ ),
 
-						   );
+ );
 
-		       $context = stream_context_create($options);
+ $context = stream_context_create($options);
 
-		       $result = file_get_contents($ttsServiceUri, false, $context);
-		        if (!$result) {
-				 throw new Exception("Problem with $ttsServiceUri, $php_errormsg");
-				  }
-		        else{
-				 $audioFile = md5($result) . '.wav';
-				  $torahAudio = glob("*.wav");
-				  rename($torahAudio[0], './torah.wav');
-				   $status = file_put_contents('./' . 'torah.wav', $result);
-				   }
+ $result = file_get_contents($ttsServiceUri, false, $context);
+ if (!$result) {
+ throw new Exception("Problem with $ttsServiceUri, $php_errormsg");
+ }
+ else{
+ $audioFile = md5($result) . '.wav';
+ $torahAudio = glob("*.wav");
+ rename($torahAudio[0], './torah.wav');
+ $status = file_put_contents('./' . 'torah.wav', $result);
+ }
 
 
-		        }
+ }
 ?>
 <div class="row">
  <div class="column">
@@ -324,8 +324,8 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  <?php
  echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
  ?>
-	 </div>
-	 </div>
+ </div>
+ </div>
 <div class="column">
 <div class="english-column">
  <?php
@@ -344,4 +344,3 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 </div>
 </body>
 </html>
-
