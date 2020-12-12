@@ -79,11 +79,15 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  <option value="5">Fifth Aliyah</option>
  <option value="6">Sixth Aliyah</option>
  <option value="7">Seventh Aliyah</option>
-
+ </select>
+ <label for="highlighting">Would you like words with trope marks highlighted?</label>
+ <select name="highlighting" id="highlighting">
+ <option value="Yes">Yes</option>
+ <option value="No">No</option>
+ </select>
  <input type="submit" name="Submit" value="Submit">
 
  </input>
- </select>
  </form>
  <?php
  $ch = curl_init();
@@ -91,6 +95,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  $aliyah = $_POST['aliyah'];
  $cycle = $_POST['cycle'];
  $year = $_POST['year'];
+ $highlighting = $_POST['highlighting'];
  if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
  $verses = 'Genesis.1.1-5';
  }
@@ -199,6 +204,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 	        $hebrewString = implode("<br> <br>", $hebrew);
 		 $englishString = implode("<br> <br>", $english);
 		 }
+       //$hebrewString = str_replace("׃", "", $hebrewString);
         $_SESSION['heb'] = $hebrewString;
         $_SESSION['eng'] = $englishString;
 ?>
@@ -238,7 +244,7 @@ else{
    $voice->setAttribute( "xml:gender" , "Male" );
    $voice->setAttribute( "name" , "he-IL-Asaf"); 
  $prosody = $doc->createElement( "prosody" );
-    $prosody->setAttribute( "rate", "x-slow" );
+    $prosody->setAttribute( "rate", "slow" );
     $text = $doc->createTextNode( $_SESSION['heb'] );
      $prosody->appendChild( $text );
      $voice->appendChild( $prosody );
@@ -274,8 +280,39 @@ else{
 
     }
 }
-
+if ($highlighting == "Yes") {
+$newHebrewString = "";
+$hebrewArray = explode(" ", $hebrewString);
+foreach ($hebrewArray as $hebrewWord) {
+	$hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
+	
+	foreach($hebrewLetter as $hebrewChar) {
+		//$hebrewChar = "<span style='background-color:#FF00FF'>$hebrewChar</span>";     
+		//echo mb_ord($hebrewChar);
+		//echo "<br>";
+		//echo $hebrewChar;
+	//echo "<br>";
+	}
+	$merkha = ' ֥ ';
+		$merkha = trim($merkha);
+	if (strpos($hebrewWord, $merkha) != false) {
+		$hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
+		//echo $hebrewWord;
+		//echo '<br>';
+		$newHebrewString .= $hebrewWord;
+		$newHebrewString .= " ";
+	} else {
+//echo $hebrewWord;
+//echo '<br>';
+$newHebrewString .= $hebrewWord;
+$newHebrewString .= " ";
+}
+}
+$hebrewString = $newHebrewString;
+//echo $newHebrewString;
+}
 ?>  
+
 
 </body>
 </html>
@@ -305,4 +342,5 @@ else{
 </div>
 </body>
 </html>
+
 
