@@ -1,10 +1,20 @@
 <?php
 session_start();
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+echo "<script language='javascript'>
+	localStorage.clear()
+</script>
+";
 ?>
 <!DOCTYPE html>
 <html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
  <head>
  <title>Torah App</title>
  <div class='some-page-wrapper'>
@@ -54,7 +64,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 </div>
  </head>
  <body>
- <form method="post">
+ <form action="#" method="post" target="_blank">
  <label for="cycles">Select a calendar:</label>
  <select name="cycle" id="cycle">
  <option value="Annual">Annual</option>
@@ -101,7 +111,6 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  <option value="+10st">Extra High</option>
  </select>
  <input type="submit" name="Submit" value="Submit">
-
  </input>
  </form>
  <?php
@@ -222,6 +231,11 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 		 $englishString = implode("<br> <br>", $english);
 		 }
        //$hebrewString = str_replace("׃", "", $hebrewString);
+       $hebrewString = str_replace('b', '', $hebrewString);
+       $hebrewString = str_replace('r', '', $hebrewString);
+       $hebrewString = str_replace('<', '', $hebrewString);
+       $hebrewString = str_replace('>', '', $hebrewString);
+       
         $_SESSION['heb'] = $hebrewString;
         $_SESSION['eng'] = $englishString;
 ?>
@@ -263,7 +277,7 @@ else{
  $prosody = $doc->createElement( "prosody" );
     $prosody->setAttribute( "rate", $speed );
     $prosody->setAttribute( "pitch", $pitch );
-    $text = $doc->createTextNode( $_SESSION['heb'] );
+    $text = $doc->createTextNode( $hebrewString );
      $prosody->appendChild( $text );
      $voice->appendChild( $prosody );
       $root->appendChild( $voice );
@@ -291,7 +305,6 @@ else{
         throw new Exception("Problem with $ttsServiceUri, $php_errormsg");
       }
     else{
-	 $audioFile = md5($result) . '.wav';
 	 $torahAudio = glob("*.wav");
 	  rename($torahAudio[0], './torah.wav');
 	  $status = file_put_contents('./' . 'torah.wav', $result);
@@ -307,9 +320,7 @@ foreach ($hebrewArray as $hebrewWord) {
 	foreach($hebrewLetter as $hebrewChar) {
 		//$hebrewChar = "<span style='background-color:#FF00FF'>$hebrewChar</span>";     
 		//echo mb_ord($hebrewChar);
-		//echo "<br>";
 		//echo $hebrewChar;
-	//echo "<br>";
 	}
 	$merkha = ' ֥ ';
 		$merkha = trim($merkha);
