@@ -54,7 +54,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 </div>
  </head>
  <body>
- <form method="post">
+ <form action="#" method="post" target="_blank">
  <label for="cycles">Select a calendar:</label>
  <select name="cycle" id="cycle">
  <option value="Annual">Annual</option>
