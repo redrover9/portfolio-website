@@ -113,6 +113,11 @@ echo "<script language='javascript'>
  <input type="submit" name="Submit" value="Submit">
  </input>
  </form>
+ <form action="calendar.php" method="post" target="_blank">
+ <label for="calendar">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
+ <input type="search" id="search" name="search">
+ <input type="submit" name="Submit" value="Submit">
+ </form>
  <?php
  $ch = curl_init();
  $parasha = $_POST['parasha'];
