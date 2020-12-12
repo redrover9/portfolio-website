@@ -60,7 +60,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  <option value="Annual">Annual</option>
  <option value="Triennial">Triennial</option>
  </select>
- <label for="year">Select a year in the triennial cycle.</label>
+ <label for="year">Select a year in the triennial cycle:</label>
  <select name="year" id="year">
  <option value="One">One</option>
  <option value="Two">Two</option>
@@ -80,10 +80,25 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  <option value="6">Sixth Aliyah</option>
  <option value="7">Seventh Aliyah</option>
  </select>
- <label for="highlighting">Would you like words with trope marks highlighted?</label>
+ <label for="highlighting">Highlighted trope marks:</label>
  <select name="highlighting" id="highlighting">
  <option value="Yes">Yes</option>
  <option value="No">No</option>
+ </select>
+ <label for="speed">Speed:</label>
+ <select name="speed" id="speed">
+ <option value="x-slow">Extra Slow</option>
+ <option value="slow">Slow</option>
+ <option value="medium">Medium</option>
+ <option value="fast">Fast</option>	
+ </select>
+ <label for="pitch">Pitch:</label>
+ <select name="pitch" id="pitch">
+ <option value="-10st">Extra Low</option>
+ <option value="-5st">Low</option>
+ <option value="default">Medium</option>
+ <option value="+5st">High</option>
+ <option value="+10st">Extra High</option>
  </select>
  <input type="submit" name="Submit" value="Submit">
 
@@ -96,6 +111,8 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  $cycle = $_POST['cycle'];
  $year = $_POST['year'];
  $highlighting = $_POST['highlighting'];
+ $speed = $_POST['speed'];
+ $pitch = $_POST['pitch'];
  if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
  $verses = 'Genesis.1.1-5';
  }
@@ -244,7 +261,8 @@ else{
    $voice->setAttribute( "xml:gender" , "Male" );
    $voice->setAttribute( "name" , "he-IL-Asaf"); 
  $prosody = $doc->createElement( "prosody" );
-    $prosody->setAttribute( "rate", "slow" );
+    $prosody->setAttribute( "rate", $speed );
+    $prosody->setAttribute( "pitch", $pitch );
     $text = $doc->createTextNode( $_SESSION['heb'] );
      $prosody->appendChild( $text );
      $voice->appendChild( $prosody );
