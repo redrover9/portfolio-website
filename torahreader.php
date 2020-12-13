@@ -25,6 +25,8 @@ echo "<script language='javascript'>
  <title>Torah App</title>
  <div class='some-page-wrapper'>
 <style>
+ body {background-color: powderblue;   font-family: Arial, Helvetica, sans-serif;
+} 
 .some-page-wrapper {
  margin: 15px;
 }
@@ -97,11 +99,22 @@ echo "<script language='javascript'>
  <option value="6">Sixth Aliyah</option>
  <option value="7">Seventh Aliyah</option>
  </select>
+ <label for="commentary">Include commentary</label>
+ <select name="commentary" id="commentary">
+ <option value="0">No</option>
+ <option value="1">Yes</option>
+</select>
+ <br>
+<br>
  <label for="highlighting">Highlighted trope marks:</label>
  <select name="highlighting" id="highlighting">
  <option value="Yes">Yes</option>
  <option value="No">No</option>
  </select>
+<label for="tropeMark">Enter a trope mark to highlight: </label>
+<input type="text" id="tropeMark" name="tropeMark">
+<br>
+<br>
  <label for="speed">Speed:</label>
  <select name="speed" id="speed">
  <option value="x-slow">Extra Slow</option>
@@ -117,41 +130,48 @@ echo "<script language='javascript'>
  <option value="+5st">High</option>
  <option value="+10st">Extra High</option>
  </select>
+<br>
+<br>
  <input type="submit" name="Submit" value="Submit">
  </input>
  </form>
- <form action="calendar.php" method="post" target="_blank">
+ <form action="triennial_calendar.php" method="post" target="_blank">
  <label for="calendar">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
- <input type="search" id="search" name="search">
+ <input type="search" id="searchTri" name="search">
  <input type="submit" name="Submit" value="Submit">
  </form>
+<br>
  <form action="annual_calendar.php" method="post" target="_blank">
 <label for="calendar">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
-  <input type="search" id="search" name="search">
+  <input type="search" id="searchAn" name="search">
  <input type="submit" name="Submit" value="Submit">
+<br>
 </input>
 </input>
 </form>
 
-
+<button onclick="window.print()">Print this page</button>
+<br>
+<br>
     <div id='gUMArea'>
       <div>
       Record:
         <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
-        <input type="radio" name="media" value="audio">Audio
+    
+	<input type="radio" name="media" value="audio">Audio
       </div>
-      <button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic</button>
+<br>
+<br>
+      <button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic and camera</button>
     </div>
     <div id='btns'>
-      <button  class="btn btn-default" id='start'>Start</button>
-      <button  class="btn btn-default" id='stop'>Stop</button>
+      <button  class="btn btn-default" id='start'>Start Recording</button>
+      <button  class="btn btn-default" id='stop'>Stop Recording</button>
     </div>
     <div>
       <ul  class="list-unstyled" id='ul'></ul>
     </div>
     <script src="recordAudio.js"></script>
-<a href="https://restpack.io/html2pdf/save-as-pdf?private=true" rel="nofollow" target="_blank">Save as PDF</a>
-<script async src="https://restpack.io/save-as-pdf.js"></script>
 <?php
  $ch = curl_init();
  $parasha = $_POST['parasha'];
@@ -161,6 +181,8 @@ echo "<script language='javascript'>
  $highlighting = $_POST['highlighting'];
  $speed = $_POST['speed'];
  $pitch = $_POST['pitch'];
+ $tropeMark = $_POST['tropeMark'];
+ $commentary = $_POST['commentary'];
  //$chTri = fopen("triennial_calendar.csv", "r");
  //$chAn = fopen("annual_calendar.csv", "r");
  //$header_row_an = fgetcsv($chAn);
@@ -291,7 +313,7 @@ echo "<script language='javascript'>
 	    }
   elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Three') {
 	   $verses = 'Numbers.28.9-15';
-
+  }
  elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Annual') {
  $verses = 'Genesis.1.1-2.3';
  }
@@ -336,13 +358,14 @@ echo "<script language='javascript'>
 	    }
 
 
-  curl_setopt($ch, CURLOPT_URL, 'http://www.sefaria.org/api/texts/' . $verses . '?context=0');
+  curl_setopt($ch, CURLOPT_URL, 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
    $data = curl_exec($ch);
     $array = json_decode($data, true);
     $hebrew = $array['he'];
      $english = $array['text'];
+	$commentaryText = $array['commentary']['0']['text'];
      function subArraysToString($ar, $sep = "<br> <br>") {
 	      $str = '';
 	       foreach ($ar as $val) {
@@ -444,32 +467,34 @@ if ($highlighting == "Yes") {
 $newHebrewString = "";
 $hebrewArray = explode(" ", $hebrewString);
 foreach ($hebrewArray as $hebrewWord) {
-	$hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
-	
-	foreach($hebrewLetter as $hebrewChar) {
-		//$hebrewChar = "<span style='background-color:#FF00FF'>$hebrewChar</span>";     
-		//echo mb_ord($hebrewChar);
-		//echo $hebrewChar;
-	}
+        $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
+        if ($tropeMark == 'merkha') {
+                $tropeMark = ' ֥';
 
-	$merkha = ' ֥ ';
-		$merkha = trim($merkha);
-	if (strpos($hebrewWord, $merkha) != false) {
-		$hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
-		//echo $hebrewWord;
-		//echo '<br>';
-		$newHebrewString .= $hebrewWord;
-		$newHebrewString .= " ";
-	} else {
+        $tropeMark = trim($tropeMark);
+           $etnahta = " ֑";
+                $etnahta = trim($etnahta);
+        }
+        if (strpos($hebrewWord, $tropeMark) != false) {
+                $hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
+                //echo $hebrewWord;
+                //echo '<br>';
+                $newHebrewString .= $hebrewWord;
+                $newHebrewString .= " ";
+	}
+	        else {
+
 //echo $hebrewWord;
 //echo '<br>';
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
+
 }
-}
+
+
 $hebrewString = $newHebrewString;
+}}
 //echo $newHebrewString;
-}
 ?>  
 
 
@@ -487,6 +512,7 @@ $hebrewString = $newHebrewString;
 <div class="english-column">
  <?php
  echo '<div style="font-size: 35pt">'. $englishString . '</div>';
+ echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
  ?>
 
 </div>
