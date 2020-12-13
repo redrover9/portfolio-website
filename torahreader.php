@@ -12,6 +12,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 echo "<script language='javascript'>
 	localStorage.clear()
+
 </script>
 ";
 ?>
@@ -77,14 +78,15 @@ echo "<script language='javascript'>
  </select>
  <label for="year">Select a year in the triennial cycle:</label>
  <select name="year" id="year">
- <option value="One">One</option>
- <option value="Two">Two</option>
- <option value="Three">Three</option>
+ <option value="One">5780 (2019-2020)</option>
+ <option value="Two">5781 (2020-2021)</option>
+ <option value="Three">5782 (2021-2022)</option>
  </select>
  <label for="parshiyot">Select a parasha:</label>
  <select name="parasha" id="parasha">
  <option value="Bereshit">Bereshit</option>
- </select>
+ <option value="Miketz">Miketz</option>
+</select>
  <label for="aliyot">Select an aliyah:</label>
  <select name="aliyah" id="aliyah">
  <option value="1">First Aliyah</option>
@@ -123,7 +125,34 @@ echo "<script language='javascript'>
  <input type="search" id="search" name="search">
  <input type="submit" name="Submit" value="Submit">
  </form>
- <?php
+ <form action="annual_calendar.php" method="post" target="_blank">
+<label for="calendar">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
+  <input type="search" id="search" name="search">
+ <input type="submit" name="Submit" value="Submit">
+</input>
+</input>
+</form>
+
+
+    <div id='gUMArea'>
+      <div>
+      Record:
+        <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+        <input type="radio" name="media" value="audio">Audio
+      </div>
+      <button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic</button>
+    </div>
+    <div id='btns'>
+      <button  class="btn btn-default" id='start'>Start</button>
+      <button  class="btn btn-default" id='stop'>Stop</button>
+    </div>
+    <div>
+      <ul  class="list-unstyled" id='ul'></ul>
+    </div>
+    <script src="recordAudio.js"></script>
+<a href="https://restpack.io/html2pdf/save-as-pdf?private=true" rel="nofollow" target="_blank">Save as PDF</a>
+<script async src="https://restpack.io/save-as-pdf.js"></script>
+<?php
  $ch = curl_init();
  $parasha = $_POST['parasha'];
  $aliyah = $_POST['aliyah'];
@@ -132,6 +161,11 @@ echo "<script language='javascript'>
  $highlighting = $_POST['highlighting'];
  $speed = $_POST['speed'];
  $pitch = $_POST['pitch'];
+ //$chTri = fopen("triennial_calendar.csv", "r");
+ //$chAn = fopen("annual_calendar.csv", "r");
+ //$header_row_an = fgetcsv($chAn);
+ //$header_row_tri = fgetcsv($chTri);
+ 
  if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
  $verses = 'Genesis.1.1-5';
  }
@@ -195,6 +229,69 @@ echo "<script language='javascript'>
  elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Three') {
  $verses = 'Genesis.5.32-6.8';
  }
+ elseif ($parasha == 'Miketz' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
+	   $verses = 'Genesis.41.1-4';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'One') {
+	   $verses = 'Genesis.41.5-7';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'One') {
+	   $verses = 'Genesis.41.8-14';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'One') {
+	   $verses = 'Genesis.41.15-24';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'One') {
+	   $verses = 'Genesis.41.25-38';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'One') {
+	   $verses = 'Genesis.41.39-52';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'One') {
+	   $verses = 'Numbers.7.42-47';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'Two') {
+	   $verses = 'Genesis.41.53-57';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'Two') {
+	   $verses = 'Genesis.42.1-5';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'Two') {
+	   $verses = 'Genesis.42.6-18';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'Two') {
+	   $verses = 'Genesis.42.19-28';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'Two') {
+	   $verses = 'Genesis.42.29-38';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'Two') {
+	   $verses = 'Genesis.43.1-7';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Two') {
+	   $verses = 'Genesis.43.8-15';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'Three') {
+	   $verses = 'Genesis.43.16-18';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'Three') {
+	   $verses = 'Genesis.43.19-25';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'Three') {
+	   $verses = 'Genesis.43.26-29';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'Three') {
+	   $verses = 'Genesis.43.30-34';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'Three') {
+	   $verses = 'Genesis.44.1-6';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'Three') {
+	   $verses = 'Genesis.44.7-15';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Three') {
+	   $verses = 'Numbers.28.9-15';
+
  elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Annual') {
  $verses = 'Genesis.1.1-2.3';
  }
@@ -216,6 +313,28 @@ echo "<script language='javascript'>
  elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Annual') {
  $verses = 'Genesis.5.25-6.8';
  }
+  elseif ($parasha == 'Miketz' && $aliyah == '1' && $cycle == 'Annual') {
+	   $verses = 'Genesis.41.4-14';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '2' && $cycle == 'Annual') {
+	   $verses = 'Genesis.41.15-38';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '3' && $cycle == 'Annual') {
+	   $verses = 'Genesis.41.39-52';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '4' && $cycle == 'Annual') {
+	   $verses = 'Genesis.41.52-42.18';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '5' && $cycle == 'Annual') {
+	   $verses = 'Genesis.42.19-43.15';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '6' && $cycle == 'Annual') {
+	   $verses = 'Genesis.43.16-43.29';
+	    }
+  elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Annual') {
+	   $verses = 'Genesis.43.30-44.17';
+	    }
+
 
   curl_setopt($ch, CURLOPT_URL, 'http://www.sefaria.org/api/texts/' . $verses . '?context=0');
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -332,6 +451,7 @@ foreach ($hebrewArray as $hebrewWord) {
 		//echo mb_ord($hebrewChar);
 		//echo $hebrewChar;
 	}
+
 	$merkha = ' ֥ ';
 		$merkha = trim($merkha);
 	if (strpos($hebrewWord, $merkha) != false) {
