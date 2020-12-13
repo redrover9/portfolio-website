@@ -361,7 +361,7 @@ echo "<script language='javascript'>
   elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Annual') {
 	   $verses = 'Genesis.43.30-44.17';
 	    }
-
+$commNum = '0';
 $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
   curl_setopt($ch, CURLOPT_URL, $curlUrl);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -370,7 +370,13 @@ $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentar
     $array = json_decode($data, true);
     $hebrew = $array['he'];
      $english = $array['text'];
-	$commentaryText = $array['commentary']['0']['0']['text'];
+	$commentaryText = $array['commentary']['0'][$commNum]['text'];
+    while (empty($commentaryText) && $commNum < 10) {
+	    $commNum += 1;
+	     $commentaryText = $array['commentary']['0'][$commNum]['text'];
+
+
+    }
      function subArraysToString($ar, $sep = "<br> <br>") {
 	      $str = '';
 	       foreach ($ar as $val) {
@@ -517,8 +523,12 @@ $hebrewString = $newHebrewString;
 <div class="english-column">
  <?php
  echo '<div style="font-size: 35pt">'. $englishString . '</div>';
+ if (!empty($commentaryText)){
  echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
- ?>
+ } else {
+	 echo "Commentary not found for selected range.";
+ }
+?>
 
 </div>
 </div>
@@ -532,5 +542,6 @@ $hebrewString = $newHebrewString;
 </div>
 </body>
 </html>
+
 
 
