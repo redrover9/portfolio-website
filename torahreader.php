@@ -357,15 +357,15 @@ echo "<script language='javascript'>
 	   $verses = 'Genesis.43.30-44.17';
 	    }
 
-
-  curl_setopt($ch, CURLOPT_URL, 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary);
+$curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
+  curl_setopt($ch, CURLOPT_URL, $curlUrl);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
    $data = curl_exec($ch);
     $array = json_decode($data, true);
     $hebrew = $array['he'];
      $english = $array['text'];
-	$commentaryText = $array['commentary']['0']['text'];
+	$commentaryText = $array['commentary']['0']['0']['text'];
      function subArraysToString($ar, $sep = "<br> <br>") {
 	      $str = '';
 	       foreach ($ar as $val) {
