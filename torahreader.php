@@ -172,6 +172,11 @@ echo "<script language='javascript'>
       <ul  class="list-unstyled" id='ul'></ul>
     </div>
     <script src="recordAudio.js"></script>
+<br>
+<br>
+<form action="https://zoom.us/meeting/schedule">
+<input type="submit" value="Schedule a Zoom meeting"/>
+</form>
 <?php
  $ch = curl_init();
  $parasha = $_POST['parasha'];
