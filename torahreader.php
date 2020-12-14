@@ -90,7 +90,7 @@ echo "<script language='javascript'>
  <option value="Three">5782 (2021-2022)</option>
  </select>
  <label for="parshiyot">Select a parasha:</label>
-<input type="text" id="parasha" name="parasha">
+<input type="text" id="parasha" name="parasha" required>
 </input>
  <label for="aliyot">Select an aliyah:</label>
  <select name="aliyah" id="aliyah">
@@ -266,16 +266,20 @@ $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentar
     $hebrew = $array['he'];
      $english = $array['text'];
 	$commentaryText = $array['commentary']['0'][$commNum]['text'];
+            $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
+
     while (empty($commentaryText) && $commNum < 20) {
 	    $commNum += 1;
 	     $commentaryText = $array['commentary']['0'][$commNum]['text'];
-
+ $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
 
     } if ($commentary == 1 && empty($commentaryText)){
-		        $commentaryText = $array['commentary'][$commNum]['text'];
-    while (empty($commentaryText) && $commNum < 20) {
+    $commentaryText = $array['commentary'][$commNum]['text'];
+     $commentarySource = $array['commentary'][$commNum]['sourceRef'];
+    while (empty($commentaryText) && $commNum < 40) {
 	                $commNum += 1;
-			             $commentaryText = $array['commentary'][$commNum]['text'];
+			$commentaryText = $array['commentary'][$commNum]['text'];
+			 $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
 
 	     }}
      function subArraysToString($ar, $sep = "<br> <br>") {
@@ -425,8 +429,9 @@ $hebrewString = $newHebrewString;
  <?php
  echo '<div style="font-size: 35pt">'. $englishString . '</div>';
  if (!empty($commentaryText)){
+	 echo '<<div style="font-size: 15pt">'. $commentarySource . '</div>';
  echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
- } else {
+ } elseif (empty($commentaryText) && $commentary == 1) {
 	 echo "Commentary not found for selected range.";
  }
 ?>
