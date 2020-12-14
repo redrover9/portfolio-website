@@ -85,10 +85,8 @@ echo "<script language='javascript'>
  <option value="Three">5782 (2021-2022)</option>
  </select>
  <label for="parshiyot">Select a parasha:</label>
- <select name="parasha" id="parasha">
- <option value="Bereshit">Bereshit</option>
- <option value="Miketz">Miketz</option>
-</select>
+<input type="text" id="parasha" name="parasha">
+</input>
  <label for="aliyot">Select an aliyah:</label>
  <select name="aliyah" id="aliyah">
  <option value="1">First Aliyah</option>
@@ -204,6 +202,16 @@ $match = implode($match);
 $versesArray = array();
 preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $match, $versesArray);
 $verseString = implode($versesArray);
+$verses = str_replace(":", ".", $verseString);
+$verses = str_replace(" - ", "-", $verses);
+$verses = str_replace(" ", ".", $verses);
+$regexVerses = preg_replace("/\./", "-", $verses, 1);
+preg_match_all("/-\d*/", $regexVerses, $regexVersesMatches);
+$firstElement = $regexElementMatches[0];
+$secondElement = $regexElementMatches[1];
+if ($firstElement == $secondElement) {
+	$verses = preg_replace("/-\d*\./", "-", $verses);
+}
  if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
  $verses = 'Genesis.1.1-5';
  }
@@ -330,48 +338,6 @@ $verseString = implode($versesArray);
   elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Three') {
 	   $verses = 'Numbers.28.9-15';
   }
- elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Annual') {
- $verses = 'Genesis.1.1-2.3';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Annual') {
- $verses = 'Genesis.2.4-19';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Annual') {
- $verses = 'Genesis.2.20-3.21';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Annual') {
- $verses = 'Genesis.3.22-4.18';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Annual') {
- $verses = 'Genesis.4.19-22';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Annual') {
- $verses = 'Genesis.4.23-5.24';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Annual') {
- $verses = 'Genesis.5.25-6.8';
- }
-  elseif ($parasha == 'Miketz' && $aliyah == '1' && $cycle == 'Annual') {
-	   $verses = 'Genesis.41.4-14';
-	    }
-  elseif ($parasha == 'Miketz' && $aliyah == '2' && $cycle == 'Annual') {
-	   $verses = 'Genesis.41.15-38';
-	    }
-  elseif ($parasha == 'Miketz' && $aliyah == '3' && $cycle == 'Annual') {
-	   $verses = 'Genesis.41.39-52';
-	    }
-  elseif ($parasha == 'Miketz' && $aliyah == '4' && $cycle == 'Annual') {
-	   $verses = 'Genesis.41.52-42.18';
-	    }
-  elseif ($parasha == 'Miketz' && $aliyah == '5' && $cycle == 'Annual') {
-	   $verses = 'Genesis.42.19-43.15';
-	    }
-  elseif ($parasha == 'Miketz' && $aliyah == '6' && $cycle == 'Annual') {
-	   $verses = 'Genesis.43.16-43.29';
-	    }
-  elseif ($parasha == 'Miketz' && $aliyah == '7' && $cycle == 'Annual') {
-	   $verses = 'Genesis.43.30-44.17';
-	    }
 $commNum = '0';
 $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
   curl_setopt($ch, CURLOPT_URL, $curlUrl);
