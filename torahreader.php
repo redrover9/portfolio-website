@@ -1,14 +1,37 @@
 <?php
 session_start();
-header("Cache-Control: no-cache, must-revalidate");
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
+}  else {     
+	header("location: login.php");
+	exit;
+}
+header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+echo "<script language='javascript'>
+	localStorage.clear()
+
+</script>
+";
 ?>
 <!DOCTYPE html>
 <html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
  <head>
- <title>Torah App</title>
+ <title>Torah Reader</title>
  <div class='some-page-wrapper'>
+
 <style>
+@font-face {
+	font-family: stam;
+	src: url(ShlomoStam.ttf);
+}
+ body {background-color: powderblue;   font-family: stam, Arial, Helvetica, sans-serif;
+} 
 .some-page-wrapper {
  margin: 15px;
 }
@@ -54,7 +77,7 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 </div>
  </head>
  <body>
- <form method="post">
+ <form action="#" method="post" target="_blank">
  <label for="cycles">Select a calendar:</label>
  <select name="cycle" id="cycle">
  <option value="Annual">Annual</option>
@@ -62,14 +85,13 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  </select>
  <label for="year">Select a year in the triennial cycle:</label>
  <select name="year" id="year">
- <option value="One">One</option>
- <option value="Two">Two</option>
- <option value="Three">Three</option>
+ <option value="One">5780 (2019-2020)</option>
+ <option value="Two">5781 (2020-2021)</option>
+ <option value="Three">5782 (2021-2022)</option>
  </select>
  <label for="parshiyot">Select a parasha:</label>
- <select name="parasha" id="parasha">
- <option value="Bereshit">Bereshit</option>
- </select>
+<input type="text" id="parasha" name="parasha">
+</input>
  <label for="aliyot">Select an aliyah:</label>
  <select name="aliyah" id="aliyah">
  <option value="1">First Aliyah</option>
@@ -80,11 +102,22 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  <option value="6">Sixth Aliyah</option>
  <option value="7">Seventh Aliyah</option>
  </select>
+ <label for="commentary">Include commentary</label>
+ <select name="commentary" id="commentary">
+ <option value="0">No</option>
+ <option value="1">Yes</option>
+</select>
+ <br>
+<br>
  <label for="highlighting">Highlighted trope marks:</label>
  <select name="highlighting" id="highlighting">
  <option value="Yes">Yes</option>
  <option value="No">No</option>
  </select>
+<label for="tropeMark">Enter a trope mark to highlight: </label>
+<input type="text" id="tropeMark" name="tropeMark">
+<br>
+<br>
  <label for="speed">Speed:</label>
  <select name="speed" id="speed">
  <option value="x-slow">Extra Slow</option>
@@ -100,11 +133,54 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  <option value="+5st">High</option>
  <option value="+10st">Extra High</option>
  </select>
- <input type="submit" name="Submit" value="Submit">
-
+<br>
+<br>
+ <input type="submit" name="Submit" value="Get Torah Reading">
  </input>
  </form>
- <?php
+ <form action="triennial_calendar.php" method="post" target="_blank">
+ <label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
+ <input type="search" id="searchTri" name="searchTri">
+ <input type="submit" name="Submit" value="Search">
+ </form>
+<br>
+ <form action="annual_calendar.php" method="post" target="_blank">
+<label for="searchAn">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
+  <input type="search" id="searchAn" name="searchAn">
+ <input type="submit" name="Submit" value="Search">
+<br>
+</input>
+</input>
+</form>
+
+<button onclick="window.print()">Print this page</button>
+<br>
+<br>
+    <div id='gUMArea'>
+      <div>
+      Record:
+        <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+    
+	<input type="radio" name="media" value="audio">Audio
+      </div>
+<br>
+<br>
+      <button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic and camera</button>
+    </div>
+    <div id='btns'>
+      <button  class="btn btn-default" id='start'>Start Recording</button>
+      <button  class="btn btn-default" id='stop'>Stop Recording</button>
+    </div>
+    <div>
+      <ul  class="list-unstyled" id='ul'></ul>
+    </div>
+    <script src="recordAudio.js"></script>
+<br>
+<br>
+<form action="https://zoom.us/meeting/schedule">
+<input type="submit" value="Schedule a Zoom meeting"/>
+</form>
+<?php
  $ch = curl_init();
  $parasha = $_POST['parasha'];
  $aliyah = $_POST['aliyah'];
@@ -113,98 +189,95 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
  $highlighting = $_POST['highlighting'];
  $speed = $_POST['speed'];
  $pitch = $_POST['pitch'];
- if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
- $verses = 'Genesis.1.1-5';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'One') {
- $verses = 'Genesis.1.6-8';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'One') {
- $verses = 'Genesis.1.9-13';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'One') {
- $verses = 'Genesis.1.14-19';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'One') {
- $verses = 'Genesis.1.20-23';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'One') {
- $verses = 'Genesis.1.24-31';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'One') {
- $verses = 'Genesis.2.1-3';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'Two') {
- $verses = 'Genesis.2.4-9';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'Two') {
- $verses = 'Genesis.2.10-19';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'Two') {
- $verses = 'Genesis.2.20-25';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'Two') {
- $verses = 'Genesis.3.1-21';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'Two') {
- $verses = 'Genesis.3.22-24';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'Two') {
- $verses = 'Genesis.4.1-18';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Two') {
- $verses = 'Genesis.4.19-26';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'Three') {
- $verses = 'Genesis.5.1-5';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Triennial' && $year == 'Three') {
- $verses = 'Genesis.5.6-8';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Triennial' && $year == 'Three') {
- $verses = 'Genesis.5.9-14';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Triennial' && $year == 'Three') {
- $verses = 'Genesis.5.15-20';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Triennial' && $year == 'Three') {
- $verses = 'Genesis.5.21-24';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Triennial' && $year == 'Three') {
- $verses = 'Genesis.5.25-31';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Triennial' && $year == 'Three') {
- $verses = 'Genesis.5.32-6.8';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Annual') {
- $verses = 'Genesis.1.1-2.3';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '2' && $cycle == 'Annual') {
- $verses = 'Genesis.2.4-19';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '3' && $cycle == 'Annual') {
- $verses = 'Genesis.2.20-3.21';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '4' && $cycle == 'Annual') {
- $verses = 'Genesis.3.22-4.18';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '5' && $cycle == 'Annual') {
- $verses = 'Genesis.4.19-22';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '6' && $cycle == 'Annual') {
- $verses = 'Genesis.4.23-5.24';
- }
- elseif ($parasha == 'Bereshit' && $aliyah == '7' && $cycle == 'Annual') {
- $verses = 'Genesis.5.25-6.8';
- }
+ $tropeMark = $_POST['tropeMark'];
+ $commentary = $_POST['commentary'];
+ //$chTri = fopen("triennial_calendar.csv", "r");
+ if ($cycle == 'Triennial') {
+	$chTri = fopen("triennial_calendar.csv", "r");
+	$triMatches = [];
+	while ($row = fgetcsv($chTri)) {
+		         $row = '<div>' . implode(' ', $row) . ' </div>'; 
+			 array_push($triMatches, $row);
+	}
+	$triMatch =  (preg_grep("/$year.*$parasha\s$aliyah.*/", $triMatches)); 
+	$triMatch = implode($triMatch);
+	$triVersesArray = array();
+	preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $triMatch, $triVersesArray);
+	$verseString = implode($triVersesArray);
+	$verses = str_replace(":", ".", $verseString);
+	$verses = str_replace(" - ", "-", $verses);
+	$verses = str_replace(" ", ".", $verses);
+	$regexVerses = preg_replace("/\./", "-", $verses, 1);
+	preg_match_all("/-\d*/", $regexVerses, $regexVersesMatches);
+	$firstElement = $regexElementMatches[0][0];
+	$secondElement = $regexElementMatches[0][1];
+	if ($firstElement == $secondElement) {
+		        $verses = preg_replace("/-\d*\./", "-", $verses);
 
-  curl_setopt($ch, CURLOPT_URL, 'http://www.sefaria.org/api/texts/' . $verses . '?context=0');
+ }
+	echo $verses;
+ }
+elseif ($cycle == 'Annual') {
+ $chAn = fopen("annual_calendar.csv", "r");
+ //$header_row_tri = fgetcsv($chTri);
+ $anMatches = [];
+ while($anRow = fgetcsv($chAn)) {
+	 $anRow = '<div>' . implode(' ', $anRow) . ' </div>'; 
+	//	if (preg_grep("/.*$parasha.*/", $line));{
+	 //}
+ 		array_push($anMatches, $anRow);
+ }
+$anMatch = (preg_grep("/.*$parasha\s$aliyah.*/", $anMatches));	 
+$anMatch = implode($anMatch);
+//echo $match;
+$anVersesArray = array();
+$anRegexVersesMatches = array();
+preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $anMatch, $anVersesArray);
+$anVerseString = implode($anVersesArray);
+$verses = str_replace(":", ".", $anVerseString);
+$verses = str_replace(" - ", "-", $verses);
+$verses = str_replace(" ", ".", $verses);
+$anRegexVerses = preg_replace("/\./", "-", $verses, 1);
+preg_match_all("/-\d*/", $anRegexVerses, $anRegexVersesMatches);
+$firstElement = $anRegexVersesMatches[0][0];
+$secondElement= $anRegexVersesMatches[0][1];
+$yaString = implode($anRegexVersesMatches);
+if(empty($yaString)){ 
+echo 'empty';
+}
+
+	preg_match("/\d/", $yaString, $elements);
+	$elementsString = implode($elements);
+//	echo $elementsString;
+	//$secondElement = $
+
+if ($firstElement == $secondElement) {
+	$verses = preg_replace("/-\d*\./", "-", $verses);
+}
+echo $verses;
+ }
+$commNum = '0';
+$curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
+  curl_setopt($ch, CURLOPT_URL, $curlUrl);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
    $data = curl_exec($ch);
     $array = json_decode($data, true);
     $hebrew = $array['he'];
      $english = $array['text'];
+	$commentaryText = $array['commentary']['0'][$commNum]['text'];
+    while (empty($commentaryText) && $commNum < 20) {
+	    $commNum += 1;
+	     $commentaryText = $array['commentary']['0'][$commNum]['text'];
+
+
+    } if ($commentary == 1 && empty($commentaryText)){
+		        $commentaryText = $array['commentary'][$commNum]['text'];
+    while (empty($commentaryText) && $commNum < 20) {
+	                $commNum += 1;
+			             $commentaryText = $array['commentary'][$commNum]['text'];
+
+	     }}
      function subArraysToString($ar, $sep = "<br> <br>") {
 	      $str = '';
 	       foreach ($ar as $val) {
@@ -222,6 +295,11 @@ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 		 $englishString = implode("<br> <br>", $english);
 		 }
        //$hebrewString = str_replace("׃", "", $hebrewString);
+       $hebrewString = str_replace('b', '', $hebrewString);
+       $hebrewString = str_replace('r', '', $hebrewString);
+       $hebrewString = str_replace('<', '', $hebrewString);
+       $hebrewString = str_replace('>', '', $hebrewString);
+       
         $_SESSION['heb'] = $hebrewString;
         $_SESSION['eng'] = $englishString;
 ?>
@@ -263,7 +341,7 @@ else{
  $prosody = $doc->createElement( "prosody" );
     $prosody->setAttribute( "rate", $speed );
     $prosody->setAttribute( "pitch", $pitch );
-    $text = $doc->createTextNode( $_SESSION['heb'] );
+    $text = $doc->createTextNode( $hebrewString );
      $prosody->appendChild( $text );
      $voice->appendChild( $prosody );
       $root->appendChild( $voice );
@@ -291,7 +369,6 @@ else{
         throw new Exception("Problem with $ttsServiceUri, $php_errormsg");
       }
     else{
-	 $audioFile = md5($result) . '.wav';
 	 $torahAudio = glob("*.wav");
 	  rename($torahAudio[0], './torah.wav');
 	  $status = file_put_contents('./' . 'torah.wav', $result);
@@ -302,33 +379,34 @@ if ($highlighting == "Yes") {
 $newHebrewString = "";
 $hebrewArray = explode(" ", $hebrewString);
 foreach ($hebrewArray as $hebrewWord) {
-	$hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
-	
-	foreach($hebrewLetter as $hebrewChar) {
-		//$hebrewChar = "<span style='background-color:#FF00FF'>$hebrewChar</span>";     
-		//echo mb_ord($hebrewChar);
-		//echo "<br>";
-		//echo $hebrewChar;
-	//echo "<br>";
+        $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
+        if ($tropeMark == 'merkha') {
+                $tropeMark = ' ֥';
+
+        $tropeMark = trim($tropeMark);
+           $etnahta = " ֑";
+                $etnahta = trim($etnahta);
+        }
+        if (strpos($hebrewWord, $tropeMark) != false) {
+                $hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
+                //echo $hebrewWord;
+                //echo '<br>';
+                $newHebrewString .= $hebrewWord;
+                $newHebrewString .= " ";
 	}
-	$merkha = ' ֥ ';
-		$merkha = trim($merkha);
-	if (strpos($hebrewWord, $merkha) != false) {
-		$hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
-		//echo $hebrewWord;
-		//echo '<br>';
-		$newHebrewString .= $hebrewWord;
-		$newHebrewString .= " ";
-	} else {
+	        else {
+
 //echo $hebrewWord;
 //echo '<br>';
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
+
 }
-}
+
+
 $hebrewString = $newHebrewString;
+}}
 //echo $newHebrewString;
-}
 ?>  
 
 
@@ -346,7 +424,12 @@ $hebrewString = $newHebrewString;
 <div class="english-column">
  <?php
  echo '<div style="font-size: 35pt">'. $englishString . '</div>';
- ?>
+ if (!empty($commentaryText)){
+ echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
+ } else {
+	 echo "Commentary not found for selected range.";
+ }
+?>
 
 </div>
 </div>
@@ -360,5 +443,6 @@ $hebrewString = $newHebrewString;
 </div>
 </body>
 </html>
+
 
 
