@@ -22,7 +22,7 @@ echo "<script language='javascript'>
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
  <head>
- <title>Torah App</title>
+ <title>Torah Reader</title>
  <div class='some-page-wrapper'>
 <style>
  body {background-color: powderblue;   font-family: Arial, Helvetica, sans-serif;
@@ -132,19 +132,19 @@ echo "<script language='javascript'>
  </select>
 <br>
 <br>
- <input type="submit" name="Submit" value="Submit">
+ <input type="submit" name="Submit" value="Get Torah Reading">
  </input>
  </form>
  <form action="triennial_calendar.php" method="post" target="_blank">
- <label for="calendar">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
- <input type="search" id="searchTri" name="search">
- <input type="submit" name="Submit" value="Submit">
+ <label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
+ <input type="search" id="searchTri" name="searchTri">
+ <input type="submit" name="Submit" value="Search">
  </form>
 <br>
  <form action="annual_calendar.php" method="post" target="_blank">
-<label for="calendar">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
-  <input type="search" id="searchAn" name="search">
- <input type="submit" name="Submit" value="Submit">
+<label for="searchAn">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
+  <input type="search" id="searchAn" name="searchAn">
+ <input type="submit" name="Submit" value="Search">
 <br>
 </input>
 </input>
@@ -189,10 +189,21 @@ echo "<script language='javascript'>
  $tropeMark = $_POST['tropeMark'];
  $commentary = $_POST['commentary'];
  //$chTri = fopen("triennial_calendar.csv", "r");
- //$chAn = fopen("annual_calendar.csv", "r");
- //$header_row_an = fgetcsv($chAn);
+ $chAn = fopen("annual_calendar.csv", "r");
  //$header_row_tri = fgetcsv($chTri);
- 
+ $matches = [];
+ while($row = fgetcsv($chAn)) {
+	 $row = '<div>' . implode(' ', $row) . ' </div>'; 
+	//	if (preg_grep("/.*$parasha.*/", $line));{
+	 //}
+ 		array_push($matches, $row);
+ }
+$match = (preg_grep("/.*$parasha\s$aliyah.*/", $matches));	 
+$match = implode($match);
+//echo $match;
+$versesArray = array();
+preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $match, $versesArray);
+$verseString = implode($versesArray);
  if ($parasha == 'Bereshit' && $aliyah == '1' && $cycle == 'Triennial' && $year == 'One') {
  $verses = 'Genesis.1.1-5';
  }
