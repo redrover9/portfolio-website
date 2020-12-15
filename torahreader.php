@@ -279,7 +279,7 @@ $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentar
     while (empty($commentaryText) && $commNum < 40) {
 	                $commNum += 1;
 			$commentaryText = $array['commentary'][$commNum]['text'];
-			 $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
+			 $commentarySource = $array['commentary'][$commNum]['sourceRef'];
 
 	     }}
      function subArraysToString($ar, $sep = "<br> <br>") {
@@ -386,11 +386,28 @@ foreach ($hebrewArray as $hebrewWord) {
         $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
         if ($tropeMark == 'merkha') {
                 $tropeMark = ' ֥';
-
         $tropeMark = trim($tropeMark);
-           $etnahta = " ֑";
-                $etnahta = trim($etnahta);
         }
+	elseif ($tropeMark == 'etnahta') {
+		$tropeMark = ' ֑';
+		$tropeMark = trim($tropeMark);
+	}
+	elseif ($tropeMark == 'segol') {
+		$tropeMark = ' ֒';
+		$tropeMark = trim($tropeMark);
+	}
+	elseif ($tropeMark == 'shalshelet') {
+		$tropeMark = ' ֓';
+		$tropeMark = trim($tropeMark);
+	}
+	elseif ($tropeMark == 'zakef qatan') {
+		$tropeMark = ' ֔';
+		$tropeMark = trim($tropeMark);
+	}
+	elseif ($tropeMark = 'zakef gadol') {
+		$tropeMark = ' ֕';
+		$tropeMark = trim($tropeMark);
+	}
         if (strpos($hebrewWord, $tropeMark) != false) {
                 $hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
                 //echo $hebrewWord;
