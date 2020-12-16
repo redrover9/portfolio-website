@@ -16,3 +16,5 @@ Grant permission to use mic and camera - prompts browser to ask for permission.
 Start recording - begin recording audio/video.
 Stop recording - stop recording audio/video.
 Schedule a Zoom meeting - opens Zoom's 'schedule' page.
+# todo
+add more calendar years, add more triennial cycles, user should not have to enter dashes(FIXED), add maftir aliyot and haftarot, add more trope marks and group them, add more colours and options to highlight multiple groups at once, make searching/using calendars more intuitive, combine start recording/grant permission button.
