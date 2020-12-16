@@ -156,17 +156,16 @@ flex: 3;
 <button onclick="window.print()">Print this page</button>
 <br>
 <br>
-<div id='recordArea'>
+
+<div id='gUMArea'>
 <div>
 Record:
-<input type="radio" name="media" value="video" checked id='mediaVideo'>
-Video   
-<input type="radio" name="media" value="audio">
-Audio
+<input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+<input type="radio" name="media" value="audio">Audio
 </div>
 <br>
 <br>
-<button class="btn btn-default"  id='permButton'>Grant permission to use mic and camera</button>
+<button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic and camera</button>
 </div>
 <div id='btns'>
 <button  class="btn btn-default" id='start'>Start Recording</button>
@@ -175,8 +174,7 @@ Audio
 <div>
 <ul  class="list-unstyled" id='ul'></ul>
 </div>
-<script src="recordAudio.js"></script>
-<br>
+<script src="recordAudio.js"></script><br>
 <br>
 <form action="https://zoom.us/meeting/schedule">
 <input type="submit" value="Schedule a Zoom meeting"/>
