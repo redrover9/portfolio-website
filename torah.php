@@ -28,10 +28,15 @@ echo "<script language='javascript'>
 <style>
 @font-face {
 	font-family: stam;
-	src: url(ShlomoStam.ttf);
+	src: url(StamAshkenazCLM.ttf);
 }
-body {background-color: powderblue;   font-family: stam, Arial, Helvetica, sans-serif;
-} 
+@font-face {
+	font-family: chumash;
+	src url(TaameyAshkenaz.ttf);
+}
+<?php
+echo "body {background-color: powderblue; }";
+?>
 .some-page-wrapper {
 margin: 15px;
 }
@@ -63,14 +68,21 @@ flex-direction: column;
 flex-basis: 100%;
 flex: 3;
 }
-.hebrew-column {
+.left-column {
+<?php
+if ($layout == 'tikkun'){
+echo "font-family: chumash;";
+} elseif ($layout == 'stam') {
+        echo "font-family: stam;";
+}?>}
 
-}
 
-.english-column {
 
-}
-.audio-player {
+.middle-column {
+    font-family: stam;
+
+}?>
+.right-column {
 
 }
 </style>
@@ -118,6 +130,11 @@ flex: 3;
 <input type="text" id="tropeMark" name="tropeMark">
 <br>
 <br>
+<label for="layout">Select a layout: </label>
+<select name="layout" id="layout">
+<option value="tikkun">Tikkun with audio</option>
+<option value="stam">STaM with audio and translation</option>
+</select>
 <label for="speed">Speed:</label>
 <select name="speed" id="speed">
 <option value="x-slow">Extra Slow</option>
@@ -186,6 +203,7 @@ $aliyah = $_POST['aliyah'];
 $cycle = $_POST['cycle'];
 $year = $_POST['year'];
 $highlighting = $_POST['highlighting'];
+$layout = $_POST['layout'];
 $speed = $_POST['speed'];
 $pitch = $_POST['pitch'];
 $tropeMark = $_POST['tropeMark'];
@@ -420,16 +438,20 @@ $hebrewString = $newHebrewString;
 </html>
 <div class="row">
 <div class="column">
-<div class="hebrew-column">
+<div class="middle-column">
 <?php
 echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
 ?>
 </div>
 </div>
 <div class="column">
-<div class="english-column">
+<div class="left-column">
 <?php
+if ($layout == 'tikkun'){
+echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
+} else {
 echo '<div style="font-size: 35pt">'. $englishString . '</div>';
+}
 if (!empty($commentaryText)){
 	 echo '<div style="font-size: 15pt">'. $commentarySource . '</div>';
 echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
@@ -441,7 +463,7 @@ echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
 </div>
 </div>
 <div class="column">
-<div class="audio-player">
+<div class="right-column">
 <audio controls>
 <source src="torah.wav" type="audio/wav">
 </audio>
