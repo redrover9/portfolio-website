@@ -3,7 +3,7 @@
 let log = console.log.bind(console),
 	  id = val => document.getElementById(val),
 	  ul = id('ul'),
-	  gUMbtn = id('gUMbtn'),
+	  permButton = id('permButton'),
 	  start = id('start'),
 	  stop = id('stop'),
 	  stream,
@@ -13,26 +13,26 @@ let log = console.log.bind(console),
 	  media;
 
 
-gUMbtn.onclick = e => {
+permButton.onclick = e => {
 	  let mv = id('mediaVideo'),
 		      mediaOptions = {
 			              video: {
 					                tag: 'video',
 					                type: 'video/webm',
 					                ext: '.mp4',
-					                gUM: {video: true, audio: true}
+					                media: {video: true, audio: true}
 					              },
 			              audio: {
 					                tag: 'audio',
 					                type: 'audio/mp3',
 					                ext: '.mp3',
-					                gUM: {audio: true}
+					                media: {audio: true}
 					              }
 			            };
 	  media = mv.checked ? mediaOptions.video : mediaOptions.audio;
-	  navigator.mediaDevices.getUserMedia(media.gUM).then(_stream => {
+	  navigator.mediaDevices.getUserMedia(media.media).then(_stream => {
 		      stream = _stream;
-		      id('gUMArea').style.display = 'none';
+		      id('recordArea').style.display = 'none';
 		      id('btns').style.display = 'inherit';
 		      start.removeAttribute('disabled');
 		      recorder = new MediaRecorder(stream);
