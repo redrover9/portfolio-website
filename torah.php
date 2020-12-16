@@ -21,9 +21,9 @@ echo "<script language='javascript'>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
- <head>
- <title>Torah Reader</title>
- <div class='some-page-wrapper'>
+<head>
+<title>Torah Reader</title>
+<div class='some-page-wrapper'>
 
 <style>
 @font-face {
@@ -75,79 +75,79 @@ echo "<script language='javascript'>
 }
 </style>
 </div>
- </head>
- <body>
- <form action="#" method="post" target="_blank">
- <label for="cycles">Select a calendar:</label>
- <select name="cycle" id="cycle">
- <option value="Annual">Annual</option>
- <option value="Triennial">Triennial</option>
- </select>
- <label for="year">Select a year in the triennial cycle:</label>
- <select name="year" id="year">
- <option value="One">5780 (2019-2020)</option>
- <option value="Two">5781 (2020-2021)</option>
- <option value="Three">5782 (2021-2022)</option>
- </select>
- <label for="parshiyot">Select a parasha:</label>
-<input type="text" id="parasha" name="parasha" required>
-</input>
- <label for="aliyot">Select an aliyah:</label>
- <select name="aliyah" id="aliyah">
- <option value="1">First Aliyah</option>
- <option value="2">Second Aliyah</option>
- <option value="3">Third Aliyah</option>
- <option value="4">Fourth Aliyah</option>
- <option value="5">Fifth Aliyah</option>
- <option value="6">Sixth Aliyah</option>
- <option value="7">Seventh Aliyah</option>
- </select>
- <label for="commentary">Include commentary</label>
- <select name="commentary" id="commentary">
- <option value="0">No</option>
- <option value="1">Yes</option>
+</head>
+<body>
+<form action="#" method="post" target="_blank">
+<label for="cycles">Select a calendar:</label>
+<select name="cycle" id="cycle">
+<option value="Annual">Annual</option>
+<option value="Triennial">Triennial</option>
 </select>
- <br>
+<label for="year">Select a year in the triennial cycle:</label>
+<select name="year" id="year">
+<option value="One">5780 (2019-2020)</option>
+<option value="Two">5781 (2020-2021)</option>
+<option value="Three">5782 (2021-2022)</option>
+</select>
+<label for="parshiyot">Select a parasha:</label>
+<input type="text" id="parasha" name="parasha" required>
+</input> 
+<label for="aliyot">Select an aliyah:</label>
+<select name="aliyah" id="aliyah">
+<option value="1">First Aliyah</option>
+<option value="2">Second Aliyah</option>
+<option value="3">Third Aliyah</option>
+<option value="4">Fourth Aliyah</option>
+<option value="5">Fifth Aliyah</option>
+<option value="6">Sixth Aliyah</option>
+<option value="7">Seventh Aliyah</option>
+</select>
+<label for="commentary">Include commentary</label>
+<select name="commentary" id="commentary">
+<option value="0">No</option>
+<option value="1">Yes</option>
+</select>
 <br>
- <label for="highlighting">Highlighted trope marks:</label>
- <select name="highlighting" id="highlighting">
- <option value="Yes">Yes</option>
- <option value="No">No</option>
- </select>
+<br>
+<label for="highlighting">Highlighted trope marks:</label>
+<select name="highlighting" id="highlighting">
+<option value="Yes">Yes</option>
+<option value="No">No</option>
+</select>
 <label for="tropeMark">Enter a trope mark to highlight: </label>
 <input type="text" id="tropeMark" name="tropeMark">
 <br>
 <br>
- <label for="speed">Speed:</label>
- <select name="speed" id="speed">
- <option value="x-slow">Extra Slow</option>
- <option value="slow">Slow</option>
- <option value="medium">Medium</option>
- <option value="fast">Fast</option>	
- </select>
- <label for="pitch">Pitch:</label>
- <select name="pitch" id="pitch">
- <option value="-10st">Extra Low</option>
- <option value="-5st">Low</option>
- <option value="default">Medium</option>
- <option value="+5st">High</option>
- <option value="+10st">Extra High</option>
- </select>
+<label for="speed">Speed:</label>
+<select name="speed" id="speed">
+<option value="x-slow">Extra Slow</option>
+<option value="slow">Slow</option>
+<option value="medium">Medium</option>
+<option value="fast">Fast</option>	
+</select>
+<label for="pitch">Pitch:</label>
+<select name="pitch" id="pitch">
+<option value="-10st">Extra Low</option>
+<option value="-5st">Low</option>
+<option value="default">Medium</option>
+<option value="+5st">High</option>
+<option value="+10st">Extra High</option>
+</select>
 <br>
 <br>
- <input type="submit" name="Submit" value="Get Torah Reading">
- </input>
- </form>
- <form action="triennial_calendar.php" method="post" target="_blank">
- <label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
- <input type="search" id="searchTri" name="searchTri">
- <input type="submit" name="Submit" value="Search">
- </form>
+<input type="submit" name="Submit" value="Get Torah Reading">
+</input> 
+</form>
+<form action="triennial_calendar.php" method="post" target="_blank">
+<label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
+<input type="search" id="searchTri" name="searchTri">
+<input type="submit" name="Submit" value="Search">
+</form>
 <br>
- <form action="annual_calendar.php" method="post" target="_blank">
+<form action="annual_calendar.php" method="post" target="_blank">
 <label for="searchAn">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
-  <input type="search" id="searchAn" name="searchAn">
- <input type="submit" name="Submit" value="Search">
+<input type="search" id="searchAn" name="searchAn">
+<input type="submit" name="Submit" value="Search">
 <br>
 </input>
 </input>
@@ -156,43 +156,43 @@ echo "<script language='javascript'>
 <button onclick="window.print()">Print this page</button>
 <br>
 <br>
-    <div id='gUMArea'>
-      <div>
-      Record:
-        <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
-    
-	<input type="radio" name="media" value="audio">Audio
-      </div>
+<div id='recordArea'>
+<div>
+Record:
+<input type="radio" name="media" value="video" checked id='mediaVideo'>
+Video   
+<input type="radio" name="media" value="audio">
+Audio
+</div>
 <br>
 <br>
-      <button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic and camera</button>
-    </div>
-    <div id='btns'>
-      <button  class="btn btn-default" id='start'>Start Recording</button>
-      <button  class="btn btn-default" id='stop'>Stop Recording</button>
-    </div>
-    <div>
-      <ul  class="list-unstyled" id='ul'></ul>
-    </div>
-    <script src="recordAudio.js"></script>
+<button class="btn btn-default"  id='permButton'>Grant permission to use mic and camera</button>
+</div>
+<div id='btns'>
+<button  class="btn btn-default" id='start'>Start Recording</button>
+<button  class="btn btn-default" id='stop'>Stop Recording</button>
+</div>
+<div>
+<ul  class="list-unstyled" id='ul'></ul>
+</div>
+<script src="recordAudio.js"></script>
 <br>
 <br>
 <form action="https://zoom.us/meeting/schedule">
 <input type="submit" value="Schedule a Zoom meeting"/>
 </form>
 <?php
- $ch = curl_init();
- $parasha = $_POST['parasha'];
- $aliyah = $_POST['aliyah'];
- $cycle = $_POST['cycle'];
- $year = $_POST['year'];
- $highlighting = $_POST['highlighting'];
- $speed = $_POST['speed'];
- $pitch = $_POST['pitch'];
- $tropeMark = $_POST['tropeMark'];
- $commentary = $_POST['commentary'];
- //$chTri = fopen("triennial_calendar.csv", "r");
- if ($cycle == 'Triennial') {
+$ch = curl_init();
+$parasha = $_POST['parasha'];
+$aliyah = $_POST['aliyah'];
+$cycle = $_POST['cycle'];
+$year = $_POST['year'];
+$highlighting = $_POST['highlighting'];
+$speed = $_POST['speed'];
+$pitch = $_POST['pitch'];
+$tropeMark = $_POST['tropeMark'];
+$commentary = $_POST['commentary'];
+if ($cycle == 'Triennial') {
 	$chTri = fopen("triennial_calendar.csv", "r");
 	$triMatches = [];
 	while ($row = fgetcsv($chTri)) {
@@ -203,33 +203,28 @@ echo "<script language='javascript'>
 	$triMatch = implode($triMatch);
 	$triVersesArray = array();
 	preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $triMatch, $triVersesArray);
-	$verseString = implode($triVersesArray);
-	$verses = str_replace(":", ".", $verseString);
+	$triVerseString = implode($triVersesArray);
+	$verses = str_replace(":", ".", $triVerseString);
 	$verses = str_replace(" - ", "-", $verses);
 	$verses = str_replace(" ", ".", $verses);
-	$regexVerses = preg_replace("/\./", "-", $verses, 1);
-	preg_match_all("/-\d*/", $regexVerses, $regexVersesMatches);
-	$firstElement = $regexElementMatches[0][0];
-	$secondElement = $regexElementMatches[0][1];
+	$triRegexVerses = preg_replace("/\./", "-", $verses, 1);
+	preg_match_all("/-\d*/", $regexVerses, $triRegexVersesMatches);
+	$firstElement = $triRegexVersesMatches[0][0];
+	$secondElement = $triRegexVersesMatches[0][1];
 	if ($firstElement == $secondElement) {
 		        $verses = preg_replace("/-\d*\./", "-", $verses);
-
  }
 	echo $verses;
  }
 elseif ($cycle == 'Annual') {
  $chAn = fopen("annual_calendar.csv", "r");
- //$header_row_tri = fgetcsv($chTri);
  $anMatches = [];
  while($anRow = fgetcsv($chAn)) {
 	 $anRow = '<div>' . implode(' ', $anRow) . ' </div>'; 
-	//	if (preg_grep("/.*$parasha.*/", $line));{
-	 //}
- 		array_push($anMatches, $anRow);
+ 	 array_push($anMatches, $anRow);
  }
 $anMatch = (preg_grep("/.*$parasha\s$aliyah.*/", $anMatches));	 
 $anMatch = implode($anMatch);
-//echo $match;
 $anVersesArray = array();
 $anRegexVersesMatches = array();
 preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $anMatch, $anVersesArray);
@@ -241,15 +236,7 @@ $anRegexVerses = preg_replace("/\./", "-", $verses, 1);
 preg_match_all("/-\d*/", $anRegexVerses, $anRegexVersesMatches);
 $firstElement = $anRegexVersesMatches[0][0];
 $secondElement= $anRegexVersesMatches[0][1];
-$yaString = implode($anRegexVersesMatches);
-if(empty($yaString)){ 
-echo 'empty';
-}
-
-	preg_match("/\d/", $yaString, $elements);
-	$elementsString = implode($elements);
-//	echo $elementsString;
-	//$secondElement = $
+preg_match("/\d/", $yaString, $elements);
 
 if ($firstElement == $secondElement) {
 	$verses = preg_replace("/-\d*\./", "-", $verses);
@@ -258,22 +245,22 @@ echo $verses;
  }
 $commNum = '0';
 $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
-  curl_setopt($ch, CURLOPT_URL, $curlUrl);
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-   curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-   $data = curl_exec($ch);
-    $array = json_decode($data, true);
-    $hebrew = $array['he'];
-     $english = $array['text'];
+curl_setopt($ch, CURLOPT_URL, $curlUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+$data = curl_exec($ch);
+$array = json_decode($data, true);
+$hebrew = $array['he'];
+$english = $array['text'];
+$commentaryText = $array['commentary']['0'][$commNum]['text'];
+$commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
+while (empty($commentaryText) && $commNum < 20) {
+    $commNum += 1;
 	$commentaryText = $array['commentary']['0'][$commNum]['text'];
-            $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
+    $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
 
-    while (empty($commentaryText) && $commNum < 20) {
-	    $commNum += 1;
-	     $commentaryText = $array['commentary']['0'][$commNum]['text'];
- $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
-
-    } if ($commentary == 1 && empty($commentaryText)){
+    }
+if ($commentary == 1 && empty($commentaryText)){
     $commentaryText = $array['commentary'][$commNum]['text'];
      $commentarySource = $array['commentary'][$commNum]['sourceRef'];
     while (empty($commentaryText) && $commNum < 40) {
@@ -446,7 +433,7 @@ $hebrewString = $newHebrewString;
  <?php
  echo '<div style="font-size: 35pt">'. $englishString . '</div>';
  if (!empty($commentaryText)){
-	 echo '<<div style="font-size: 15pt">'. $commentarySource . '</div>';
+	 echo '<div style="font-size: 15pt">'. $commentarySource . '</div>';
  echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
  } elseif (empty($commentaryText) && $commentary == 1) {
 	 echo "Commentary not found for selected range.";
@@ -465,6 +452,3 @@ $hebrewString = $newHebrewString;
 </div>
 </body>
 </html>
-
-
-
