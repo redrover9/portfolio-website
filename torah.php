@@ -30,38 +30,38 @@ echo "<script language='javascript'>
 	font-family: stam;
 	src: url(ShlomoStam.ttf);
 }
- body {background-color: powderblue;   font-family: stam, Arial, Helvetica, sans-serif;
+body {background-color: powderblue;   font-family: stam, Arial, Helvetica, sans-serif;
 } 
 .some-page-wrapper {
- margin: 15px;
+margin: 15px;
 }
 
 .row {
- display: flex;
- flex-direction: row;
- flex-wrap: wrap;
- width: 100%;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 100%;
 }
 
 .column {
- display: flex;
- flex-direction: column;
- flex-basis: 100%;
- flex: 1;
+display: flex;
+flex-direction: column;
+flex-basis: 100%;
+flex: 1;
 }
 
 .double-column {
- display: flex;
- flex-direction: column;
- flex-basis: 100%;
- flex: 2;
+display: flex;
+flex-direction: column;
+flex-basis: 100%;
+flex: 2;
 }
 
 .triple-column {
- display: flex;
- flex-direction: column;
- flex-basis: 100%;
- flex: 3;
+display: flex;
+flex-direction: column;
+flex-basis: 100%;
+flex: 3;
 }
 .hebrew-column {
 
@@ -213,16 +213,16 @@ if ($cycle == 'Triennial') {
 	$secondElement = $triRegexVersesMatches[0][1];
 	if ($firstElement == $secondElement) {
 		        $verses = preg_replace("/-\d*\./", "-", $verses);
- }
+}
 	echo $verses;
- }
+}
 elseif ($cycle == 'Annual') {
- $chAn = fopen("annual_calendar.csv", "r");
- $anMatches = [];
- while($anRow = fgetcsv($chAn)) {
+$chAn = fopen("annual_calendar.csv", "r");
+$anMatches = [];
+while($anRow = fgetcsv($chAn)) {
 	 $anRow = '<div>' . implode(' ', $anRow) . ' </div>'; 
- 	 array_push($anMatches, $anRow);
- }
+	 array_push($anMatches, $anRow);
+}
 $anMatch = (preg_grep("/.*$parasha\s$aliyah.*/", $anMatches));	 
 $anMatch = implode($anMatch);
 $anVersesArray = array();
@@ -242,7 +242,7 @@ if ($firstElement == $secondElement) {
 	$verses = preg_replace("/-\d*\./", "-", $verses);
 }
 echo $verses;
- }
+}
 $commNum = '0';
 $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
 curl_setopt($ch, CURLOPT_URL, $curlUrl);
@@ -255,21 +255,21 @@ $english = $array['text'];
 $commentaryText = $array['commentary']['0'][$commNum]['text'];
 $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
 while (empty($commentaryText) && $commNum < 20) {
-    $commNum += 1;
+$commNum += 1;
 	$commentaryText = $array['commentary']['0'][$commNum]['text'];
-    $commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
+$commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
 
-    }
+}
 if ($commentary == 1 && empty($commentaryText)){
-    $commentaryText = $array['commentary'][$commNum]['text'];
-     $commentarySource = $array['commentary'][$commNum]['sourceRef'];
-    while (empty($commentaryText) && $commNum < 40) {
+$commentaryText = $array['commentary'][$commNum]['text'];
+$commentarySource = $array['commentary'][$commNum]['sourceRef'];
+while (empty($commentaryText) && $commNum < 40) {
 	                $commNum += 1;
 			$commentaryText = $array['commentary'][$commNum]['text'];
 			 $commentarySource = $array['commentary'][$commNum]['sourceRef'];
 
 	     }}
-     function subArraysToString($ar, $sep = "<br> <br>") {
+function subArraysToString($ar, $sep = "<br> <br>") {
 	      $str = '';
 	       foreach ($ar as $val) {
 		        $str .= implode($sep, $val);
@@ -278,21 +278,21 @@ if ($commentary == 1 && empty($commentaryText)){
 	       $str = rtrim($str, $sep);
 	       return $str;
 	        }
-      $hebrewString = subArraysToString($hebrew);
-      $englishString = subArraysToString($english);
-       $pattern = "/-\d+$/i";
-       if (preg_match($pattern, $verses)) {
+$hebrewString = subArraysToString($hebrew);
+$englishString = subArraysToString($english);
+$pattern = "/-\d+$/i";
+if (preg_match($pattern, $verses)) {
 	        $hebrewString = implode("<br> <br>", $hebrew);
 		 $englishString = implode("<br> <br>", $english);
 		 }
-       //$hebrewString = str_replace("׃", "", $hebrewString);
-       $hebrewString = str_replace('b', '', $hebrewString);
-       $hebrewString = str_replace('r', '', $hebrewString);
-       $hebrewString = str_replace('<', '', $hebrewString);
-       $hebrewString = str_replace('>', '', $hebrewString);
-       
-        $_SESSION['heb'] = $hebrewString;
-        $_SESSION['eng'] = $englishString;
+//$hebrewString = str_replace("׃", "", $hebrewString);
+$hebrewString = str_replace('b', '', $hebrewString);
+$hebrewString = str_replace('r', '', $hebrewString);
+$hebrewString = str_replace('<', '', $hebrewString);
+$hebrewString = str_replace('>', '', $hebrewString);
+
+$_SESSION['heb'] = $hebrewString;
+$_SESSION['eng'] = $englishString;
 ?>
 <?php
 
@@ -301,11 +301,11 @@ if ($commentary == 1 && empty($commentaryText)){
 	$apiKey = '0e1e79d9fbdb4e01b851fdafee6f6c0f';
 
 $options = array(
-    'http' => array(
-        'header'  => "Ocp-Apim-Subscription-Key: ".$apiKey."\r\n" .
-        "content-length: 0\r\n",
-        'method'  => 'POST',
-    ),
+'http' => array(
+'header'  => "Ocp-Apim-Subscription-Key: ".$apiKey."\r\n" .
+"content-length: 0\r\n",
+'method'  => 'POST',
+),
 );
 
 $context  = stream_context_create($options);
@@ -313,68 +313,68 @@ $context  = stream_context_create($options);
 $access_token = file_get_contents($AccessTokenUri, false, $context);
 
 if (!$access_token) {
-    throw new Exception("Problem with $AccessTokenUri, $php_errormsg");
-  }
+throw new Exception("Problem with $AccessTokenUri, $php_errormsg");
+}
 else{
 
-   $ttsServiceUri = "https://".$region.".tts.speech.microsoft.com/cognitiveservices/v1";
+$ttsServiceUri = "https://".$region.".tts.speech.microsoft.com/cognitiveservices/v1";
 
-   $doc = new DOMDocument();
+$doc = new DOMDocument();
 
-   $root = $doc->createElement( "speak" );
-   $root->setAttribute( "version" , "1.0" );
-   $root->setAttribute( "xml:lang" , "he-IL" );
+$root = $doc->createElement( "speak" );
+$root->setAttribute( "version" , "1.0" );
+$root->setAttribute( "xml:lang" , "he-IL" );
 
-   $voice = $doc->createElement( "voice" );
-   $voice->setAttribute( "xml:lang" , "he-IL" );
-   $voice->setAttribute( "xml:gender" , "Male" );
-   $voice->setAttribute( "name" , "he-IL-Asaf"); 
- $prosody = $doc->createElement( "prosody" );
-    $prosody->setAttribute( "rate", $speed );
-    $prosody->setAttribute( "pitch", $pitch );
-    $text = $doc->createTextNode( $hebrewString );
-     $prosody->appendChild( $text );
-     $voice->appendChild( $prosody );
-      $root->appendChild( $voice );
-      $doc->appendChild( $root );
-       $data = $doc->saveXML();
+$voice = $doc->createElement( "voice" );
+$voice->setAttribute( "xml:lang" , "he-IL" );
+$voice->setAttribute( "xml:gender" , "Male" );
+$voice->setAttribute( "name" , "he-IL-Asaf"); 
+$prosody = $doc->createElement( "prosody" );
+$prosody->setAttribute( "rate", $speed );
+$prosody->setAttribute( "pitch", $pitch );
+$text = $doc->createTextNode( $hebrewString );
+$prosody->appendChild( $text );
+$voice->appendChild( $prosody );
+$root->appendChild( $voice );
+$doc->appendChild( $root );
+$data = $doc->saveXML();
 
-   $options = array(
-    'http' => array(
-        'header'  => "Content-type: application/ssml+xml\r\n" .
-                    "X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm\r\n" .
-                    "Authorization: "."Bearer ".$access_token."\r\n" .
-                    "X-Search-AppId: 07D3234E49CE426DAA29772419F436CA\r\n" .
-                    "X-Search-ClientID: 1ECFAE91408841A480F00935DC390960\r\n" .
-                    "User-Agent: TTSPHP\r\n" .
-                    "content-length: ".strlen($data)."\r\n",
-        'method'  => 'POST',
-        'content' => $data,
-        ),
-    );
+$options = array(
+'http' => array(
+'header'  => "Content-type: application/ssml+xml\r\n" .
+"X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm\r\n" .
+"Authorization: "."Bearer ".$access_token."\r\n" .
+"X-Search-AppId: 07D3234E49CE426DAA29772419F436CA\r\n" .
+"X-Search-ClientID: 1ECFAE91408841A480F00935DC390960\r\n" .
+"User-Agent: TTSPHP\r\n" .
+"content-length: ".strlen($data)."\r\n",
+'method'  => 'POST',
+'content' => $data,
+),
+);
 
-    $context  = stream_context_create($options);
+$context  = stream_context_create($options);
 
-    $result = file_get_contents($ttsServiceUri, false, $context);
-    if (!$result) {
-        throw new Exception("Problem with $ttsServiceUri, $php_errormsg");
-      }
-    else{
+$result = file_get_contents($ttsServiceUri, false, $context);
+if (!$result) {
+throw new Exception("Problem with $ttsServiceUri, $php_errormsg");
+}
+else{
 	 $torahAudio = glob("*.wav");
 	  rename($torahAudio[0], './torah.wav');
 	  $status = file_put_contents('./' . 'torah.wav', $result);
 
-    }
+}
 }
 if ($highlighting == "Yes") {
 $newHebrewString = "";
 $hebrewArray = explode(" ", $hebrewString);
 foreach ($hebrewArray as $hebrewWord) {
-        $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
-        if ($tropeMark == 'merkha') {
-                $tropeMark = ' ֥';
-        $tropeMark = trim($tropeMark);
-        }
+$hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
+if ($tropeMark == 'merkha') {
+$tropeMark = ' ֥';
+$tropeMark = trim($tropeMark);
+}
 	elseif ($tropeMark == 'etnahta') {
 		$tropeMark = ' ֑';
 		$tropeMark = trim($tropeMark);
@@ -395,12 +395,12 @@ foreach ($hebrewArray as $hebrewWord) {
 		$tropeMark = ' ֕';
 		$tropeMark = trim($tropeMark);
 	}
-        if (strpos($hebrewWord, $tropeMark) != false) {
-                $hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
-                //echo $hebrewWord;
-                //echo '<br>';
-                $newHebrewString .= $hebrewWord;
-                $newHebrewString .= " ";
+if (strpos($hebrewWord, $tropeMark) != false) {
+$hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
+//echo $hebrewWord;
+//echo '<br>';
+$newHebrewString .= $hebrewWord;
+$newHebrewString .= " ";
 	}
 	        else {
 
@@ -421,23 +421,23 @@ $hebrewString = $newHebrewString;
 </body>
 </html>
 <div class="row">
- <div class="column">
- <div class="hebrew-column">
- <?php
- echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
- ?>
- </div>
- </div>
+<div class="column">
+<div class="hebrew-column">
+<?php
+echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
+?>
+</div>
+</div>
 <div class="column">
 <div class="english-column">
- <?php
- echo '<div style="font-size: 35pt">'. $englishString . '</div>';
- if (!empty($commentaryText)){
+<?php
+echo '<div style="font-size: 35pt">'. $englishString . '</div>';
+if (!empty($commentaryText)){
 	 echo '<div style="font-size: 15pt">'. $commentarySource . '</div>';
- echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
- } elseif (empty($commentaryText) && $commentary == 1) {
+echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
+} elseif (empty($commentaryText) && $commentary == 1) {
 	 echo "Commentary not found for selected range.";
- }
+}
 ?>
 
 </div>
@@ -452,3 +452,4 @@ $hebrewString = $newHebrewString;
 </div>
 </body>
 </html>
+
