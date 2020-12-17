@@ -92,13 +92,18 @@ echo "font-family: chumash;";
 
 }
 .btn {
-	border: gray;
+	border: none;
+	background-color: white;
 	color: gray;
   text-align: center;
 display: inline-block;
 margin-right: 20px;
 width: auto;
+float: left;
 
+}
+.btn:hover {
+background: blue;
 }
 .right {
 position: absolute;
@@ -194,10 +199,9 @@ padding: 10px;
 </input>
 </input>
 </form>
-<form>
-<button class="btn btn-primary" onclick="window.print()">Print this page</button>
+<button class="btn" onclick="window.print()">Print this page</button>
 <form action="https://zoom.us/meeting/schedule">
-<input class="btn btn-primary" type="submit" value="Schedule a Zoom meeting"/>
+<input class="btn" type="submit" value="Schedule a Zoom meeting"/>
 </form>
 <div id='gUMArea'>
 Record:
