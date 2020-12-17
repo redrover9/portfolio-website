@@ -70,9 +70,10 @@ function makeLink(){
 	  mt.controls = true;
 	  mt.src = url;
 	  hf.href = url;
-	  hf.download = `${counter++}${media.ext}`;
+	  hf.download = `CantorRecording${counter++}${media.ext}`;
 	  hf.innerHTML = `Download${hf.download}`;
 	  li.appendChild(mt);
 	  li.appendChild(hf);
 	  ul.appendChild(li);
 }
+
