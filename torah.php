@@ -105,6 +105,17 @@ float: left;
 .btn:hover {
 background: blue;
 }
+.btn-gtr {
+	        border: none;
+        background-color: blue;
+        color: white;
+  text-align: center;
+display: inline-block;
+margin-right: 20px;
+width: auto;
+float: left;
+
+}
 .right {
 position: absolute;
 right: 100px;
@@ -185,7 +196,7 @@ padding: 10px;
 </select>
 <br>
 <br>
-<input type="submit" name="Submit" class="btn btn-primary" value="Get Torah Reading">
+<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading">
 </input> 
 </form>
 <form action="triennial_calendar.php" method="post" target="_blank">
