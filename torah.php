@@ -154,6 +154,7 @@ padding: 10px;
 </select>
 <label for="tropeMark">Enter a trope mark to highlight: </label>
 <input class="form-control" placeholder="merkha" type="text" id="tropeMark" name="tropeMark" cols="5">
+</input>
 <div class="right">
 <h1>Torah Reader</h1>
 <h2>Trope Trainer Replacement</h2>
@@ -327,7 +328,6 @@ if (preg_match($pattern, $verses)) {
 	        $hebrewString = implode("<br> <br>", $hebrew);
 		 $englishString = implode("<br> <br>", $english);
 		 }
-//$hebrewString = str_replace("׃", "", $hebrewString);
 $hebrewString = str_replace('b', '', $hebrewString);
 $hebrewString = str_replace('r', '', $hebrewString);
 $hebrewString = str_replace('<', '', $hebrewString);
@@ -409,53 +409,64 @@ else{
 }
 }
 if ($highlighting == "Yes") {
-$newHebrewString = "";
+	$newHebrewString = "";
+	$newEnglishString = "";
 $hebrewArray = explode(" ", $hebrewString);
+$englishArray = explode(" ", $englishString);
+if ($tropeMark == 'merkha') {
+	$tropeMark = ' ֥';
+	$tropeMark = trim($tropeMark);
+	echo "merkha";
+}
+        elseif ($tropeMark == 'etnahta') {
+		                $tropeMark = ' ֑';
+				$tropeMark = trim($tropeMark);
+				echo "ehtnahta";
+				        }
+        elseif ($tropeMark == 'segol') {
+		                $tropeMark = ' ֒';
+				$tropeMark = trim($tropeMark);
+				echo "segol";
+				        }
+        elseif ($tropeMark == 'shalshelet') {
+		                $tropeMark = ' ֓';
+				                $tropeMark = trim($tropeMark);
+				echo "shalshelet";
+				        }
+        elseif ($tropeMark == 'zakef qatan') {
+		                $tropeMark = ' ֔';
+				                $tropeMark = trim($tropeMark);
+				echo "zakef qatan";
+				        }
+        elseif ($tropeMark = 'zakef gadol') {
+		                $tropeMark = ' ֕';
+				                $tropeMark = trim($tropeMark);
+				echo "zakef gadol";
+				        } else {
+						                $tropeMark = "";
+								        }
+
 foreach ($hebrewArray as $hebrewWord) {
 $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
-if ($tropeMark == 'merkha') {
-$tropeMark = ' ֥';
-$tropeMark = trim($tropeMark);
-}
-	elseif ($tropeMark == 'etnahta') {
-		$tropeMark = ' ֑';
-		$tropeMark = trim($tropeMark);
-	}
-	elseif ($tropeMark == 'segol') {
-		$tropeMark = ' ֒';
-		$tropeMark = trim($tropeMark);
-	}
-	elseif ($tropeMark == 'shalshelet') {
-		$tropeMark = ' ֓';
-		$tropeMark = trim($tropeMark);
-	}
-	elseif ($tropeMark == 'zakef qatan') {
-		$tropeMark = ' ֔';
-		$tropeMark = trim($tropeMark);
-	}
-	elseif ($tropeMark = 'zakef gadol') {
-		$tropeMark = ' ֕';
-		$tropeMark = trim($tropeMark);
-	}
-if (strpos($hebrewWord, $tropeMark) != false) {
+	
+        if (strpos($hebrewWord, $tropeMark) !==  false) {
 $hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
-//echo $hebrewWord;
-//echo '<br>';
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
 	}
 	        else {
 
-//echo $hebrewWord;
-//echo '<br>';
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
 
+		}}
+
+
+
 }
 
-
 $hebrewString = $newHebrewString;
-}}
+$englishString = $newEnglishString;
 //echo $newHebrewString;
 ?>  
 
