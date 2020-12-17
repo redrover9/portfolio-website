@@ -1,8 +1,8 @@
 # torah
 Select a calendar - Anuual or Triennial is possible.
 Select a year in the triennial cycle - only current cycle is available.
-Select a parasha - parashot with spaces must use a dash. Eg Lech Lecha would be Lech-Lecha.
-Select an aliyah - one through seven available.
+Select a parasha - use spaces now in multi word parashot.
+Select an aliyah - one through maftir available.
 Highlighted trope marks - highlights word in pink.
 Enter a trope mark to highlight - only one trope mark can be selected.
 Speed - options are extra slow, slow, medium, and fast.
