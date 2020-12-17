@@ -196,24 +196,25 @@ padding: 10px;
 <br>
 <br>
 
-    <div id='gUMArea'>
-      <div>
-      Record:
-        <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+<div id='gUMArea'>
+<div>
+Record:
+<input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+<input type="radio" name="media" value="audio">Audio
+</div>
+<br>
+<br>
 
-	<input type="radio" name="media" value="audio">Audio
-      </div>
-
-      <button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic and camera</button>
-    </div>
-    <div id='btns'>
-      <button  class="btn btn-default" id='start'>Start Recording</button>
-      <button  class="btn btn-default" id='stop'>Stop Recording</button>
-    </div>
-    <div>
-      <ul  class="list-unstyled" id='ul'></ul>
-    </div>
-    <script src="recordAudio.js"></script>
+<button class="btn btn-primary"  id='gUMbtn'>Grant permission to use mic and camera</button>
+</div>
+<div id='btns'>
+<button  class="btn btn-primary" id='start'>Start Recording</button>
+<button  class="btn btn-primary" id='stop'>Stop Recording</button>
+</div>
+<div>
+<ul  class="list-unstyled" id='ul'></ul>
+</div>
+<script src="recordAudio.js"></script><br>
 <br>
 <form action="https://zoom.us/meeting/schedule">
 <input class="btn btn-primary" type="submit" value="Schedule a Zoom meeting"/>
