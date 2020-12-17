@@ -95,6 +95,9 @@ echo "font-family: chumash;";
 	border: gray;
 	color: gray;
   text-align: center;
+display: inline-block;
+margin-right: 20px;
+width: auto;
 
 }
 .right {
@@ -191,19 +194,15 @@ padding: 10px;
 </input>
 </input>
 </form>
-
+<form>
 <button class="btn btn-primary" onclick="window.print()">Print this page</button>
-<br>
-<br>
-
+<form action="https://zoom.us/meeting/schedule">
+<input class="btn btn-primary" type="submit" value="Schedule a Zoom meeting"/>
+</form>
 <div id='gUMArea'>
-<div>
 Record:
 <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
 <input type="radio" name="media" value="audio">Audio
-</div>
-<br>
-<br>
 
 <button class="btn btn-primary"  id='gUMbtn'>Grant permission to use mic and camera</button>
 </div>
@@ -211,14 +210,11 @@ Record:
 <button  class="btn btn-primary" id='start'>Start Recording</button>
 <button  class="btn btn-primary" id='stop'>Stop Recording</button>
 </div>
-<div>
 <ul  class="list-unstyled" id='ul'></ul>
-</div>
-<script src="recordAudio.js"></script><br>
-<br>
-<form action="https://zoom.us/meeting/schedule">
-<input class="btn btn-primary" type="submit" value="Schedule a Zoom meeting"/>
+<script src="recordAudio.js"></script>
+
 </form>
+
 <?php
 $ch = curl_init();
 $parasha = $_POST['parasha'];
