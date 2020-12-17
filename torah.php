@@ -22,10 +22,12 @@ echo "<script language='javascript'>
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <head>
+<link rel="stylesheet" href="main.550dcf66.css?v=<?php echo time(); ?>">
 <title>Torah Reader</title>
 <div class='some-page-wrapper'>
 
 <style>
+<?php include "main.550dcf66.css" ?>
 @font-face {
 	font-family: stam;
 	src: url(StamAshkenazCLM.ttf);
@@ -34,9 +36,6 @@ echo "<script language='javascript'>
 	font-family: chumash;
 	src url(TaameyAshkenaz.ttf);
 }
-<?php
-echo "body {background-color: powderblue; }";
-?>
 .some-page-wrapper {
 margin: 15px;
 }
@@ -75,15 +74,33 @@ echo "font-family: chumash;";
 } elseif ($layout == 'stam') {
         echo "font-family: stam;";
 }?>}
+.box {
+  border: 3px solid white;
+  padding: 150px;
+  margin: 5px;
+  justify-content: right;
+  align-items: right;
+}
 
 
 
 .middle-column {
     font-family: stam;
 
-}?>
+}
 .right-column {
 
+}
+.btn {
+	border: gray;
+	color: gray;
+  text-align: center;
+
+}
+.right {
+position: absolute;
+right: 100px;
+padding: 10px;
 }
 </style>
 </div>
@@ -102,7 +119,7 @@ echo "font-family: chumash;";
 <option value="Three">5782 (2021-2022)</option>
 </select>
 <label for="parshiyot">Select a parasha:</label>
-<input type="text" id="parasha" name="parasha" required>
+<input class="form-control" placeholder="Bereshit" type="text" id="parasha" name="parasha" cols="5" width="30px" required>
 </input> 
 <label for="aliyot">Select an aliyah:</label>
 <select name="aliyah" id="aliyah">
@@ -113,6 +130,7 @@ echo "font-family: chumash;";
 <option value="5">Fifth Aliyah</option>
 <option value="6">Sixth Aliyah</option>
 <option value="7">Seventh Aliyah</option>
+<option value="maf">Maftir Aliyah</option>
 </select>
 <label for="commentary">Include commentary</label>
 <select name="commentary" id="commentary">
@@ -127,12 +145,16 @@ echo "font-family: chumash;";
 <option value="No">No</option>
 </select>
 <label for="tropeMark">Enter a trope mark to highlight: </label>
-<input type="text" id="tropeMark" name="tropeMark">
+<input class="form-control" placeholder="merkha" type="text" id="tropeMark" name="tropeMark" cols="5">
+<div class="right">
+<h1>Torah Reader</h1>
+<h2>Trope Trainer Replacement</h2>
+</div>
 <br>
 <br>
 <label for="layout">Select a layout: </label>
 <select name="layout" id="layout">
-<option value="tikkun">Tikkun with audio</option>
+<option value="tikkun">Tikkun with audio and translation</option>
 <option value="stam">STaM with audio and translation</option>
 </select>
 <label for="speed">Speed:</label>
@@ -152,53 +174,56 @@ echo "font-family: chumash;";
 </select>
 <br>
 <br>
-<input type="submit" name="Submit" value="Get Torah Reading">
+<input type="submit" name="Submit" class="btn btn-primary" value="Get Torah Reading">
 </input> 
 </form>
 <form action="triennial_calendar.php" method="post" target="_blank">
 <label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
-<input type="search" id="searchTri" name="searchTri">
-<input type="submit" name="Submit" value="Search">
+<input type="search" class="form-control" placeholder="01-Jan-2020" id="searchTri" name="searchTri" >
+<input type="submit" name="Submit" value="Search" class="btn btn-primary">
 </form>
 <br>
 <form action="annual_calendar.php" method="post" target="_blank">
 <label for="searchAn">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
-<input type="search" id="searchAn" name="searchAn">
-<input type="submit" name="Submit" value="Search">
+<input type="search" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" max-width="100px" cols="10">
+<input type="submit" name="Submit" value="Search" class="btn btn-primary">
 <br>
 </input>
 </input>
 </form>
 
-<button onclick="window.print()">Print this page</button>
+<button class="btn btn-primary" onclick="window.print()">Print this page</button>
 <br>
 <br>
 
-<div id='gUMArea'>
-<div>
-Record:
-<input type="radio" name="media" value="video" checked id='mediaVideo'>Video
-<input type="radio" name="media" value="audio">Audio
-</div>
-<br>
-<br>
-<button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic and camera</button>
-</div>
-<div id='btns'>
-<button  class="btn btn-default" id='start'>Start Recording</button>
-<button  class="btn btn-default" id='stop'>Stop Recording</button>
-</div>
-<div>
-<ul  class="list-unstyled" id='ul'></ul>
-</div>
-<script src="recordAudio.js"></script><br>
+    <div id='gUMArea'>
+      <div>
+      Record:
+        <input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+
+	<input type="radio" name="media" value="audio">Audio
+      </div>
+
+      <button class="btn btn-default"  id='gUMbtn'>Grant permission to use mic and camera</button>
+    </div>
+    <div id='btns'>
+      <button  class="btn btn-default" id='start'>Start Recording</button>
+      <button  class="btn btn-default" id='stop'>Stop Recording</button>
+    </div>
+    <div>
+      <ul  class="list-unstyled" id='ul'></ul>
+    </div>
+    <script src="recordAudio.js"></script>
 <br>
 <form action="https://zoom.us/meeting/schedule">
-<input type="submit" value="Schedule a Zoom meeting"/>
+<input class="btn btn-primary" type="submit" value="Schedule a Zoom meeting"/>
 </form>
 <?php
 $ch = curl_init();
 $parasha = $_POST['parasha'];
+if (preg_match(" ", $parasha) == 1) {
+	preg_replace(" ", ".", $parasha);
+}
 $aliyah = $_POST['aliyah'];
 $cycle = $_POST['cycle'];
 $year = $_POST['year'];
@@ -464,12 +489,24 @@ echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
 </div>
 <div class="column">
 <div class="right-column">
-<audio controls>
-<source src="torah.wav" type="audio/wav">
+<?php
+if ($layout == 'stam'){
+echo "<audio controls>";
+	echo '<source src="torah.wav" type="audio/wav">';
+echo "</audio>";
+} elseif ($layout == 'tikkun'){
+	echo "<audio controls>";
+        echo '<source src="torah.wav" type="audio/wav">';
+	echo "</audio>";
+	echo '<div style="font-size: 35pt">'. $englishString . '</div>';
+}
+?>
 </audio>
 </div>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
 </body>
 </html>
 
