@@ -152,8 +152,10 @@ padding: 10px;
 <option value="Yes">Yes</option>
 <option value="No">No</option>
 </select>
-<label for="tropeMark">Enter a trope mark to highlight: </label>
-<input class="form-control" placeholder="merkha" type="text" id="tropeMark" name="tropeMark" cols="5">
+<label for="tropeMark">Enter trope mark(s) to highlight: </label>
+<input class="form-control" placeholder="merkha" type="text" id="tropeMarkOne" name="tropeMarkOne" cols="5">
+<input class="form-control" placeholder="merkha" type="text" id="tropeMarkThree" name="tropeMarkTwo" cols="5">
+<input class="form-control" placeholder="merkha" type="text" id="tropeMarkThree" name="tropeMarkThree" cols="5">
 </input>
 <div class="right">
 <h1>Torah Reader</h1>
@@ -233,7 +235,9 @@ $highlighting = $_POST['highlighting'];
 $layout = $_POST['layout'];
 $speed = $_POST['speed'];
 $pitch = $_POST['pitch'];
-$tropeMark = $_POST['tropeMark'];
+$tropeMarkOne = $_POST['tropeMarkOne'];
+$tropeMarkTwo = $_POST['tropeMarkTwo'];
+$tropeMarkThree = $_POST['tropeMarkThree'];
 $commentary = $_POST['commentary'];
 if ($cycle == 'Triennial') {
 	$chTri = fopen("triennial_calendar.csv", "r");
@@ -414,46 +418,106 @@ if ($highlighting == "Yes") {
 $hebrewArray = explode(" ", $hebrewString);
 $englishArray = explode(" ", $englishString);
 if ($tropeMark == 'merkha') {
-	$tropeMark = ' ֥';
-	$tropeMark = trim($tropeMark);
+	$tropeMarkOne = ' ֥';
+	$tropeMarkOne = trim($tropeMarkOne);
 	echo "merkha";
 }
-        elseif ($tropeMark == 'etnahta') {
-		                $tropeMark = ' ֑';
-				$tropeMark = trim($tropeMark);
-				echo "ehtnahta";
+        elseif ($tropeMarkOne == 'etnahta') {
+		                $tropeMarkOne = ' ֑';
+				                $tropeMarkOne = trim($tropeMarkOne);
 				        }
-        elseif ($tropeMark == 'segol') {
-		                $tropeMark = ' ֒';
-				$tropeMark = trim($tropeMark);
-				echo "segol";
+        elseif ($tropeMarkOne == 'segol') {
+		                $tropeMarkOne = ' ֒';
+				                $tropeMarkOne = trim($tropeMarkOne);
 				        }
-        elseif ($tropeMark == 'shalshelet') {
-		                $tropeMark = ' ֓';
-				                $tropeMark = trim($tropeMark);
-				echo "shalshelet";
+        elseif ($tropeMarkOne == 'shalshelet') {
+		                $tropeMarkOne = ' ֓';
+				                $tropeMarkOne = trim($tropeMarkOne);
 				        }
-        elseif ($tropeMark == 'zakef qatan') {
-		                $tropeMark = ' ֔';
-				                $tropeMark = trim($tropeMark);
-				echo "zakef qatan";
+        elseif ($tropeMarkOne == 'zakef qatan') {
+		                $tropeMarkOne = ' ֔';
+				                $tropeMarkOne = trim($tropeMarkOne);
 				        }
-        elseif ($tropeMark = 'zakef gadol') {
-		                $tropeMark = ' ֕';
-				                $tropeMark = trim($tropeMark);
-				echo "zakef gadol";
-				        } else {
-						                $tropeMark = "";
+        elseif ($tropeMarkOne = 'zakef gadol') {
+		                $tropeMarkOne = ' ֕';
+				                $tropeMarkOne = trim($tropeMarkOne);
+				        }
+	else { 
+		$tropeMarkOne = "";
+	}
 								        }
+if ($tropeMarkTwo == 'merkha') {
+	$tropeMarkTwo = ' ֥';
+	$tropeMarkTwo = trim($tropeMarkTwo);
+}
+        elseif ($tropeMarkTwo == 'etnahta') {
+		                $tropeMarkTwo = ' ֑';
+				                $tropeMarkTwo = trim($tropeMarkTwo);
+				        }
+        elseif ($tropeMarkTwo == 'segol') {
+		                $tropeMarkTwo = ' ֒';
+				                $tropeMarkTwo = trim($tropeMarkTwo);
+				        }
+        elseif ($tropeMarkTwo == 'shalshelet') {
+		                $tropeMarkTwo = ' ֓';
+				                $tropeMarkTwo = trim($tropeMarkTwo);
+				        }
+        elseif ($tropeMarkTwo == 'zakef qatan') {
+		                $tropeMarkTwo = ' ֔';
+				                $tropeMarkTwo = trim($tropeMarkTwo);
+				        }
+        elseif ($tropeMarkTwo = 'zakef gadol') {
+		                $tropeMarkTwo = ' ֕';
+				                $tropeMarkTwo = trim($tropeMarkTwo);
+				        }
+	else { 
+		$tropeMarkTwo = "";
+	}
+
+if ($tropeMarkThree == 'merkha') {
+	$tropeMarkThree = ' ֥';
+	$tropeMarkThree = trim($tropeMarkThree);
+}
+        elseif ($tropeMarkThree == 'etnahta') {
+		                $tropeMarkThree = ' ֑';
+				                $tropeMarkThree = trim($tropeMarkThree);
+				        }
+        elseif ($tropeMarkThree == 'segol') {
+		                $tropeMarkThree = ' ֒';
+				                $tropeMarkThree = trim($tropeMarkThree);
+				        }
+        elseif ($tropeMarkThree == 'shalshelet') {
+		                $tropeMarkThree = ' ֓';
+				                $tropeMarkThree = trim($tropeMarkThree);
+				        }
+        elseif ($tropeMarkThree == 'zakef qatan') {
+		                $tropeMarkThree = ' ֔';
+				                $tropeMarkThree = trim($tropeMarkThree);
+				        }
+        elseif ($tropeMarkThree = 'zakef gadol') {
+		                $tropeMarkThree = ' ֕';
+				                $tropeMarkThree = trim($tropeMarkThree);
+				        }
+	else { 
+		$tropeMarkThree = "";
+	}
 
 foreach ($hebrewArray as $hebrewWord) {
 $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
 	
-        if (strpos($hebrewWord, $tropeMark) !==  false) {
-$hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
+        if (strpos($hebrewWord, $tropeMarkOne) !=  false) {
+		$hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
-	}
+	} elseif (strpos($hebrewWord, $tropeMarkTwo) !=  false) {
+		                $hebrewWord = "<span style='background-color:#FCF803'>$hebrewWord</span>";
+				$newHebrewString .= $hebrewWord;
+				$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $tropeMarkThree) !=  false) {
+	                $hebrewWord = "<span style='background-color:#41FC03'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+			        }
 	        else {
 
 $newHebrewString .= $hebrewWord;
@@ -463,7 +527,6 @@ $newHebrewString .= " ";
 
 
 
-}
 
 $hebrewString = $newHebrewString;
 $englishString = $newEnglishString;
