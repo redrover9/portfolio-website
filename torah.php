@@ -159,7 +159,7 @@ padding: 10px;
 </input>
 <div class="right">
 <h1>Torah Reader</h1>
-<h2>Trope Trainer Replacement</h2>
+<h3>Trope Trainer Replacement</h3>
 </div>
 <br>
 <br>
@@ -529,7 +529,6 @@ $newHebrewString .= " ";
 
 
 $hebrewString = $newHebrewString;
-$englishString = $newEnglishString;
 //echo $newHebrewString;
 ?>  
 
@@ -539,13 +538,6 @@ $englishString = $newEnglishString;
 <div class="row">
 <div class="column">
 <div class="middle-column">
-<?php
-echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
-?>
-</div>
-</div>
-<div class="column">
-<div class="left-column">
 <?php
 if ($layout == 'tikkun'){
 echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
@@ -562,6 +554,14 @@ echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
 
 </div>
 </div>
+<div class="column">
+<div class="left-column">
+<?php
+echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
+?>
+</div>
+</div>
+
 <div class="column">
 <div class="right-column">
 <?php
