@@ -236,9 +236,7 @@ Record:
 <?php
 $ch = curl_init();
 $parasha = $_POST['parasha'];
-if (preg_match(" ", $parasha) == 1) {
-	preg_replace(" ", ".", $parasha);
-}
+$parasha = preg_replace("\s", "-", $parasha);
 $aliyah = $_POST['aliyah'];
 $cycle = $_POST['cycle'];
 $year = $_POST['year'];
@@ -534,12 +532,15 @@ $newHebrewString .= " ";
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
 
-		}}
-
-
-
+		}
 
 $hebrewString = $newHebrewString;
+}
+
+
+
+
+
 //echo $newHebrewString;
 ?>  
 
