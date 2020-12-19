@@ -93,6 +93,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
 <link rel="stylesheet" href="main.550dcf66.css?v=<?php echo time(); ?>">
     <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Login</title>
  
     <style type="text/css">

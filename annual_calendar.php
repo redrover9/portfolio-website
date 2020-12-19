@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<style>
- body {background-color: powderblue;   font-family: Arial, Helvetica, sans-serif;
-}
-</style>
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="main.550dcf66.css?v=<?php echo time(); ?>">
+</head>
 <?php
 //$chTri = fopen("triennial_calendar.csv", "r");
 $chAn = fopen("annual_calendar.csv", "r");
