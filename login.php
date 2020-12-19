@@ -91,11 +91,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="main.550dcf66.css?v=<?php echo time(); ?>">
     <meta charset="UTF-8">
     <title>Login</title>
  
     <style type="text/css">
-        body{ font: 14px sans-serif; background-color: powderblue;   font-family: Arial, Helvetica, sans-serif;
+        body{ font: 14px sans-serif;  font-family: Arial, Helvetica, sans-serif;
 }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
