@@ -164,8 +164,11 @@ padding: 10px;
 <option value="No">No</option>
 </select>
 <label for="tropeMark">Enter trope mark(s) to highlight: </label>
+<p>Pink</p>
 <input class="form-control" placeholder="merkha" type="text" id="tropeMarkOne" name="tropeMarkOne" cols="5">
+<p>Yellow</p>
 <input class="form-control" placeholder="merkha" type="text" id="tropeMarkThree" name="tropeMarkTwo" cols="5">
+<p>Green</p>
 <input class="form-control" placeholder="merkha" type="text" id="tropeMarkThree" name="tropeMarkThree" cols="5">
 </input>
 <div class="right">
@@ -236,7 +239,7 @@ Record:
 <?php
 $ch = curl_init();
 $parasha = $_POST['parasha'];
-$parasha = preg_replace("\s", "-", $parasha);
+//$parasha = preg_replace("\s", ".", $parasha);
 $aliyah = $_POST['aliyah'];
 $cycle = $_POST['cycle'];
 $year = $_POST['year'];
@@ -426,10 +429,9 @@ if ($highlighting == "Yes") {
 	$newEnglishString = "";
 $hebrewArray = explode(" ", $hebrewString);
 $englishArray = explode(" ", $englishString);
-if ($tropeMark == 'merkha') {
+if ($tropeMarkOne == 'merkha') {
 	$tropeMarkOne = ' ֥';
 	$tropeMarkOne = trim($tropeMarkOne);
-	echo "merkha";
 }
         elseif ($tropeMarkOne == 'etnahta') {
 		                $tropeMarkOne = ' ֑';
