@@ -580,11 +580,11 @@ echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
 <?php
 if ($layout == 'stam'){
 echo "<audio controls>";
-	echo '<source src="torah.wav" type="audio/wav">';
+echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
 echo "</audio>";
 } elseif ($layout == 'tikkun'){
 	echo "<audio controls>";
-        echo '<source src="torah.wav" type="audio/wav">';
+	echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
 	echo "</audio>";
 	echo '<div style="font-size: 35pt">'. $englishString . '</div>';
 }
