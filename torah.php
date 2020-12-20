@@ -150,6 +150,7 @@ float: right;
 <option value="6">Sixth Aliyah</option>
 <option value="7">Seventh Aliyah</option>
 <option value="maf">Maftir Aliyah</option>
+<option value="H">Haftarah</option>
 </select>
 <label for="commentary">Include commentary</label>
 <select name="commentary" id="commentary">
@@ -173,7 +174,6 @@ float: right;
 </input>
 <div class="right">
 <h1>Torah Reader</h1>
-<h3>Trope Trainer Replacement</h3>
 </div>
 <br>
 <br>
@@ -239,7 +239,6 @@ Record:
 <?php
 $ch = curl_init();
 $parasha = $_POST['parasha'];
-//$parasha = preg_replace("\s", ".", $parasha);
 $aliyah = $_POST['aliyah'];
 $cycle = $_POST['cycle'];
 $year = $_POST['year'];
