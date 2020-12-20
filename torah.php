@@ -141,7 +141,7 @@ left: -9999px;
 <body>
 <div class="menu">
 <div class="a">
-<form method="post">
+<form action="#" method="post" target="_blank">
 <label for="cycles">Select a calendar:</label>
 <select name="cycle" id="cycle">
 <option value="Annual">Annual</option>
@@ -237,6 +237,9 @@ left: -9999px;
 </input>
 </form>
 </div>
+</div>
+</div>
+<div class="a">
 <button class="btn" onclick="window.print()">Print this page</button>
 <form action="https://zoom.us/meeting/schedule">
 <input class="btn" type="submit" value="Schedule a Zoom meeting"/>
@@ -251,6 +254,7 @@ Record:
 <div id="btns">
 <button  class="btn btn-primary" id="start">Start Recording</button>
 <button  class="btn btn-primary" id="stop">Stop Recording</button>
+</div>
 </div>
 </div>
 <ul  class="list-unstyled" id="ul"></ul>
@@ -511,7 +515,6 @@ $hebrewString = $newHebrewString;
 
 ?>  
 
-</div>
 <div class="row">
 <div class="column">
 <div class="middle-column">
