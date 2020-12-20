@@ -126,14 +126,6 @@ float: right;
 text-align: center;
 }
 .menu {
-<?php
-	if (isset($_POST['parasha'])){
-		?>
-position: absolute;
-left: -9999px;
-<?php	
-}
-?>
 }
 </style>
 </div>
@@ -294,23 +286,28 @@ if ($cycle == 'Triennial') {
 	$triRegexVerses = preg_replace("/\./", "-", $verses, 1);
 	preg_match_all("/-\d*/", $regexVerses, $triRegexVersesMatches);
 	$firstElement = $triRegexVersesMatches[0][0];
+	echo $firstElement;
 	$secondElement = $triRegexVersesMatches[0][1];
-	if ($firstElement == $secondElement) {
-		        $verses = preg_replace("/-\d*\./", "-", $verses);
-}
+	echo $secondElement;
+	//if ($firstElement == $secondElement) {
+	//	        $verses = preg_replace("/-\d*\./", "-", $verses);
+//}
         if (preg_match("/^Samuel\./", $verses) && preg_match("/Korach/", $verses) || preg_match("/Re'eh/", $verses) || preg_match("/Rosh Hashana/", $verses) || preg_match("/Bereshit/", $verses) || preg_match("/Terumah/", $verses)){
 $verses =               preg_replace("/Samuel/", "I_Samuel", $verses);
         } else {
 $verses =               preg_replace("/Samuel/", "II_Samuel", $verses);
 
 	}
-if (preg_match("/^Kings\./", $verses) && preg_match("/Sukkot/", $verses) || preg_match("/Shmini Atzeret/", $verses) || preg_match("/Chayei Sara/", $verses) || preg_match("/Miketz/", $verses) || preg_match("/Vayechi/", $verses)) {
+
+	        if (preg_match("/Sukkot/", $parasha) || preg_match("/Shmini Atzeret/", $parasha) || preg_match("/Chayei Sara/", $parasha) || preg_match("/Miketz/", $parasha) || preg_match("/Vayechi/", $parasha)) {
                 $verses = preg_replace("/Kings/", "I_Kings", $verses);
         } else {
                 $verses  = preg_replace("/Kings/", "II_Kings", $verses);
 
 
-}}
+        }}
+
+
 elseif ($cycle == 'Annual') {
         $chAn = fopen("annual_calendar.csv", "r");
         $anMatches = [];
@@ -333,20 +330,19 @@ elseif ($cycle == 'Annual') {
         if ($firstElement == $secondElement) {
                         $verses = preg_replace("/-\d*\./", "-", $verses);
 }
-	if (preg_match("/^Samuel\./", $verses) && preg_match("/Korach/", $verses) || preg_match("/Re'eh/", $verses) || preg_match("/Rosh Hashana/", $verses) || preg_match("/Bereshit/", $verses) || preg_match("/Terumah/", $verses)){
+	if (preg_match("/^Samuel\./", $verses) && preg_match("/Korach/", $parasha) || preg_match("/Re'eh/", $parasha) || preg_match("/Rosh Hashana/", $parasha) || preg_match("/Bereshit/", $parasha) || preg_match("/Terumah/", $parasha)){
 $verses = 		preg_replace("/Samuel/", "I_Samuel", $verses);
 	} else {
 $verses = 		preg_replace("/Samuel/", "II_Samuel", $verses);
 
 	}
-	        if (preg_match("/^Kings\./", $verses) && preg_match("/Sukkot/", $verses) || preg_match("/Shmini Atzeret/", $verses) || preg_match("/Chayei Sara/", $verses) || preg_match("/Miketz/", $verses) || preg_match("/Vayechi/", $verses)){
-$verses =               preg_replace("/Kings/", "I_Kings", $verses);
+        if (preg_match("/Sukkot/", $parasha) || preg_match("/Shmini Atzeret/", $parasha) || preg_match("/Chayei Sara/", $parasha) || preg_match("/Miketz/", $parasha) || preg_match("/Vayechi/", $parasha)) {
+                $verses = preg_replace("/Kings/", "I_Kings", $verses);
         } else {
-$verses =               preg_replace("/Kings/", "II_Kings", $verses);
+                $verses  = preg_replace("/Kings/", "II_Kings", $verses);
 
-        }
 
-	}
+	}}
 $commNum = '0';
 $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
 curl_setopt($ch, CURLOPT_URL, $curlUrl);
