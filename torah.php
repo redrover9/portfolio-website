@@ -74,7 +74,8 @@ if ($layout == 'tikkun'){
 echo "font-family: chumash;";
 } elseif ($layout == 'stam') {
         echo "font-family: stam;";
-}?>}
+}?>
+}
 .box {
   border: 3px solid white;
   padding: 150px;
@@ -159,8 +160,8 @@ float: right;
 <br>
 <label for="highlighting">Highlighted trope marks:</label>
 <select name="highlighting" id="highlighting">
-<option value="Yes">Yes</option>
 <option value="No">No</option>
+<option value="Yes">Yes</option>
 </select>
 <label for="tropeMark">Enter trope mark(s) to highlight: </label>
 <p>Pink</p>
@@ -553,9 +554,9 @@ $hebrewString = $newHebrewString;
 <div class="middle-column">
 <?php
 if ($layout == 'tikkun'){
-echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
+echo '<div style="font-size: 40pt">'. $hebrewString . '</div>';
 } else {
-echo '<div style="font-size: 35pt">'. $englishString . '</div>';
+echo '<div style="font-size: 25pt">'. $englishString . '</div>';
 }
 if (!empty($commentaryText)){
 	 echo '<div style="font-size: 15pt">'. $commentarySource . '</div>';
@@ -570,7 +571,7 @@ echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
 <div class="column">
 <div class="left-column">
 <?php
-echo '<div style="font-size: 50pt">'. $hebrewString . '</div>';
+echo '<div style="font-size: 40pt">'. $hebrewString . '</div>';
 ?>
 </div>
 </div>
@@ -586,7 +587,7 @@ echo "</audio>";
 	echo "<audio controls>";
 	echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
 	echo "</audio>";
-	echo '<div style="font-size: 35pt">'. $englishString . '</div>';
+	echo '<div style="font-size: 25pt">'. $englishString . '</div>';
 }
 ?>
 </audio>
