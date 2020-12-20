@@ -99,9 +99,10 @@ echo "font-family: chumash;";
 	color: gray;
   text-align: center;
 display: inline-block;
-margin-right: 20px;
+margin: 0 auto;
 width: auto;
-float: left;
+float: center;
+
 
 }
 .btn:hover {
@@ -113,19 +114,33 @@ background: blue;
         color: white;
   text-align: center;
 display: inline-block;
-margin-right: 20px;
+margin: 0 auto;
 width: auto;
-float: left;
+float: center;
 
 }
 .right {
 float: right;
 }
+.a {
+text-align: center;
+}
+.menu {
+<?php
+	if (isset($_POST['parasha'])){
+		?>
+	visibility: hidden;
+<?php	
+}
+?>
+}
 </style>
 </div>
 </head>
 <body>
-<form action="#" method="post" target="_blank">
+<div class="menu">
+<div class="a">
+<form method="post">
 <label for="cycles">Select a calendar:</label>
 <select name="cycle" id="cycle">
 <option value="Annual">Annual</option>
@@ -137,9 +152,11 @@ float: right;
 <option value="Two">5781 (2020-2021)</option>
 <option value="Three">5782 (2021-2022)</option>
 </select>
-<label for="parshiyot">Select a parasha:</label>
-<input class="form-control" placeholder="Bereshit" type="text" id="parasha" name="parasha" cols="5" width="30px" required>
+<label for="parashot">Select a parasha:</label>
+<input class="form-control" placeholder="Bereshit" type="text" id="parasha" name="parasha" style="width:200px; text-align:center; margin:0 auto;" required>
 </input> 
+</div>
+<div class="a">
 <label for="aliyot">Select an aliyah:</label>
 <select name="aliyah" id="aliyah">
 <option value="1">First Aliyah</option>
@@ -150,33 +167,31 @@ float: right;
 <option value="6">Sixth Aliyah</option>
 <option value="7">Seventh Aliyah</option>
 <option value="maf">Maftir Aliyah</option>
-<option value="H">Haftarah</option>
+<option value="H">Haftara</option>
 </select>
 <label for="commentary">Include commentary</label>
 <select name="commentary" id="commentary">
 <option value="0">No</option>
 <option value="1">Yes</option>
 </select>
-<br>
-<br>
 <label for="highlighting">Highlighted trope marks:</label>
 <select name="highlighting" id="highlighting">
 <option value="No">No</option>
 <option value="Yes">Yes</option>
 </select>
 <label for="tropeMark">Enter trope mark(s) to highlight: </label>
-<p>Pink</p>
-<input class="form-control" placeholder="merkha" type="text" id="tropeMarkOne" name="tropeMarkOne" cols="5">
-<p>Yellow</p>
-<input class="form-control" placeholder="merkha" type="text" id="tropeMarkThree" name="tropeMarkTwo" cols="5">
-<p>Green</p>
-<input class="form-control" placeholder="merkha" type="text" id="tropeMarkThree" name="tropeMarkThree" cols="5">
+<table style="margin:0 auto;">
+<tr>
+<td><input class="form-control" placeholder="Pink" type="text" id="tropeMarkOne" name="tropeMarkOne" cols="5" style="width:200px; text-align:center; margin:0 auto;"></td>
+<td><input class="form-control" placeholder="Yellow" type="text" id="tropeMarkThree" name="tropeMarkTwo" cols="5" style="width:200px; text-align:center; margin:0 auto;"></td>
+<td><input class="form-control" placeholder="Green" type="text" id="tropeMarkThree" name="tropeMarkThree" cols="5" style="width:200px; text-align:center; margin:0 auto;"></td>
 </input>
-<div class="right">
-<h1>Torah Reader</h1>
 </div>
+</tr>
+</table>
 <br>
 <br>
+<div class="a">
 <label for="layout">Select a layout: </label>
 <select name="layout" id="layout">
 <option value="tikkun">Tikkun with audio and translation</option>
@@ -197,41 +212,47 @@ float: right;
 <option value="+5st">High</option>
 <option value="+10st">Extra High</option>
 </select>
+</div>
 <br>
 <br>
-<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading">
+<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
 </input> 
 </form>
+<div class="a">
 <form action="triennial_calendar.php" method="post" target="_blank">
 <label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
-<input type="search" class="form-control" placeholder="01-Jan-2020" id="searchTri" name="searchTri" >
-<input type="submit" name="Submit" value="Search" class="btn btn-primary">
+<input type="search" class="form-control" placeholder="01-Jan-2020" id="searchTri" name="searchTri" style="width:200px; text-align:center; margin:0 auto;">
+<input style="margin:0 auto;" type="submit" name="Submit" value="Search" class="btn btn-primary">
 </form>
+</div>
 <br>
+<div class="a">
 <form action="annual_calendar.php" method="post" target="_blank">
 <label for="searchAn">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
-<input type="search" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" max-width="100px" cols="10">
-<input type="submit" name="Submit" value="Search" class="btn btn-primary">
+<input type="search" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" style="width:200px; text-align:center; margin:0 auto;">
+<input type="submit" name="Submit" value="Search" class="btn btn-primary" style="text-align:center; margin:0 auto;">
 <br>
 </input>
 </input>
 </form>
+</div>
 <button class="btn" onclick="window.print()">Print this page</button>
 <form action="https://zoom.us/meeting/schedule">
 <input class="btn" type="submit" value="Schedule a Zoom meeting"/>
 </form>
-<div id='gUMArea'>
+<div id="gUMArea">
 Record:
-<input type="radio" name="media" value="video" checked id='mediaVideo'>Video
+<input type="radio" name="media" value="video" checked id="mediaVideo">Video
 <input type="radio" name="media" value="audio">Audio
 
-<button class="btn btn-primary"  id='gUMbtn'>Grant permission to use mic and camera</button>
+<button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
 </div>
-<div id='btns'>
-<button  class="btn btn-primary" id='start'>Start Recording</button>
-<button  class="btn btn-primary" id='stop'>Stop Recording</button>
+<div id="btns">
+<button  class="btn btn-primary" id="start">Start Recording</button>
+<button  class="btn btn-primary" id="stop">Stop Recording</button>
 </div>
-<ul  class="list-unstyled" id='ul'></ul>
+</div>
+<ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
 
 </form>
@@ -253,9 +274,9 @@ $commentary = $_POST['commentary'];
 if ($cycle == 'Triennial') {
 	$chTri = fopen("triennial_calendar.csv", "r");
 	$triMatches = [];
-	while ($row = fgetcsv($chTri)) {
-		         $row = '<div>' . implode(' ', $row) . ' </div>'; 
-			 array_push($triMatches, $row);
+	while ($triRow = fgetcsv($chTri)) {
+		         $triRow = '<div>' . implode(' ', $triRow) . ' </div>'; 
+			 array_push($triMatches, $triRow);
 	}
 	$triMatch =  (preg_grep("/$year.*$parasha\s$aliyah.*/", $triMatches)); 
 	$triMatch = implode($triMatch);
@@ -272,35 +293,55 @@ if ($cycle == 'Triennial') {
 	if ($firstElement == $secondElement) {
 		        $verses = preg_replace("/-\d*\./", "-", $verses);
 }
-	echo $verses;
-}
-elseif ($cycle == 'Annual') {
-$chAn = fopen("annual_calendar.csv", "r");
-$anMatches = [];
-while($anRow = fgetcsv($chAn)) {
-	 $anRow = '<div>' . implode(' ', $anRow) . ' </div>'; 
-	 array_push($anMatches, $anRow);
-}
-$anMatch = (preg_grep("/.*$parasha\s$aliyah.*/", $anMatches));	 
-$anMatch = implode($anMatch);
-$anVersesArray = array();
-$anRegexVersesMatches = array();
-preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $anMatch, $anVersesArray);
-$anVerseString = implode($anVersesArray);
-$verses = str_replace(":", ".", $anVerseString);
-$verses = str_replace(" - ", "-", $verses);
-$verses = str_replace(" ", ".", $verses);
-$anRegexVerses = preg_replace("/\./", "-", $verses, 1);
-preg_match_all("/-\d*/", $anRegexVerses, $anRegexVersesMatches);
-$firstElement = $anRegexVersesMatches[0][0];
-$secondElement= $anRegexVersesMatches[0][1];
-preg_match("/\d/", $yaString, $elements);
+        if (preg_match("/^Samuel\./", $verses) && preg_match("/Korach/", $verses) || preg_match("/Re'eh/", $verses) || preg_match("/Rosh Hashana/", $verses) || preg_match("/Bereshit/", $verses) || preg_match("/Terumah/", $verses)){
+$verses =               preg_replace("/Samuel/", "I_Samuel", $verses);
+        } else {
+$verses =               preg_replace("/Samuel/", "II_Samuel", $verses);
 
-if ($firstElement == $secondElement) {
-	$verses = preg_replace("/-\d*\./", "-", $verses);
+	}
+if (preg_match("/^Kings\./", $verses) && preg_match("/Sukkot/", $verses) || preg_match("/Shmini Atzeret/", $verses) || preg_match("/Chayei Sara/", $verses) || preg_match("/Miketz/", $verses) || preg_match("/Vayechi/", $verses)) {
+                $verses = preg_replace("/Kings/", "I_Kings", $verses);
+        } else {
+                $verses  = preg_replace("/Kings/", "II_Kings", $verses);
+
+
+}}
+elseif ($cycle == 'Annual') {
+        $chAn = fopen("annual_calendar.csv", "r");
+        $anMatches = [];
+        while ($anRow = fgetcsv($chAn)) {
+                         $anRow = '<div>' . implode(' ', $anRow) . ' </div>';
+                         array_push($anMatches, $anRow);
+        }
+        $anMatch =  (preg_grep("/.*$parasha\s$aliyah.*/", $anMatches));
+        $anMatch = implode($anMatch);
+        $anVersesArray = array();
+        preg_match("/[A-Z][a-z]*\s\d*:\d*\s-\s\d*:\d*/", $anMatch, $anVersesArray);
+        $anVerseString = implode($anVersesArray);
+        $verses = str_replace(":", ".", $anVerseString);
+        $verses = str_replace(" - ", "-", $verses);
+        $verses = str_replace(" ", ".", $verses);
+        $anRegexVerses = preg_replace("/\./", "-", $verses, 1);
+        preg_match_all("/-\d*/", $anRegexVerses, $anRegexVersesMatches);
+        $firstElement = $anRegexVersesMatches[0][0];
+        $secondElement = $anRegexVersesMatches[0][1];
+        if ($firstElement == $secondElement) {
+                        $verses = preg_replace("/-\d*\./", "-", $verses);
 }
-echo $verses;
-}
+	if (preg_match("/^Samuel\./", $verses) && preg_match("/Korach/", $verses) || preg_match("/Re'eh/", $verses) || preg_match("/Rosh Hashana/", $verses) || preg_match("/Bereshit/", $verses) || preg_match("/Terumah/", $verses)){
+$verses = 		preg_replace("/Samuel/", "I_Samuel", $verses);
+	} else {
+$verses = 		preg_replace("/Samuel/", "II_Samuel", $verses);
+
+	}
+	        if (preg_match("/^Kings\./", $verses) && preg_match("/Sukkot/", $verses) || preg_match("/Shmini Atzeret/", $verses) || preg_match("/Chayei Sara/", $verses) || preg_match("/Miketz/", $verses) || preg_match("/Vayechi/", $verses)){
+$verses =               preg_replace("/Kings/", "I_Kings", $verses);
+        } else {
+$verses =               preg_replace("/Kings/", "II_Kings", $verses);
+
+        }
+
+	}
 $commNum = '0';
 $curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
 curl_setopt($ch, CURLOPT_URL, $curlUrl);
@@ -384,7 +425,7 @@ if ($tropeMarkOne == 'merkha') {
 	else { 
 		$tropeMarkOne = "";
 	}
-								        }
+								        
 if ($tropeMarkTwo == 'merkha') {
 	$tropeMarkTwo = ' ֥';
 	$tropeMarkTwo = trim($tropeMarkTwo);
@@ -463,20 +504,13 @@ $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
 
 		}
-
+}
 $hebrewString = $newHebrewString;
 }
 
-
-
-
-
-//echo $newHebrewString;
 ?>  
 
 
-</body>
-</html>
 <div class="row">
 <div class="column">
 <div class="middle-column">
