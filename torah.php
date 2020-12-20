@@ -129,7 +129,8 @@ text-align: center;
 <?php
 	if (isset($_POST['parasha'])){
 		?>
-	visibility: hidden;
+position: absolute;
+left: -9999px;
 <?php	
 }
 ?>
@@ -510,7 +511,7 @@ $hebrewString = $newHebrewString;
 
 ?>  
 
-
+</div>
 <div class="row">
 <div class="column">
 <div class="middle-column">
