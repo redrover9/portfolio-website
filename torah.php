@@ -152,29 +152,27 @@ display: none;
 <option value="Two">5781 (2020-2021)</option>
 <option value="Three">5782 (2021-2022)</option>
 </select>
-<form action="#" method="post" target="_blank">
 <label for="parashot">Select a parasha:</label>
-<input type="radio" id="Bereshit" name="parashot" value="Bereshit">
+<input type="radio" id="Bereshit" name="parasha" value="Bereshit">
 <label for="Bereshit">Bereshit</label>
-<input type="radio" id="Noach" name="parashot" value="Noach">
+<input type="radio" id="Noach" name="parasha" value="Noach">
 <label for="Noach">Noach</label>
-<input type="radio" id="Lech-Lecha" name="parashot" value="Lech-Lecha">
+<input type="radio" id="Lech-Lecha" name="parasha" value="Lech-Lecha">
 <label for="Lech-Lecha">Lech-Lecha</label>
-<input type="radio" id="Vayera" name="parashot" value="Vayera">
+<input type="radio" id="Vayera" name="parasha" value="Vayera">
 <label for="Vayera">Vayera</label>
-<input type="radio" id="Chayei Sara" name="parashot" value="Chayei Sara">
+<input type="radio" id="Chayei Sara" name="parasha" value="Chayei Sara">
 <label for="Chayei Sara">Chayei Sara</label>
-<input type="radio" id="Toldot" name="parashot" value="Toldot">
+<input type="radio" id="Toldot" name="parasha" value="Toldot">
 <label for="Toldot">Toldot</label>
-<input type="radio" id="Vayetzei" name="parashot" value="Vayetzei">
+<input type="radio" id="Vayetzei" name="parasha" value="Vayetzei">
 <label for="Vayetzei">Vayetzei</label>
-<input type="radio" id="Vayishlach" name="parashot" value="Vayishlach">
+<input type="radio" id="Vayishlach" name="parasha" value="Vayishlach">
 <label for="Vayishlach">Vayishlach</label>
-<input type="radio" id="Vayeshev" name="parashot" value="Vayeshev">
+<input type="radio" id="Vayeshev" name="parasha" value="Vayeshev">
 <label for="Vayeshev">Vayeshev</label>
-<input type="radio" id="Miketz" name="parashot" value="Miketz">
+<input type="radio" id="Miketz" name="parasha" value="Miketz">
 <label for="Miketz">Miketz</label>
-</form>
 </div>
 <div class="a">
 <label for="aliyot">Select an aliyah:</label>
@@ -389,6 +387,7 @@ function subArraysToString($ar, $sep = "<br> <br>") {
 $hebrewString = subArraysToString($hebrew);
 $englishString = subArraysToString($english);
 $pattern = "/-\d+$/i";
+
 if (preg_match($pattern, $verses)) {
 	        $hebrewString = implode("<br> <br>", $hebrew);
 		 $englishString = implode("<br> <br>", $english);
@@ -427,10 +426,6 @@ if ($tropeMarkOne == 'merkha') {
 		                $tropeMarkOne = ' ֔';
 				                $tropeMarkOne = trim($tropeMarkOne);
 				        }
-        elseif ($tropeMarkOne = 'zakef gadol') {
-		                $tropeMarkOne = ' ֕';
-				                $tropeMarkOne = trim($tropeMarkOne);
-				        }
 	else { 
 		$tropeMarkOne = "";
 	}
@@ -455,10 +450,6 @@ if ($tropeMarkTwo == 'merkha') {
 		                $tropeMarkTwo = ' ֔';
 				                $tropeMarkTwo = trim($tropeMarkTwo);
 				        }
-        elseif ($tropeMarkTwo = 'zakef gadol') {
-		                $tropeMarkTwo = ' ֕';
-				                $tropeMarkTwo = trim($tropeMarkTwo);
-				        }
 	else { 
 		$tropeMarkTwo = "";
 	}
@@ -481,10 +472,6 @@ if ($tropeMarkThree == 'merkha') {
 				        }
         elseif ($tropeMarkThree == 'zakef qatan') {
 		                $tropeMarkThree = ' ֔';
-				                $tropeMarkThree = trim($tropeMarkThree);
-				        }
-        elseif ($tropeMarkThree = 'zakef gadol') {
-		                $tropeMarkThree = ' ֕';
 				                $tropeMarkThree = trim($tropeMarkThree);
 				        }
 	else { 
