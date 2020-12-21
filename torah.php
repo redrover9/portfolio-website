@@ -426,6 +426,110 @@ if ($tropeMarkOne == 'merkha') {
 		                $tropeMarkOne = ' ֔';
 				                $tropeMarkOne = trim($tropeMarkOne);
 				        }
+	elseif ($tropeMarkOne == 'zakef qatan') {
+                                $tropeMarkOne = ' ֔';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'tipeha') {
+                                $tropeMarkOne = ' ֖';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'revia') {
+                                $tropeMarkOne = ' ֗';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'zarqa') {
+                                $tropeMarkOne = ' ֘';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'pashta') {
+                                $tropeMarkOne = ' ֙';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'yetiv') {
+                                $tropeMarkOne = ' ֚';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'tevir') {
+                                $tropeMarkOne = ' ֛';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'geresh') {
+                                $tropeMarkOne = ' ֜';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'muqdam') {
+                                $tropeMarkOne = ' ֝';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'gershayim') {
+                                $tropeMarkOne = ' ֞';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'qarney para') {
+                                $tropeMarkOne = ' ֟';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'telisha gedola') {
+                                $tropeMarkOne = ' ֠';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'pazer') {
+                                $tropeMarkOne = ' ֡';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'atnah hafukh') {
+                                $tropeMarkOne = ' ֢';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'munah') {
+                                $tropeMarkOne = ' ֣';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'mahapakh') {
+                                $tropeMarkOne = ' ֤';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'merkha kefula') {
+                                $tropeMarkOne = ' ֦';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'darga') {
+                                $tropeMarkOne = ' ֧';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'qadma') {
+                                $tropeMarkOne = ' ֨';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'telisha qetana') {
+                                $tropeMarkOne = ' ֩';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'yerah ben yomo') {
+                                $tropeMarkOne = ' ֪';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'ole') {
+                                $tropeMarkOne = ' ֫';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'iluy') {
+                                $tropeMarkOne = ' ֬';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'dehi') {
+                                $tropeMarkOne = ' ֭';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'zinor') {
+                                $tropeMarkOne = ' ֮';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
+elseif ($tropeMarkOne == 'masora circle') {
+                                $tropeMarkOne = ' ֯';
+                                                $tropeMarkOne = trim($tropeMarkOne);
+                                        }
 	else { 
 		$tropeMarkOne = "";
 	}
@@ -450,6 +554,107 @@ if ($tropeMarkTwo == 'merkha') {
 		                $tropeMarkTwo = ' ֔';
 				                $tropeMarkTwo = trim($tropeMarkTwo);
 				        }
+elseif ($tropeMarkTwo == 'tipeha') {
+                                $tropeMarkTwo = ' ֖';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'revia') {
+                                $tropeMarkTwo = ' ֗';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'zarqa') {
+                                $tropeMarkTwo = ' ֘';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'pashta') {
+                                $tropeMarkTwo = ' ֙';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'yetiv') {
+                                $tropeMarkTwo = ' ֚';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'tevir') {
+                                $tropeMarkTwo = ' ֛';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'geresh') {
+                                $tropeMarkTwo = ' ֜';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'muqdam') {
+                                $tropeMarkTwo = ' ֝';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'gershayim') {
+                                $tropeMarkTwo = ' ֞';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'qarney para') {
+                                $tropeMarkTwo = ' ֟';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'telisha gedola') {
+                                $tropeMarkTwo = ' ֠';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'pazer') {
+                                $tropeMarkTwo = ' ֡';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'atnah hafukh') {
+                                $tropeMarkTwo = ' ֢';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+
+elseif ($tropeMarkTwo == 'munah') {
+                                $tropeMarkTwo = ' ֣';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'mahapakh') {
+                                $tropeMarkTwo = ' ֤';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'merkha kefula') {
+                                $tropeMarkTwo = ' ֦';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'darga') {
+                                $tropeMarkTwo = ' ֧';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'qadma') {
+                                $tropeMarkTwo = ' ֨';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'telisha qetana') {
+                                $tropeMarkTwo = ' ֩';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'yerah ben yomo') {
+                                $tropeMarkTwo = ' ֪';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'ole') {
+                                $tropeMarkTwo = ' ֫';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'iluy') {
+                                $tropeMarkTwo = ' ֬';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'dehi') {
+                                $tropeMarkTwo = ' ֭';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'zinor') {
+                                $tropeMarkTwo = ' ֮';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+                                        }
+elseif ($tropeMarkTwo == 'masora circle') {
+                                $tropeMarkTwo = ' ֯';
+                                                $tropeMarkTwo = trim($tropeMarkTwo);
+
 	else { 
 		$tropeMarkTwo = "";
 	}
@@ -474,6 +679,107 @@ if ($tropeMarkThree == 'merkha') {
 		                $tropeMarkThree = ' ֔';
 				                $tropeMarkThree = trim($tropeMarkThree);
 				        }
+elseif ($tropeMarkThree == 'tipeha') {
+                                $tropeMarkThree = ' ֖';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'revia') {
+                                $tropeMarkThree = ' ֗';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'zarqa') {
+                                $tropeMarkThree = ' ֘';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'pashta') {
+                                $tropeMarkThree = ' ֙';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'yetiv') {
+                                $tropeMarkThree = ' ֚';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'tevir') {
+                                $tropeMarkThree = ' ֛';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'geresh') {
+                                $tropeMarkThree = ' ֜';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'muqdam') {
+                                $tropeMarkThree = ' ֝';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'gershayim') {
+                                $tropeMarkThree = ' ֞';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'qarney para') {
+                                $tropeMarkThree = ' ֟';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'telisha gedola') {
+                                $tropeMarkThree = ' ֠';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'pazer') {
+                                $tropeMarkThree = ' ֡';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'atnah hafukh') {
+                                $tropeMarkThree = ' ֢';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'munah') {
+                                $tropeMarkThree = ' ֣';
+}
+elseif ($tropeMarkThree == 'mahapakh') {
+                                $tropeMarkThree = ' ֤';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'merkha kefula') {
+                                $tropeMarkThree = ' ֦';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'darga') {
+                                $tropeMarkThree = ' ֧';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'qadma') {
+                                $tropeMarkThree = ' ֨';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'telisha qetana') {
+                                $tropeMarkThree = ' ֩';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'yerah ben yomo') {
+                                $tropeMarkThree = ' ֪';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'ole') {
+                                $tropeMarkThree = ' ֫';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'iluy') {
+                                $tropeMarkThree = ' ֬';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'dehi') {
+                                $tropeMarkThree = ' ֭';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'zinor') {
+                                $tropeMarkThree = ' ֮';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                        }
+elseif ($tropeMarkThree == 'masora circle') {
+                                $tropeMarkThree = ' ֯';
+                                                $tropeMarkThree = trim($tropeMarkThree);
+                                                                                                                                                                                                 483,1         62%
+}
+
 	else { 
 		$tropeMarkThree = "";
 	}
