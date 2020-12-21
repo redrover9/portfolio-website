@@ -26,7 +26,6 @@ echo "<script language='javascript'>
 <link rel="stylesheet" href="main.550dcf66.css?v=<?php echo time(); ?>">
 <title>Torah Reader</title>
 <div class='some-page-wrapper'>
-
 <style>
 <?php include "main.550dcf66.css" ?>
 @font-face {
@@ -126,6 +125,14 @@ float: right;
 text-align: center;
 }
 .menu {
+<?php
+if (isset($_POST['parasha'])) {
+?>
+display: none;
+<?php
+        }
+?>
+
 }
 </style>
 </div>
@@ -145,9 +152,29 @@ text-align: center;
 <option value="Two">5781 (2020-2021)</option>
 <option value="Three">5782 (2021-2022)</option>
 </select>
+<form action="#" method="post" target="_blank">
 <label for="parashot">Select a parasha:</label>
-<input class="form-control" placeholder="Bereshit" type="text" id="parasha" name="parasha" style="width:200px; text-align:center; margin:0 auto;" required>
-</input> 
+<input type="radio" id="Bereshit" name="parashot" value="Bereshit">
+<label for="Bereshit">Bereshit</label>
+<input type="radio" id="Noach" name="parashot" value="Noach">
+<label for="Noach">Noach</label>
+<input type="radio" id="Lech-Lecha" name="parashot" value="Lech-Lecha">
+<label for="Lech-Lecha">Lech-Lecha</label>
+<input type="radio" id="Vayera" name="parashot" value="Vayera">
+<label for="Vayera">Vayera</label>
+<input type="radio" id="Chayei Sara" name="parashot" value="Chayei Sara">
+<label for="Chayei Sara">Chayei Sara</label>
+<input type="radio" id="Toldot" name="parashot" value="Toldot">
+<label for="Toldot">Toldot</label>
+<input type="radio" id="Vayetzei" name="parashot" value="Vayetzei">
+<label for="Vayetzei">Vayetzei</label>
+<input type="radio" id="Vayishlach" name="parashot" value="Vayishlach">
+<label for="Vayishlach">Vayishlach</label>
+<input type="radio" id="Vayeshev" name="parashot" value="Vayeshev">
+<label for="Vayeshev">Vayeshev</label>
+<input type="radio" id="Miketz" name="parashot" value="Miketz">
+<label for="Miketz">Miketz</label>
+</form>
 </div>
 <div class="a">
 <label for="aliyot">Select an aliyah:</label>
@@ -173,15 +200,13 @@ text-align: center;
 <option value="Yes">Yes</option>
 </select>
 <label for="tropeMark">Enter trope mark(s) to highlight: </label>
-<table style="margin:0 auto;">
-<tr>
-<td><input class="form-control" placeholder="Pink" type="text" id="tropeMarkOne" name="tropeMarkOne" cols="5" style="width:200px; text-align:center; margin:0 auto;"></td>
-<td><input class="form-control" placeholder="Yellow" type="text" id="tropeMarkThree" name="tropeMarkTwo" cols="5" style="width:200px; text-align:center; margin:0 auto;"></td>
-<td><input class="form-control" placeholder="Green" type="text" id="tropeMarkThree" name="tropeMarkThree" cols="5" style="width:200px; text-align:center; margin:0 auto;"></td>
-</input>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="merkha" style="width:20px; text-align:center; margin:0 auto;">
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Pink)</label>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="merkha" style="width:20px; text-align:center; margin:0 auto;">
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Yellow)</label> 
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="merkha" style="width:20px; text-align:center; margin:0 auto;">
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Green)</label>
 </div>
-</tr>
-</table>
 <br>
 <br>
 <div class="a">
@@ -189,21 +214,6 @@ text-align: center;
 <select name="layout" id="layout">
 <option value="tikkun">Tikkun with audio and translation</option>
 <option value="stam">STaM with audio and translation</option>
-</select>
-<label for="speed">Speed:</label>
-<select name="speed" id="speed">
-<option value="x-slow">Extra Slow</option>
-<option value="slow">Slow</option>
-<option value="medium">Medium</option>
-<option value="fast">Fast</option>	
-</select>
-<label for="pitch">Pitch:</label>
-<select name="pitch" id="pitch">
-<option value="-10st">Extra Low</option>
-<option value="-5st">Low</option>
-<option value="default">Medium</option>
-<option value="+5st">High</option>
-<option value="+10st">Extra High</option>
 </select>
 </div>
 <br>
@@ -214,7 +224,7 @@ text-align: center;
 <div class="a">
 <form action="triennial_calendar.php" method="post" target="_blank">
 <label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
-<input type="search" class="form-control" placeholder="01-Jan-2020" id="searchTri" name="searchTri" style="width:200px; text-align:center; margin:0 auto;">
+<input type="date" class="form-control" placeholder="01-Jan-2020" id="searchTri" name="searchTri" style="width:200px; text-align:center; margin:0 auto;">
 <input style="margin:0 auto;" type="submit" name="Submit" value="Search" class="btn btn-primary">
 </form>
 </div>
@@ -222,7 +232,7 @@ text-align: center;
 <div class="a">
 <form action="annual_calendar.php" method="post" target="_blank">
 <label for="searchAn">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
-<input type="search" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" style="width:200px; text-align:center; margin:0 auto;">
+<input type="date" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" style="width:200px; text-align:center; margin:0 auto;">
 <input type="submit" name="Submit" value="Search" class="btn btn-primary" style="text-align:center; margin:0 auto;">
 <br>
 </input>
@@ -286,12 +296,10 @@ if ($cycle == 'Triennial') {
 	$triRegexVerses = preg_replace("/\./", "-", $verses, 1);
 	preg_match_all("/-\d*/", $regexVerses, $triRegexVersesMatches);
 	$firstElement = $triRegexVersesMatches[0][0];
-	echo $firstElement;
 	$secondElement = $triRegexVersesMatches[0][1];
-	echo $secondElement;
-	//if ($firstElement == $secondElement) {
-	//	        $verses = preg_replace("/-\d*\./", "-", $verses);
-//}
+	if ($firstElement == $secondElement) {
+		        $verses = preg_replace("/-\d*\./", "-", $verses);
+}
         if (preg_match("/^Samuel\./", $verses) && preg_match("/Korach/", $verses) || preg_match("/Re'eh/", $verses) || preg_match("/Rosh Hashana/", $verses) || preg_match("/Bereshit/", $verses) || preg_match("/Terumah/", $verses)){
 $verses =               preg_replace("/Samuel/", "I_Samuel", $verses);
         } else {
@@ -542,11 +550,13 @@ echo '<div style="font-size: 40pt">'. $hebrewString . '</div>';
 <div class="right-column">
 <?php
 if ($layout == 'stam'){
-echo "<audio controls>";
+	echo "<audio controls>";
+	        $parasha = str_replace(' ', '', $parasha);
 echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
 echo "</audio>";
 } elseif ($layout == 'tikkun'){
 	echo "<audio controls>";
+	$parasha = str_replace(' ', '', $parasha);
 	echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
 	echo "</audio>";
 	echo '<div style="font-size: 25pt">'. $englishString . '</div>';
