@@ -181,7 +181,9 @@ display: none;
 
 .dropdown:hover .dropbtn {background-color: #696969;}
 
-	
+input[type="radio"] {
+	margin-right: 0;
+}
 </style>
 </div>
 </head>
@@ -204,34 +206,43 @@ display: none;
 <button class="dropbtn">Select a parasha:</button>
 <div class="dropdown-content">
 <input type="radio" id="Bereshit" name="parasha" value="Bereshit">
+<br>
 <label for="Bereshit">Bereshit</label>
 <br>
 <input type="radio" id="Noach" name="parasha" value="Noach">
+<br>
 <label for="Noach">Noach</label>
 <br>
 <input type="radio" id="Lech-Lecha" name="parasha" value="Lech-Lecha">
+<br>
 <label for="Lech-Lecha">Lech-Lecha</label>
 <br>
 <input type="radio" id="Vayera" name="parasha" value="Vayera">
+<br>
 <label for="Vayera">Vayera</label>
 <br>
 <input type="radio" id="Chayei Sara" name="parasha" value="Chayei Sara">
 <br>
 <label for="Chayei Sara">Chayei Sara</label>
+<br>
 <input type="radio" id="Toldot" name="parasha" value="Toldot">
 <br>
 <label for="Toldot">Toldot</label>
+<br>
 <input type="radio" id="Vayetzei" name="parasha" value="Vayetzei">
 <br>
 <label for="Vayetzei">Vayetzei</label>
+<br>
 <input type="radio" id="Vayishlach" name="parasha" value="Vayishlach">
 <br>
 <label for="Vayishlach">Vayishlach</label>
+<br>
 <input type="radio" id="Vayeshev" name="parasha" value="Vayeshev">
 <br>
 <label for="Vayeshev">Vayeshev</label>
 <br>
 <input type="radio" id="Miketz" name="parasha" value="Miketz">
+<br>
 <label for="Miketz">Miketz</label>
 <br>
 </div>
