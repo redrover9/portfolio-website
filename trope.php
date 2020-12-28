@@ -20,6 +20,10 @@ padding: 10px;
 margin: auto;
 text-align: center;
 }
+.btn {
+text-align: center;
+margin: auto;
+}
 </style>
 <title>
 Trope Practice
@@ -48,6 +52,25 @@ Trope Practice
 <br>
 <input type="submit" name="submit" value="Submit">
 </form>
+<div class="encompassing_div">
+<div id="gUMArea">
+<h2>Record:</h2>
+<input type="radio" name="media" value="video" checked id="mediaVideo">Video
+<input type="radio" name="media" value="audio">Audio
+
+<button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
+</div>
+<div id="btns">
+<button  class="btn btn-primary" id="start">Start Recording</button>
+<button  class="btn btn-primary" id="stop">Stop Recording</button>
+</div>
+</div>
+</div>
+<ul  class="list-unstyled" id="ul"></ul>
+<script src="recordAudio.js"></script>
+</div>
+</form>
+
 <?php
 $merkha = $_POST['merkha'];
 
@@ -57,7 +80,7 @@ $siluq = $_POST['siluq'];
 
 $mods = $_POST['mods'];
 
-$number = 1;
+$number = 2;
 
 if ($mods == 'names') {
 	$names_array = ["merkha", "tipeha", "siluq"];
@@ -123,7 +146,7 @@ foreach ($tropes_array as $trope) {
                                 echo "<br>";
                                 echo "<br>";
                                 echo "<br>";
-                                $tropesDisplayed += 2;
+                                $tropesDisplayed += 1;
 
 					}
 				}
