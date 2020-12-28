@@ -40,7 +40,7 @@ Trope Practice
 <label for="siluq" style="text-align:center; margin:0 auto;">Siluq </label>
 <br>
 <br>
-<input type="radio" id="names" name="mods" value="names" style="width:20px; text-align:center; margin:0 auto;">
+<input type="radio" id="names" name="mods" value="names" style="width:20px; text-align:center; margin:0 auto;" required checked>
 <label for="names" style="text-align:center; margin:0 auto;">Include Names</label>
 <input type="radio" id="words" name="mods" value="words" style="width:20px; text-align:center; margin:0 auto;">
 <label for="words" style="text-align:center; margin:0 auto;">Include Words</label>
@@ -62,7 +62,10 @@ $number = 1;
 if ($mods == 'names') {
 	$names_array = ["merkha", "tipeha", "siluq"];
 }
+if (empty($merkha) && empty($tipeha) and empty($siluq)) {
+	  echo "<h3 style='text-align: center; font-size: 500%'>Please select at least one trope mark!</h3>";
 
+}
 $tropes = "";
 if (!empty($merkha)) {
         $merkha =  "  ֥";
