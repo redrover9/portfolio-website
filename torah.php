@@ -205,6 +205,7 @@ input[type="radio"] {
 <div class="dropdown">
 <button class="dropbtn">Select a parasha:</button>
 <div class="dropdown-content">
+<div class="dropdown">
 <input type="radio" id="Bereshit" name="parasha" value="Bereshit">
 <br>
 <label for="Bereshit">Bereshit</label>
@@ -245,6 +246,149 @@ input[type="radio"] {
 <br>
 <label for="Miketz">Miketz</label>
 <br>
+<input type="radio" id="Vayigash" name="parasha" value="Vayigash">
+<br>
+<label for="Vayigash">Vayigash</label>
+<br>
+<input type="radio" id="Vayechi" name="parasha" value="Vayechi">
+<br>
+<label for="Vayechi">Vayechi</label>
+<br>
+<input type="radio" id="Shemot" name="parasha" value="Shemot">
+<br>
+<label for="Shemot">Shemot</label>
+<br>
+<input type="radio" id="Vaera" name="parasha" value="Vaera">
+<br>
+<label for="Vaera">Vaera</label>
+<br>
+<input type="radio" id="Bo" name="parasha" value="Bo">
+<br>
+<label for="Bo">Bo</label>
+<br>
+<input type="radio" id="Beshalach" name="parasha" value="Beshalach">
+<br>
+<label for="Beshalach">Beshalach</label>
+<br>
+<input type="radio" id="Yitro" name="parasha" value="Yitro">
+<br>
+<label for="Yitro">Yitro</label>
+<br>
+<input type="radio" id="Mishpatim" name="parasha" value="Mishpatim">
+<br>
+<label for="Mishpatim">Mishpatim</label>
+<br>
+<input type="radio" id="Terumah" name="parasha" value="Terumah">
+<br>
+<label for="Terumah">Terumah</label>
+<br>
+<input type="radio" id="Tetzaveh" name="parasha" value="Tetzaveh">
+<br>
+<label for="Tetzaveh">Tetzaveh</label>
+<br>
+<input type="radio" id="KiTisa" name="parasha" value="KiTisa">
+<br>
+<label for="KiTisa">Ki Tisa</label>
+<br>
+<input type="radio" id="Vayakhel-Pekudei" name="parasha" value="Vayakhel-Pekudei">
+<br>
+<label for="Vayikra">Vayikra</label>
+<br>
+<input type="radio" id="Vayikra" name="parasha" value="Vayikra">
+<br>
+<label for="Vayikra">Vayikra</label>
+<br>
+<input type="radio" id="Tzav" name="parasha" value="Tzav">
+<br>
+<label for="Tzav">Tzav</label>
+<br>
+<input type="radio" id="Shmini" name="parasha" value="Shmini">
+<br>
+<label for="Shmini">Shmini</label>
+<br>
+<input type="radio" id="Tazria-Metzora" name="parasha" value="Tazria-Metzora">
+<br>
+<label for="Tazria-Metzora">Tazria-Metzora</label>
+<br>
+<input type="radio" id="AchreiMot-Kedoshim" name="parasha" value="AchreiMot-Kedoshim">
+<br>
+<label for="AchreiMot-Kedoshim">AchreiMot-Kedoshim</label>
+<br>
+<input type="radio" id="Emor" name="parasha" value="Emor">
+<br>
+<label for="Emor">Emor</label>
+<br>
+<input type="radio" id="Behar-Bechukotai" name="parasha" value="Behar-Bechukotai">
+<br>
+<label for="Behar-Bechukotai">Behar-Bechukotai</label>
+<br>
+<input type="radio" id="Bamidbar" name="parasha" value="Bamidbar">
+<br>
+<label for="Bamidbar">Bamidbar</label>
+<br>
+<input type="radio" id="Nasso" name="parasha" value="Nasso">
+<br>
+<label for="Nasso">Nasso</label>
+<br>
+<input type="radio" id="Beha'alotcha" name="parasha" value="Beha'alotcha">
+<br>
+<label for="Beha'alotcha">Beha'alotcha</label>
+<br>
+<input type="radio" id="Sh'lach" name="parasha" value="Sh'lach">
+<br>
+<label for="Sh'lach">Sh'lach</label>
+<br>
+<input type="radio" id="Korach" name="parasha" value="Korach">
+<br>
+<label for="Korach">Korach</label>
+<br>
+<input type="radio" id="Chukat" name="parasha" value="Chukat">
+<br>
+<label for="Balak">Balak</label>
+<br>
+<input type="radio" id="Pinchas" name="parasha" value="Pinchas">
+<br>
+<label for="Pinchas">Pinchas</label>
+<br>
+<input type="radio" id="Matot-Masei" name="parasha" value="Matot-Masei">
+<br>
+<label for="Matot-Masei">Matot-Masei</label>
+<br>
+<input type="radio" id="Devarim" name="parasha" value="Devarim">
+<br>
+<label for="Devarim">Devarim</label>
+<br>
+<input type="radio" id="Vaetchanan" name="parasha" value="Vaetchanan">
+<br>
+<label for="Vaetchanan">Vaetchanan</label>
+<br>
+<input type="radio" id="Eikev" name="parasha" value="Eikev">
+<br>
+<label for="Eikev">Eikev</label>
+<br>
+<input type="radio" id="Re'eh" name="parasha" value="Re'eh">
+<br>
+<label for="Re'eh">Re'eh</label>
+<br>
+<input type="radio" id="Shoftim" name="parasha" value="Shoftim">
+<br>
+<label for="Shoftim">Shoftim</label>
+<br>
+<input type="radio" id="KiTetzei" name="parasha" value="KiTetzei">
+<br>
+<label for="KiTetzei">Ki Tetzei</label>
+<br>
+<input type="radio" id="KiTavo" name="parasha" value="KiTavo">
+<br>
+<label for="KiTavo">Ki Tavo</label>
+<br>
+<input type="radio" id="Nitzavim" name="parasha" value="Nitzavim">
+<br>
+<label for="Nitzavim">Nitzavim</label>
+<br>
+
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -380,9 +524,11 @@ input[type="radio"] {
 <input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
 </input> 
 </form>
+<br>
+<br>
 <div class="a">
 <form action="triennial_calendar.php" method="post" target="_blank">
-<label for="searchTri">Search Triennial Calendar (Date format: dd-mmm-yyyy):</label>
+<label for="searchTri">Search Triennial Calendar:</label>
 <input type="date" class="form-control" placeholder="01-Jan-2020" id="searchTri" name="searchTri" style="width:200px; text-align:center; margin:0 auto;">
 <input style="margin:0 auto;" type="submit" name="Submit" value="Search" class="btn btn-primary">
 </form>
@@ -390,7 +536,7 @@ input[type="radio"] {
 <br>
 <div class="a">
 <form action="annual_calendar.php" method="post" target="_blank">
-<label for="searchAn">Search Annual Calendar (Date format: dd-mmm-yyyy):</label>
+<label for="searchAn">Search Annual Calendar:</label>
 <input type="date" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" style="width:200px; text-align:center; margin:0 auto;">
 <input type="submit" name="Submit" value="Search" class="btn btn-primary" style="text-align:center; margin:0 auto;">
 <br>
