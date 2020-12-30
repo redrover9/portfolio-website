@@ -614,8 +614,6 @@ input[type="radio"] {
 <option value="tikkun">Tikkun with audio and translation</option>
 </select>
 </div>
-<br>
-<br>
 <input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
 </input> 
 </form>
@@ -628,13 +626,11 @@ input[type="radio"] {
 <input style="margin:0 auto;" type="submit" name="Submit" value="Search" class="btn btn-primary">
 </form>
 </div>
-<br>
 <div class="a">
 <form action="annual_calendar.php" method="post" target="_blank">
 <label for="searchAn">Search Annual Calendar:</label>
 <input type="date" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" style="width:200px; text-align:center; margin:0 auto;">
 <input type="submit" name="Submit" value="Search" class="btn btn-primary" style="text-align:center; margin:0 auto;">
-<br>
 </input>
 </input>
 </form>
@@ -650,20 +646,24 @@ input[type="radio"] {
 Record:
 <input type="radio" name="media" value="video" checked id="mediaVideo">Video
 <input type="radio" name="media" value="audio">Audio
-
 <button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
 </div>
 <div id="btns">
 <button  class="btn btn-primary" id="start">Start Recording</button>
 <button  class="btn btn-primary" id="stop">Stop Recording</button>
+<a href="/user_uploaded_audio.php">Listen to User Uploaded Audio</a>
 </div>
 </div>
 </div>
 <ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
-
+<div class="a" style="margin:0 auto; display: inline; text-align: center;">
+<form action="upload.php" method="post" enctype="multipart/form-data" style="margin:0 auto; display: inline;">
+Select an audio file to upload (please use a descriptive file name): 
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Audio" name="submit">
 </form>
-
+</div>
 <?php
 $ch = curl_init();
 $parasha = $_POST['parasha'];
