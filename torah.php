@@ -52,6 +52,7 @@ display: flex;
 flex-direction: column;
 flex-basis: 100%;
 flex: 1;
+column-width: 350px;
 }
 
 .double-column {
@@ -59,6 +60,7 @@ display: flex;
 flex-direction: column;
 flex-basis: 100%;
 flex: 2;
+column-width: 350px;
 }
 
 .triple-column {
@@ -66,14 +68,17 @@ display: flex;
 flex-direction: column;
 flex-basis: 100%;
 flex: 3;
+column-width:350px;
 }
 .left-column {
-<?php
+/*<?php
 if ($layout == 'tikkun'){
 echo "font-family: chumash;";
 } elseif ($layout == 'stam') {
         echo "font-family: stam;";
 }?>
+*/
+justify-content: right;
 }
 .box {
   border: 3px solid white;
@@ -206,7 +211,7 @@ input[type="radio"] {
 <button class="dropbtn">Select a parasha:</button>
 <div class="dropdown-content">
 <div class="dropdown">
-<input type="radio" id="Bereshit" name="parasha" value="Bereshit">
+<input type="radio" id="Bereshit" name="parasha" value="Bereshit" checked>
 <br>
 <label for="Bereshit">Bereshit</label>
 <br>
@@ -391,7 +396,6 @@ input[type="radio"] {
 <label for="Ha'Azinu">Ha'Azinu</label>
 <br>
 
-</div>
 </div>
 </div>
 </div>
@@ -614,7 +618,7 @@ input[type="radio"] {
 <option value="tikkun">Tikkun with audio and translation</option>
 </select>
 </div>
-<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
+<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center; font-size: 200%">
 </input> 
 </form>
 <br>
@@ -638,7 +642,7 @@ input[type="radio"] {
 </div>
 </div>
 <div class="a">
-<button class="btn" onclick="window.print()">Print this page</button>
+<button class="btn" onclick="window.print()">Print or Export This Page</button>
 <form action="https://zoom.us/meeting/schedule">
 <input class="btn" type="submit" value="Schedule a Zoom meeting"/>
 </form>
@@ -651,17 +655,17 @@ Record:
 <div id="btns">
 <button  class="btn btn-primary" id="start">Start Recording</button>
 <button  class="btn btn-primary" id="stop">Stop Recording</button>
-<a href="/user_uploaded_audio.php">Listen to User Uploaded Audio</a>
+<button class="btn btn-primary" onclick="document.location='user_uploaded_audio.php'">Listen to User Uploaded Audio</button>
 </div>
 </div>
 </div>
 <ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
 <div class="a" style="margin:0 auto; display: inline; text-align: center;">
-<form action="upload.php" method="post" enctype="multipart/form-data" style="margin:0 auto; display: inline;">
+<form action="upload.php" method="post" enctype="multipart/form-data" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
 Select an audio file to upload (please use a descriptive file name): 
   <input type="file" name="fileToUpload" id="fileToUpload">
-  <input type="submit" value="Upload Audio" name="submit">
+  <input type="submit" value="Upload Audio" name="submit"  background-color="blue"  style="text-align:center; display: flex; justify-content: center;">
 </form>
 </div>
 <?php
@@ -1216,10 +1220,10 @@ $hebrewString = $newHebrewString;
 
 <div class="row">
 <div class="column">
-<div class="middle-column">
+<div class="middle-column" style="text-align: right;">
 <?php
 if ($layout == 'tikkun'){
-echo '<div style="font-size: 40pt">'. $hebrewString . '</div>';
+echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
 } else {
 echo '<div style="font-size: 25pt">'. $englishString . '</div>';
 }
@@ -1234,15 +1238,15 @@ echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
 </div>
 </div>
 <div class="column">
-<div class="left-column">
+<div class="left-column" style="text-align: right;">
 <?php
-echo '<div style="font-size: 40pt">'. $hebrewString . '</div>';
+echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
 ?>
 </div>
 </div>
 
 <div class="column">
-<div class="right-column">
+<div class="right-column" style="text-align: right;">
 <?php
 if ($layout == 'stam'){
 	echo "<audio controls>";
@@ -1254,7 +1258,7 @@ echo "</audio>";
 	$parasha = str_replace(' ', '', $parasha);
 	echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
 	echo "</audio>";
-	echo '<div style="font-size: 25pt">'. $englishString . '</div>';
+	echo '<div style="font-size: 23pt">'. $englishString . '</div>';
 }
 ?>
 </audio>
