@@ -12,9 +12,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 echo "<script language='javascript'>
 	localStorage.clear()
-
-</script>
-";
+</script>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -71,13 +69,6 @@ flex: 3;
 column-width:350px;
 }
 .left-column {
-/*<?php
-if ($layout == 'tikkun'){
-echo "font-family: chumash;";
-} elseif ($layout == 'stam') {
-        echo "font-family: stam;";
-}?>
-*/
 justify-content: right;
 }
 .box {
@@ -208,7 +199,7 @@ input[type="radio"] {
 <option value="Three">5782 (2021-2022)</option>
 </select>
 <div class="dropdown">
-<button class="dropbtn">Select a parasha:</button>
+<button class="dropbtn" onclick="document.location='#'">Select a parasha:</button>
 <div class="dropdown-content">
 <div class="dropdown">
 <input type="radio" id="Bereshit" name="parasha" value="Bereshit" checked>
@@ -424,190 +415,190 @@ input[type="radio"] {
 <option value="Yes">Yes</option>
 </select>
 <div class="dropdown">
-<button class="dropbtn">Enter trope mark(s) to highlight: </button>
+<button class="dropbtn"  onclick="document.location='#'">Enter trope mark(s) to highlight: </button>
 <div class="dropdown-content">
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="merkha" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="merkha" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Yellow)</label> 
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="merkha" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="etnahta" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Etnahta (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="etnahta" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Etnahta (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="etnahta" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Etnahta (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="segol" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Segol (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="segol" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Segol (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="segol" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Segol (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="shalshelet" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Shalshelet (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="shalshelet" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Shalshelet (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="shalshelet" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Shalshelet (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="zaqef qatan" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zaqef Qatan (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="zaqef qatan" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zaqef Qatan (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="zaqef qatan" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zaqef Qatan (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="tipeha" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Tipeha (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="tipeha" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Tipeha (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="tipeha" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Tipeha (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="revia" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Revia(Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="revia" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Revia (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="revia" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Revia (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="zarqa" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zarqa (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="zarqa" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zarqa (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="zarqa" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zarqa (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="pashta" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Pashta (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="pashta" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Pastha (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="pashta" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Pashta (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="yetiv" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Yetiv (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="yetiv" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Yetiv (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="yetiv" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Yetiv (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="tevir" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Tevir (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="tevir" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Tevir (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="tevir" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Tevir (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="geresh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Geresh (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="geresh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Geresh (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="geresh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Geresh (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="geresh muqdam" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Geresh Muqdam (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="geresh muqdam" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Geresh Muqdam (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="geresh muqdam" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Geresh Muqdam (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="gershayim" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Gershayim (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="gershayim" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Gershayim (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="gershayim" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Gershayim (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="qarney para" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Qarney Para (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="qarney para" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Qarney Para (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="qarney para" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Qarney Para (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="telisha gedola" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Gedola (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="telisha gedola" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Gedola (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="telisha gedola" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Gedola (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="pazer" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Pazer (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="pazer" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Pazer (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="pazer" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Pazer (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="atnah hafukh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Atnah Hafukh (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="Atnah Hafukh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Atnah Hafukh (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="atnah hafukh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Atnah Hafukh (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="munah" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Munah (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="munah" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Munah (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="Munah" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Munah (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="mahapakh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Mahapakh (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="mahapakh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Mahapakh (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="mahapakh" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Mahapakh (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="merkha kefula" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Merkha Kefula(Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="merkha kefula" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Merkha Kefula (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="merkha kefula" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Merkha Kefula (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="darga" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Darga (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="darga" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Darga (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="darga" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Darga (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="qadma" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Qadma (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="qadma" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Qadma (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="qadma" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Qadma (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="telisha qetana" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Qetana (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="telisha qetana" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Qetana (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="telisha qetana" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Qetana (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="yerah ben yomo" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Yerah Ben Yomo (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="yerah ben yomo" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Yerah Ben Yomo (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="yerah ben yomo" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Yerah Ben Yomo (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="ole" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Ole (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="ole" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Ole (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="ole" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Ole (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="iluy" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Iluy (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="iluy" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Iluy (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="iluy" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Iluy (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="dehi" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Dehi (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="dehi" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Dehi (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="dehi" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Dehi (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="zinor" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zinor (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="zinor" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zinor (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="zinor" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Zinor (Green)</label>
-<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="masora circle" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Masora Circle (Pink)</label>
-<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="masora circle" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Masora Circle (Yellow)</label>
-<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="masora circle" style="width:20px; text-align:center; margin:0 auto;">
-<label for="merkha" style="text-align:center; margin:0 auto;">Masora Circle (Green)</label>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="merkha" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="merkha" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Yellow)</label><br> 
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="merkha" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="etnahta" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Etnahta (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="etnahta" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Etnahta (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="etnahta" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Etnahta (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="segol" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Segol (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="segol" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Segol (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="segol" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Segol (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="shalshelet" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Shalshelet (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="shalshelet" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Shalshelet (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="shalshelet" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Shalshelet (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="zaqef qatan" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zaqef Qatan (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="zaqef qatan" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zaqef Qatan (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="zaqef qatan" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zaqef Qatan (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="tipeha" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Tipeha (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="tipeha" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Tipeha (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="tipeha" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Tipeha (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="revia" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Revia(Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="revia" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Revia (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="revia" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Revia (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="zarqa" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zarqa (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="zarqa" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zarqa (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="zarqa" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zarqa (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="pashta" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Pashta (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="pashta" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Pastha (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="pashta" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Pashta (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="yetiv" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Yetiv (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="yetiv" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Yetiv (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="yetiv" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Yetiv (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="tevir" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Tevir (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="tevir" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Tevir (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="tevir" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Tevir (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="geresh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Geresh (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="geresh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Geresh (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="geresh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Geresh (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="geresh muqdam" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Geresh Muqdam (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="geresh muqdam" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Geresh Muqdam (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="geresh muqdam" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Geresh Muqdam (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="gershayim" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Gershayim (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="gershayim" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Gershayim (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="gershayim" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Gershayim (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="qarney para" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Qarney Para (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="qarney para" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Qarney Para (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="qarney para" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Qarney Para (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="telisha gedola" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Gedola (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="telisha gedola" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Gedola (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="telisha gedola" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Gedola (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="pazer" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Pazer (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="pazer" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Pazer (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="pazer" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Pazer (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="atnah hafukh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Atnah Hafukh (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="Atnah Hafukh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Atnah Hafukh (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="atnah hafukh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Atnah Hafukh (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="munah" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Munah (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="munah" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Munah (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="Munah" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Munah (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="mahapakh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Mahapakh (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="mahapakh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Mahapakh (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="mahapakh" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Mahapakh (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="merkha kefula" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha Kefula(Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="merkha kefula" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha Kefula (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="merkha kefula" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Merkha Kefula (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="darga" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Darga (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="darga" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Darga (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="darga" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Darga (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="qadma" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Qadma (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="qadma" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Qadma (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="qadma" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Qadma (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="telisha qetana" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Qetana (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="telisha qetana" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Qetana (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="telisha qetana" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Telisha Qetana (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="yerah ben yomo" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Yerah Ben Yomo (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="yerah ben yomo" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Yerah Ben Yomo (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="yerah ben yomo" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Yerah Ben Yomo (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="ole" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Ole (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="ole" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Ole (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="ole" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Ole (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="iluy" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Iluy (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="iluy" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Iluy (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="iluy" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Iluy (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="dehi" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Dehi (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="dehi" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Dehi (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="dehi" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Dehi (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="zinor" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zinor (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="zinor" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zinor (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="zinor" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Zinor (Green)</label><br>
+<input type="checkbox" id="tropeMarkOne" name="tropeMarkOne" value="masora circle" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Masora Circle (Pink)</label><br>
+<input type="checkbox" id="tropeMarkTwo" name="tropeMarkTwo" value="masora circle" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Masora Circle (Yellow)</label><br>
+<input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="masora circle" style="width:20px; text-align:center; margin:0 auto;"><br>
+<label for="merkha" style="text-align:center; margin:0 auto;">Masora Circle (Green)</label><br>
 
-</div>
+</div><br>
 </div>
 </div>
 <br>
@@ -618,26 +609,15 @@ input[type="radio"] {
 <option value="tikkun">Tikkun with audio and translation</option>
 </select>
 </div>
+<br>
+<br>
 <input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center; font-size: 200%">
 </input> 
 </form>
 <br>
 <br>
 <div class="a">
-<form action="triennial_calendar.php" method="post" target="_blank">
-<label for="searchTri">Search Triennial Calendar:</label>
-<input type="date" class="form-control" placeholder="01-Jan-2020" id="searchTri" name="searchTri" style="width:200px; text-align:center; margin:0 auto;">
-<input style="margin:0 auto;" type="submit" name="Submit" value="Search" class="btn btn-primary">
-</form>
-</div>
-<div class="a">
-<form action="annual_calendar.php" method="post" target="_blank">
-<label for="searchAn">Search Annual Calendar:</label>
-<input type="date" id="searchAn" name="searchAn" class="form-control" placeholder="01-Jan-2020" style="width:200px; text-align:center; margin:0 auto;">
-<input type="submit" name="Submit" value="Search" class="btn btn-primary" style="text-align:center; margin:0 auto;">
-</input>
-</input>
-</form>
+<button class="btn" onclick="document.location='calendar.html'">View Caledar</button>
 </div>
 </div>
 </div>
