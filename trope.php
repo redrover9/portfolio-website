@@ -131,10 +131,11 @@ if ($mods == 'words') {
 }
 
 $ultimatePhrase = "";
+$ultimateTimes = 0;
 foreach ($tropes_array as $trope) {
 	if ($trope != "" && $mods == 'words') {
 		$tropeMark = mb_substr($trope, 0, 1);
-		echo "<h1 style='text-align: center; font-size: 500%'>$trope</h1>";
+		//echo "<h1 style='text-align: center; font-size: 500%'>$trope</h1>";
 		$books = ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy"];
 		shuffle($books);
 		$tropeWordsFile = fopen("/mnt/volume_sfo2_01/Sefaria-Export/json/Tanakh/Torah/$books[0]/taamei_tanakh.json", "r") or die ("Unable to open file!");
@@ -145,27 +146,40 @@ foreach ($tropes_array as $trope) {
 			foreach ($tropeArray as $phrase) {
 				if (strpos($phrase, $tropeMark) != false) {
 					  $quotationMark = '"';
+					  $leftBracket = "[";
+					  $rightBracket = "]";
+					  $textText = "text";
                                           $phrase = str_replace($quotationMark, "", $phrase);
+					  $phrase = str_replace($leftBracket, "", $phrase);
+					  $phrase = str_replace($rightBracket, "", $phrase);
+					  $phrase = str_replace($textText, "", $phrase);
 					  $phraseChunks = preg_split("/\s/u", $phrase);
 					  foreach ($phraseChunks as $phraseChunk) {
-						  echo $ultimatePhrase;
-						if (mb_strpos($phraseChunk, $tropeMark) != false ) {
+						if (mb_strpos($phraseChunk, $tropeMark) != false && $tropeMark == trim("  ֥")) {
 						
-							$phraseChunk = "<span style='background-color:#FF00FF'>$phraseChunk</mark>";} 
+							$phraseChunk = "<span style='background-color:#FF00FF'>$phraseChunk</span>";} elseif (mb_strpos($phraseChunk, $tropeMark) != false && $tropeMark == trim("   ֖")) {
+
+                                                        $phraseChunk = "<span style='background-color:#FFFF00'>$phraseChunk</span>";} elseif (mb_strpos($phraseChunk, $tropeMark) != false && $tropeMark == trim(" ֽ")) {
+
+                                                        $phraseChunk = "<span style='background-color:#00FF00'>$phraseChunk</span>";}
 						$ultimatePhrase .= $phraseChunk;
+						$ultimatePhrase .= " ";
+						$ultimatePhrase .= "\n\n";
 									
 
-							//}
-							break;
-                                          echo "<h1 style='text-align: center; font-size: 500%'>$ultimatePhrase</h1>";
+							}
 
+					  $ultimateTimes += 1;
+                                          if ($ultimateTimes == 3 ) { echo "<h1 style='text-align: center; font-size: 500%'>$ultimatePhrase</h1>"; }
+							break;
+$ultimatePhrase = "";
 				}
 				break;
 				
 			}	
 	}
 }
-}
+
 
 
 ?>
