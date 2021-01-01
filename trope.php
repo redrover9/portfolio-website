@@ -1,3 +1,8 @@
+<?
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+?>
 <!DOCTYPE html>
 <html>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +19,7 @@ text-align: center;
 float: center;
 }
 .encompassing_div {
-width: 500px;
+width: 1000px;
 border: 15px solid blue;
 padding: 10px;
 margin: auto;
@@ -35,7 +40,7 @@ Trope Practice
 <br>
 </head>
 <body>
-<form action="/trope.php" method="post" style="margin: auto; text-align: center;">
+<form action="/trope.php" method="post" style="margin: auto; text-align: center; font-size: 150%; ">
 <input type="checkbox" id="merkha" name="merkha" value="merkha" style="width:20px; text-align:center; margin:0 auto;">
 <label for="merkha" style="text-align:center; margin:0 auto;">Merkha </label>
 <input type="checkbox" id="tipeha" name="tipeha" value="tipeha" style="width:20px; text-align:center; margin:0 auto;">
@@ -52,11 +57,10 @@ Trope Practice
 <br>
 <input type="submit" name="submit" value="Submit">
 </form>
-<div class="encompassing_div">
 <div id="gUMArea">
 <h2>Record:</h2>
-<input type="radio" name="media" value="video" checked id="mediaVideo">Video
-<input type="radio" name="media" value="audio">Audio
+<input type="radio" name="media" value="video" checked id="mediaVideo" style="font-size: 1505;">Video
+<input type="radio" name="media" value="audio" style="font-size: 1505;">Audio
 
 <button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
 </div>
@@ -68,7 +72,7 @@ Trope Practice
 </div>
 <ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
-</div>
+
 </form>
 
 <?php
@@ -80,7 +84,7 @@ $siluq = $_POST['siluq'];
 
 $mods = $_POST['mods'];
 
-$number = 2;
+$number = 1;
 
 if ($mods == 'names') {
 	$names_array = ["merkha", "tipeha", "siluq"];
@@ -103,7 +107,6 @@ if (!empty($siluq)) {
 	$tropes .= str_repeat($siluq . $names_array[2], $number);
 }
 $tropes_array = explode(" ", $tropes);
-shuffle($tropes_array);
 if ($mods == 'names') {
 foreach ($tropes_array as $trope) {
 	if ($trope != "" && $mods != 'words') {
@@ -123,35 +126,45 @@ foreach ($tropes_array as $trope) {
 
 
 }}
+if ($mods == 'words') {
+	echo "<div class='encompassing_div'>";
+}
+
+$ultimatePhrase = "";
 foreach ($tropes_array as $trope) {
 	if ($trope != "" && $mods == 'words') {
 		$tropeMark = mb_substr($trope, 0, 1);
+		echo "<h1 style='text-align: center; font-size: 500%'>$trope</h1>";
 		$books = ["Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy"];
 		shuffle($books);
-		$tropeWordsFile = fopen("/var/www/html/Sefaria-Export/json/Tanakh/Torah/$books[0]/Hebrew/taamei_tanakh.json", "r") or die ("Unable to open file!");
-		$tropeWords = fread($tropeWordsFile,filesize("/var/www/html/Sefaria-Export/json/Tanakh/Torah/$books[0]/Hebrew/taamei_tanakh.json"));
+		$tropeWordsFile = fopen("/mnt/volume_sfo2_01/Sefaria-Export/json/Tanakh/Torah/$books[0]/taamei_tanakh.json", "r") or die ("Unable to open file!");
+		$tropeWords = fread($tropeWordsFile,filesize("/mnt/volume_sfo2_01/Sefaria-Export/json/Tanakh/Torah/$books[0]/taamei_tanakh.json"));
 		$tropeWords = (string) $tropeWords;
 		$tropeArray = explode(",", $tropeWords);
-					$tropesDisplayed = 0;
+		shuffle($tropeArray);
 			foreach ($tropeArray as $phrase) {
-				$phraseArray = explode(" ", $phrase);
-				foreach ($phraseArray as $phraseString ) {
-					if (strpos($phraseString, $tropeMark) != false && $tropesDisplayed <= $number) {
-					  echo "<div class='encompassing_div'>";
+				if (strpos($phrase, $tropeMark) != false) {
 					  $quotationMark = '"';
-					  $phraseString = str_replace($quotationMark, "", $phraseString);
-					  echo "<h1 style='text-align: center; font-size: 500%'>$phraseString</h1>";
-					  echo "</div>";
-					                                  echo "<br>";
-                                echo "<br>";
-                                echo "<br>";
-                                echo "<br>";
-                                $tropesDisplayed += 1;
+                                          $phrase = str_replace($quotationMark, "", $phrase);
+					  $phraseChunks = preg_split("/\s/u", $phrase);
+					  foreach ($phraseChunks as $phraseChunk) {
+						  echo $ultimatePhrase;
+						if (mb_strpos($phraseChunk, $tropeMark) != false ) {
+						
+							$phraseChunk = "<span style='background-color:#FF00FF'>$phraseChunk</mark>";} 
+						$ultimatePhrase .= $phraseChunk;
+									
 
-					}
+							//}
+							break;
+                                          echo "<h1 style='text-align: center; font-size: 500%'>$ultimatePhrase</h1>";
+
 				}
+				break;
+				
 			}	
 	}
+}
 }
 
 
