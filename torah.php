@@ -616,6 +616,12 @@ input[type="radio"] {
 </form>
 <br>
 <br>
+<br>
+<br>
+<h1 style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">Torah Reader</h1>
+<br>
+<br>
+<br>
 <div class="a">
 <button class="btn" onclick="document.location='calendar.html'">View Caledar</button>
 </div>
