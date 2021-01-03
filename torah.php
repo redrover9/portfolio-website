@@ -186,6 +186,7 @@ input[type="radio"] {
 <body>
 <div class="menu">
 <div class="a">
+<h1 style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">Torah Reader</h1>
 <form action="#" method="post" target="_blank">
 <label for="cycles">Select a calendar:</label>
 <select name="cycle" id="cycle">
@@ -308,7 +309,7 @@ input[type="radio"] {
 <br>
 <input type="radio" id="AchreiMot-Kedoshim" name="parasha" value="AchreiMot-Kedoshim">
 <br>
-<label for="AchreiMot-Kedoshim">AchreiMot-Kedoshim</label>
+<label for="AchreiMot-Kedoshim">Achrei Mot-Kedoshim</label>
 <br>
 <input type="radio" id="Emor" name="parasha" value="Emor">
 <br>
@@ -401,13 +402,7 @@ input[type="radio"] {
 <option value="5">Fifth Aliyah</option>
 <option value="6">Sixth Aliyah</option>
 <option value="7">Seventh Aliyah</option>
-<option value="maf">Maftir Aliyah</option>
 <option value="H">Haftara</option>
-</select>
-<label for="commentary">Include commentary</label>
-<select name="commentary" id="commentary">
-<option value="0">No</option>
-<option value="1">Yes</option>
 </select>
 <label for="highlighting">Highlighted trope marks:</label>
 <select name="highlighting" id="highlighting">
@@ -608,6 +603,14 @@ input[type="radio"] {
 <select name="layout" id="layout">
 <option value="tikkun">Tikkun with audio and translation</option>
 </select>
+<label for="pitch">Select a pitch: </label>
+<select name="pitch" id="pitch">
+<option value="">Default</option>
+<option value="high-">High</option>
+<option value="medium-high-">Medium High</option>
+<option value="medium-low-">Medium Low</option>
+<option value="low-">Low</option>
+</select>
 </div>
 <br>
 <br>
@@ -618,7 +621,7 @@ input[type="radio"] {
 <br>
 <br>
 <br>
-<h1 style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">Torah Reader</h1>
+<br>
 <br>
 <br>
 <br>
@@ -647,11 +650,11 @@ Record:
 </div>
 <ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
-<div class="a" style="margin:0 auto; display: inline; text-align: center;">
+<div class="a" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
 <form action="upload.php" method="post" enctype="multipart/form-data" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
-Select an audio file to upload (please use a descriptive file name): 
+Select an audio or video file to upload (please use a descriptive file name): 
   <input type="file" name="fileToUpload" id="fileToUpload">
-  <input type="submit" value="Upload Audio" name="submit"  background-color="blue"  style="text-align:center; display: flex; justify-content: center;">
+  <input type="submit" value="Upload File" name="submit" class="btn" background-color="blue"  style="text-align:center; display: flex; justify-content: center;">
 </form>
 </div>
 <?php
@@ -667,7 +670,6 @@ $pitch = $_POST['pitch'];
 $tropeMarkOne = $_POST['tropeMarkOne'];
 $tropeMarkTwo = $_POST['tropeMarkTwo'];
 $tropeMarkThree = $_POST['tropeMarkThree'];
-$commentary = $_POST['commentary'];
 if ($cycle == 'Triennial') {
 	$chTri = fopen("triennial_calendar.csv", "r");
 	$triMatches = [];
@@ -741,8 +743,7 @@ $verses = 		preg_replace("/Samuel/", "II_Samuel", $verses);
 
 
 	}}
-$commNum = '0';
-$curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=' . $commentary;
+$curlUrl = 'http://www.sefaria.org/api/texts/' . $verses . '?context=0&commentary=0';
 curl_setopt($ch, CURLOPT_URL, $curlUrl);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -750,23 +751,6 @@ $data = curl_exec($ch);
 $array = json_decode($data, true);
 $hebrew = $array['he'];
 $english = $array['text'];
-$commentaryText = $array['commentary']['0'][$commNum]['text'];
-$commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
-while (empty($commentaryText) && $commNum < 20) {
-$commNum += 1;
-	$commentaryText = $array['commentary']['0'][$commNum]['text'];
-$commentarySource = $array['commentary']['0'][$commNum]['sourceRef'];
-
-}
-if ($commentary == 1 && empty($commentaryText)){
-$commentaryText = $array['commentary'][$commNum]['text'];
-$commentarySource = $array['commentary'][$commNum]['sourceRef'];
-while (empty($commentaryText) && $commNum < 40) {
-	                $commNum += 1;
-			$commentaryText = $array['commentary'][$commNum]['text'];
-			 $commentarySource = $array['commentary'][$commNum]['sourceRef'];
-
-	     }}
 function subArraysToString($ar, $sep = "<br> <br>") {
 	      $str = '';
 	       foreach ($ar as $val) {
@@ -1213,12 +1197,6 @@ echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
 } else {
 echo '<div style="font-size: 25pt">'. $englishString . '</div>';
 }
-if (!empty($commentaryText)){
-	 echo '<div style="font-size: 15pt">'. $commentarySource . '</div>';
-echo '<div style="font-size: 15pt">'. $commentaryText . '</div>';
-} elseif (empty($commentaryText) && $commentary == 1) {
-	 echo "Commentary not found for selected range.";
-}
 ?>
 
 </div>
@@ -1234,15 +1212,15 @@ echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
 <div class="column">
 <div class="right-column" style="text-align: right;">
 <?php
+
 if ($layout == 'stam'){
-	echo "<audio controls>";
 	        $parasha = str_replace(' ', '', $parasha);
-echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
+echo "<source src='audio/$pitch$parasha-$aliyah.mp3' type='audio/mp3'>";
 echo "</audio>";
 } elseif ($layout == 'tikkun'){
-	echo "<audio controls>";
+	echo "<audio id=parashaAudio controls>";
 	$parasha = str_replace(' ', '', $parasha);
-	echo "<source src='audio/$parasha-$aliyah.mp3' type='audio/mp3'>";
+	echo "<source src='audio/$pitch$parasha-$aliyah.mp3' type='audio/mp3'>";
 	echo "</audio>";
 	echo '<div style="font-size: 23pt">'. $englishString . '</div>';
 }
