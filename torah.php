@@ -391,8 +391,6 @@ input[type="radio"] {
 </div>
 </div>
 </div>
-</div>
-<div class="a">
 <label for="aliyot">Select an aliyah:</label>
 <select name="aliyah" id="aliyah">
 <option value="1">First Aliyah</option>
@@ -626,11 +624,8 @@ input[type="radio"] {
 <br>
 <br>
 <div class="a">
-<button class="btn" onclick="document.location='calendar.html'">View Caledar</button>
-</div>
-</div>
-</div>
-<div class="a">
+<button class="btn" onclick="document.location='calendar.html'">View Torah Readings Calendar</button>
+<button class="btn" onclick="document.location='lessons-calendar.html'">View Lessons Calendar</button>
 <button class="btn" onclick="window.print()">Print or Export This Page</button>
 <form action="https://zoom.us/meeting/schedule">
 <input class="btn" type="submit" value="Schedule a Zoom meeting"/>
