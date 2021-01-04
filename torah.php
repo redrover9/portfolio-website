@@ -120,6 +120,8 @@ float: right;
 .a {
 text-align: center;
 }
+.b {
+}
 .menu {
 <?php
 if (isset($_POST['parasha'])) {
@@ -617,6 +619,10 @@ input[type="radio"] {
 </form>
 <br>
 <br>
+<button style="margin: 0 auto; display: block;" onclick="displayFunc()">More...</button>
+<div id="b">
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -642,7 +648,6 @@ Record:
 <button class="btn btn-primary" onclick="document.location='user_uploaded_audio.php'">Listen to User Uploaded Audio</button>
 </div>
 </div>
-</div>
 <ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
 <div class="a" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
@@ -652,6 +657,22 @@ Select an audio or video file to upload (please use a descriptive file name):
   <input type="submit" value="Upload File" name="submit" class="btn" background-color="blue"  style="text-align:center; display: flex; justify-content: center;">
 </form>
 </div>
+</div>
+</div>
+<script>
+var y = document.getElementById("b");
+y.style.display = "none";
+</script>
+<script>
+function displayFunc() {
+  var x = document.getElementById("b");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 <?php
 $ch = curl_init();
 $parasha = $_POST['parasha'];
