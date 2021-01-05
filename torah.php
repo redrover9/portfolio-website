@@ -118,7 +118,7 @@ float: center;
 float: right;
 }
 .a {
-text-align: center;
+text-align: left;
 }
 .b {
 }
@@ -593,10 +593,9 @@ input[type="radio"] {
 <input type="checkbox" id="tropeMarkThree" name="tropeMarkThree" value="masora circle" style="width:20px; text-align:center; margin:0 auto;"><br>
 <label for="merkha" style="text-align:center; margin:0 auto;">Masora Circle (Green)</label><br>
 
-</div><br>
 </div>
 </div>
-<br>
+</div>
 <br>
 <div class="a">
 <label for="layout">Select a layout: </label>
@@ -613,20 +612,12 @@ input[type="radio"] {
 </select>
 </div>
 <br>
-<br>
 <input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center; font-size: 200%">
 </input> 
 </form>
 <br>
-<br>
 <button style="margin: 0 auto; display: block;" onclick="displayFunc()">More...</button>
 <div id="b">
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <div class="a">
@@ -650,11 +641,11 @@ Record:
 </div>
 <ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
-<div class="a" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
-<form action="upload.php" method="post" enctype="multipart/form-data" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center;">
+<div class="a" >
+<form action="upload.php" method="post" enctype="multipart/form-data" >
 Select an audio or video file to upload (please use a descriptive file name): 
   <input type="file" name="fileToUpload" id="fileToUpload">
-  <input type="submit" value="Upload File" name="submit" class="btn" background-color="blue"  style="text-align:center; display: flex; justify-content: center;">
+  <input type="submit" value="Upload File" name="submit" class="btn" background-color="blue"  >
 </form>
 </div>
 </div>
@@ -1233,13 +1224,13 @@ if ($layout == 'stam'){
 	        $parasha = str_replace(' ', '', $parasha);
 echo "<source src='audio/$pitch$parasha-$aliyah.mp3' type='audio/mp3'>";
 echo "</audio>";
-} elseif ($layout == 'tikkun'){
+} elseif ($layout == 'tikkun' && $cycle == 'Annual'){
 	echo "<audio id=parashaAudio controls>";
 	$parasha = str_replace(' ', '', $parasha);
 	echo "<source src='audio/$pitch$parasha-$aliyah.mp3' type='audio/mp3'>";
 	echo "</audio>";
-	echo '<div style="font-size: 23pt">'. $englishString . '</div>';
 }
+	echo '<div style="font-size: 23pt">'. $englishString . '</div>';
 ?>
 </audio>
 </div>
