@@ -9,6 +9,8 @@ if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
 }
 ?>
 	<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 		         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 		<title>Torah Reader</title>
@@ -188,6 +190,7 @@ input[type=submit] {
 		<option value="No">No</option>
 		<option value="Yes">Yes</option>
 	</select>
+<br><br>
 <div style='display: none;' id='trope'>
 	Sof Pasuk: <select name="sofPasuk" id="sofPasuk">
 			<option value="Pink">Pink</option>
