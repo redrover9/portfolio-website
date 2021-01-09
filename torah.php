@@ -1,10 +1,4 @@
 <?php
-session_start();
-if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
-}  else {     
-	header("location: login.php");
-	exit;
-}
 header("Expires: Tue, 01 Jan 2000 00:00:00 GMT");
 header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
@@ -101,11 +95,11 @@ float: center;
 
 }
 .btn:hover {
-background: blue;
+background: green;
 }
 .btn-gtr {
 	        border: none;
-        background-color: blue;
+        background-color: green;
         color: white;
   text-align: center;
 display: inline-block;
@@ -136,7 +130,7 @@ display: none;
 	display: none;
 }
 .dropbtn {
-  background-color: blue;
+  background-color: green;
   color: white;
   padding: 16px;
   font-size: 20px;
@@ -601,6 +595,7 @@ input[type="radio"] {
 <label for="layout">Select a layout: </label>
 <select name="layout" id="layout">
 <option value="tikkun">Tikkun with audio and translation</option>
+<option value="stam">STaM with audio and translation</option>
 </select>
 <label for="pitch">Select a pitch: </label>
 <select name="pitch" id="pitch">
@@ -612,44 +607,53 @@ input[type="radio"] {
 </select>
 </div>
 <br>
-<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center; font-size: 200%">
+<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="green" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center; font-size: 200%">
 </input> 
 </form>
 <br>
 <button style="margin: 0 auto; display: block;" onclick="displayFunc()">More...</button>
-<div id="b">
-<br>
-<br>
-<div class="a">
-<button class="btn" onclick="document.location='calendar.html'">View Torah Readings Calendar</button>
-<button class="btn" onclick="document.location='lessons-calendar.html'">View Lessons Calendar</button>
-<button class="btn" onclick="window.print()">Print or Export This Page</button>
-<form action="https://zoom.us/meeting/schedule">
-<input class="btn" type="submit" value="Schedule a Zoom meeting"/>
-</form>
-<div id="gUMArea">
-Record:
-<input type="radio" name="media" value="video" checked id="mediaVideo">Video
 <input type="radio" name="media" value="audio">Audio
 <button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
-</div>
-<div id="btns">
-<button  class="btn btn-primary" id="start">Start Recording</button>
-<button  class="btn btn-primary" id="stop">Stop Recording</button>
-<button class="btn btn-primary" onclick="document.location='user_uploaded_audio.php'">Listen to User Uploaded Audio</button>
 </div>
 </div>
 <ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
-<div class="a" >
 <form action="upload.php" method="post" enctype="multipart/form-data" >
-Select an audio or video file to upload (please use a descriptive file name): 
-  <input type="file" name="fileToUpload" id="fileToUpload">
-  <input type="submit" value="Upload File" name="submit" class="btn" background-color="blue"  >
+<div style="border-style: solid; border-color: green; display: inline-block;">
+<h3>Calendars</h3>
+<button class="btn" onclick="document.location='calendar.html'">View Torah Readings Calendar</button>
+<button class="btn" onclick="document.location='lessons-calendar.html'">View Lessons Calendar</button>
+</div>
+<div style="border-style: solid; border-color: green; display: inline-block;">
+<h3>Printing and Exporting</h3>
+<button class="btn" onclick="window.print()">Print or Export This Page</button>
+</div>
+<div style="border-style: solid; border-color: green; display: inline-block;">
+<h3>Zoom</h3>
+<form action="https://zoom.us/meeting/schedule">
+<input class="btn" type="submit" value="Schedule a Zoom meeting"/>
 </form>
 </div>
+<div id="gUMArea">
+<div style="border-style: solid; border-color: green; display: inline-block;">
+<h3>Recording</h3>
+Record:
+<input type="radio" name="media" value="video" checked id="mediaVideo">Video
+<input type="radio" name="media" value="audio">Audio
+<button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
+<div id="btns">
+<button  class="btn btn-primary" id="start">Start Recording</button>
+<button  class="btn btn-primary" id="stop">Stop Recording</button>
 </div>
 </div>
+<div style="border-style: solid; border-color: green; display: inline-block;">
+<h3>User Audio</h3>
+<button class="btn btn-primary" onclick="document.location='user_uploaded_audio.php'">Listen to User Uploaded Audio</button>
+Select an audio or video file to upload (please use a descriptive file name): 
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload File" name="submit" class="btn" background-color="green"  >
+</div>
+</form>
 <script>
 var y = document.getElementById("b");
 y.style.display = "none";
@@ -1199,11 +1203,7 @@ $hebrewString = $newHebrewString;
 <div class="column">
 <div class="middle-column" style="text-align: right;">
 <?php
-if ($layout == 'tikkun'){
 echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
-} else {
-echo '<div style="font-size: 25pt">'. $englishString . '</div>';
-}
 ?>
 
 </div>
@@ -1211,7 +1211,11 @@ echo '<div style="font-size: 25pt">'. $englishString . '</div>';
 <div class="column">
 <div class="left-column" style="text-align: right;">
 <?php
+if ($layout == 'tikkun') {
 echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
+} else {
+echo '';
+}	
 ?>
 </div>
 </div>
@@ -1221,8 +1225,9 @@ echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
 <?php
 
 if ($layout == 'stam'){
+		echo "<audio id=parashaAudio controls>";
 	        $parasha = str_replace(' ', '', $parasha);
-echo "<source src='audio/$pitch$parasha-$aliyah.mp3' type='audio/mp3'>";
+		echo "<source src='audio/$pitch$parasha-$aliyah.mp3' type='audio/mp3'>";
 echo "</audio>";
 } elseif ($layout == 'tikkun' && $cycle == 'Annual'){
 	echo "<audio id=parashaAudio controls>";
