@@ -988,7 +988,7 @@ $hebrewString = $newHebrewString;
 <?php
 if ($layout == 'tikkun') {
 
-echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
+echo '<div style="font-size: 35pt; font-family: stam;">'. $hebrewString . '</div>';
 } else {
 	echo '<div style="font-family: stam; font-size: 35pt">' . $hebrewString . '</div>';
 }
