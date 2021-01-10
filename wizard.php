@@ -12,7 +12,7 @@ if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+<link href="main.550dcf66.css"></link>
 		<title>Torah Reader</title>
 <style>
 * {
@@ -26,7 +26,6 @@ body {
 #regForm {
   background-color: #ffffff;
   margin: 50px auto;
-  font-family: Raleway;
   padding: 20px;
   width: 50%;
   min-width: 300px;
@@ -40,7 +39,6 @@ input {
   padding: 10px;
   width: 100%;
   font-size: 17px;
-  font-family: Raleway;
   border: 1px solid #aaaaaa;
   text-transform: capitalize;
 }
@@ -57,12 +55,11 @@ input.invalid {
 }
 
 button {
-  background-color: #4b68d1;
+  background-color: #a8323a;
   color: #ffffff;
   border: none;
   padding: 10px 20px;
   font-size: 17px;
-  font-family: Raleway;
   cursor: pointer;
 }
 
@@ -92,7 +89,7 @@ button:hover {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #4b68d1;
+  background-color: #a8323a;
 }
    * { box-sizing: border-box; }
 body {
@@ -199,11 +196,14 @@ input[type=submit] {
 			<option value="Green">Green</option>
 			<option value="Purple">Purple</option>
 			<option value="Orange">Orange</option>
-			<option value="White">White</option>
+			<option value="Brown">Brown</option>
 			<option value="Aqua">Aqua</option>
 			<option value="Salmon">Salmon</option>
 			<option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
 	</select>
 	<br><br>
 	Zakef Katon: <select name="zakefKaton" id="zakefKaton"> 
@@ -212,11 +212,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Tevir: <select name="tevir" id="tevir"> 
@@ -225,11 +228,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Geresh: <select name="geresh" id="geresh"> 
@@ -238,11 +244,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Telisha Gedola: <select name="telishaGedola" id="telishaGedola"> 
@@ -251,11 +260,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Pazer: <select name="pazer" id="pazer"> 
@@ -264,11 +276,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Karne Para: <select name="karnePara" id="karnePara"> 
@@ -277,11 +292,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Etnachta: <select name="etnachta" id="etnachta"> 
@@ -290,11 +308,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Revia: <select name="revia" id="revia"> 
@@ -303,11 +324,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Segol: <select name="segol" id="segol"> 
@@ -316,11 +340,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Gershayim: <select name="gershayim" id="gershayim"> 
@@ -329,11 +356,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Zakef Gadol: <select name="zakefGadol" id="zakefGadol"> 
@@ -342,11 +372,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 	<br><br>
 	Shalshelet: <select name="shalshelet" id="shalshelet"> 
@@ -355,11 +388,14 @@ input[type=submit] {
                         <option value="Green">Green</option>
                         <option value="Purple">Purple</option>
                         <option value="Orange">Orange</option>
-                        <option value="White">White</option>
+                        <option value="Brown">Brown</option>
                         <option value="Aqua">Aqua</option>
                         <option value="Salmon">Salmon</option>
                         <option value="Yellow">Yellow</option>
 			<option value="Red">Red</option>
+			<option value="Aquamarine">Aquamarine</option>
+			<option value="Violet">Violet</option>
+			<option value="Gold">Gold</option>
         </select>
 </div>
 </div>

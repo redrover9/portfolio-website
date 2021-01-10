@@ -97,11 +97,11 @@ float: center;
 
 }
 .btn:hover {
-background: blue;
+background: crimson;
 }
 .btn-gtr {
 	        border: none;
-        background-color: blue;
+        background-color: crimson;
         color: white;
   text-align: center;
 display: inline-block;
@@ -132,7 +132,7 @@ display: none;
 	display: none;
 }
 .dropbtn {
-  background-color: blue;
+  background-color: crimson;
   color: white;
   padding: 16px;
   font-size: 20px;
@@ -182,7 +182,6 @@ input[type="radio"] {
 </div>
 </head>
 <body>
-
 <script>
 'use strict'
 
@@ -394,6 +393,7 @@ $data = curl_exec($ch);
 $array = json_decode($data, true);
 $hebrew = $array['he'];
 $english = $array['text'];
+$ref = $array['ref'];
 function subArraysToString($ar, $sep = "<br> <br>") {
 	      $str = '';
 	       foreach ($ar as $val) {
@@ -419,6 +419,7 @@ $_SESSION['heb'] = $hebrewString;
 $_SESSION['eng'] = $englishString;
 ?>
 <?php
+echo "<h3> $ref </h3>";
 	$newHebrewString = "";
 	$newEnglishString = "";
 $hebrewArray = explode(" ", $hebrewString);
@@ -514,6 +515,31 @@ $newHebrewString .= " ";
 }
 $hebrewString = $newHebrewString;
 ?>  
+<div style="border-style: solid; border-color: crimson; display: inline-block;">
+<h2>User Audio</h2>
+<button class="btn btn-primary" onclick="window.open('user_uploaded_audio.php', '_blank')">Listen to User Uploaded Audio</button>
+<button  class="btn btn-primary" onclick="window.open('recordAudio.php', '_blank')">Record Audio/Video</button>
+<form action="upload.php" method="post" enctype="multipart/form-data" target="_blank">
+Select an audio or video file to upload (please use a descriptive file name):
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload File" target="_blank" name="submit" class="btn" background-color="crimson"  >
+</div>
+</form>
+<div style="border-style: solid; border-color: crimson; display: inline-block;">
+<h2>Calendars</h2>
+<button class="btn" onclick="window.open('calendar.html', '_blank')">View Torah Readings Calendar</button>
+<button class="btn" onclick="window.open('lessons-calendar.html', '_blank')">View Lessons Calendar</button>
+</div>
+<div style="border-style: solid; border-color: crimson; display: inline-block;">
+<h2>Printing</h2>
+<button class="btn" onclick="window.print()">Print or Export This Page</button>
+</div>
+<div style="border-style: solid; border-color: crimson; display: inline-block;">
+<h2>Zoom</h2>
+<form action="https://zoom.us/meeting/schedule" target="_blank">
+<input class="btn" type="submit" target="_blank" value="Schedule a Zoom meeting"/>
+</form>
+</div>
 
 <div class="row">
 <div class="column">
@@ -562,34 +588,11 @@ echo "</audio>";
 </div>
 </div>
 </div>
-<div style="border-style: solid; border-color: blue; display: inline-block;">
-<h3>User Audio</h3>
-<button class="btn btn-primary" onclick="window.open('user_uploaded_audio.php', '_blank')">Listen to User Uploaded Audio</button>
-<button  class="btn btn-primary" onclick="window.open('recordAudio.php', '_blank')">Record Audio/Video</button>
-<form action="upload.php" method="post" enctype="multipart/form-data" target="_blank">
-Select an audio or video file to upload (please use a descriptive file name):
-  <input type="file" name="fileToUpload" id="fileToUpload">
-  <input type="submit" value="Upload File" target="_blank" name="submit" class="btn" background-color="blue"  >
-</div>
-</form>
-<div style="border-style: solid; border-color: blue; display: inline-block;">
-<h3>Calendars</h3>
-<button class="btn" onclick="window.open('calendar.html', '_blank')">View Torah Readings Calendar</button>
-<button class="btn" onclick="window.open('lessons-calendar.html', '_blank')">View Lessons Calendar</button>
-</div>
-<div style="border-style: solid; border-color: blue; display: inline-block;">
-<h3>Printing and Exporting</h3>
-<button class="btn" onclick="window.print()">Print or Export This Page</button>
-</div>
-<div style="border-style: solid; border-color: blue; display: inline-block;">
-<h3>Zoom</h3>
-<form action="https://zoom.us/meeting/schedule" target="_blank">
-<input class="btn" type="submit" target="_blank" value="Schedule a Zoom meeting"/>
-</form>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-
+	<script src="https://www.sefaria.org/linker.js"></script>
+	<script>
+	    sefaria.link();
+	</script>
 </body>
 </html>
 
