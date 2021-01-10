@@ -28,8 +28,8 @@ body {
   margin: 50px auto;
   font-family: Raleway;
   padding: 20px;
-  width: 35%;
-  min-width: 200px;
+  width: 50%;
+  min-width: 300px;
 }
 
 h1 {
@@ -42,6 +42,7 @@ input {
   font-size: 17px;
   font-family: Raleway;
   border: 1px solid #aaaaaa;
+  text-transform: capitalize;
 }
 
 /* Mark input boxes that gets an error on validation: */
@@ -568,8 +569,8 @@ function autocomplete(inp, arr) {
 var parashot = ["Bereshit","Noach","Lech-Lecha","Vayera","Chayei Sara","Toldot","Vayetzei","Vayishlach","Vayeshev",
 "Miketz","Vayigash","Vayechi","Shemot","Vaera","Bo","Beshalach","Yitro","Mishpatim","Terumah","Tetzaveh",
 "KiTisa","Vayikra","Tzav","Shmini","Tazria-Metzora","AchreiMot-Kedoshim","Emor","Behar-Bechukotai",
-"Bamidbar","Nasso","Beha'alotcha","Sh'lach","Korach","Chukat","Balak","Pinchas","Matot-Masei","Devarim",
-"Vaetchanan","Eikev","Re'eh","Shoftim","KiTetzei","KiTavo","Nitzavim","Ha'Azinu"];
+"Bamidbar","Nasso","Behaalotcha","Shlach","Korach","Chukat","Balak","Pinchas","Matot-Masei","Devarim",
+"Vaetchanan","Eikev","Reeh","Shoftim","KiTetzei","KiTavo","Nitzavim","Haazinu"];
 autocomplete(document.getElementById("parasha"), parashot);
 
 		</script>
