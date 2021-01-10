@@ -18,6 +18,7 @@ echo "<script language='javascript'>
 ?>
 <!DOCTYPE html>
 <html>
+    <meta name="keywords" content="WebRTC getUserMedia MediaRecorder API">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -103,11 +104,11 @@ float: center;
 
 }
 .btn:hover {
-background: green;
+background: blue;
 }
 .btn-gtr {
 	        border: none;
-        background-color: green;
+        background-color: blue;
         color: white;
   text-align: center;
 display: inline-block;
@@ -138,7 +139,7 @@ display: none;
 	display: none;
 }
 .dropbtn {
-  background-color: green;
+  background-color: blue;
   color: white;
   padding: 16px;
   font-size: 20px;
@@ -615,7 +616,7 @@ input[type="radio"] {
 </select>
 </div>
 <br>
-<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="green" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center; font-size: 200%">
+<input type="submit" name="Submit" class="btn-gtr btn-primary" background-color="blue" value="Get Torah Reading" style="text-align:center; margin:0 auto; display: flex; justify-content: center; align-items: center; font-size: 200%">
 </input> 
 </form>
 <br>
@@ -624,44 +625,126 @@ input[type="radio"] {
 <button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
 </div>
 </div>
-<ul  class="list-unstyled" id="ul"></ul>
 <script src="recordAudio.js"></script>
-<form action="upload.php" method="post" enctype="multipart/form-data" >
-<div style="border-style: solid; border-color: green; display: inline-block;">
-<h3>Calendars</h3>
-<button class="btn" onclick="document.location='calendar.html'">View Torah Readings Calendar</button>
-<button class="btn" onclick="document.location='lessons-calendar.html'">View Lessons Calendar</button>
+<div style="border-style: solid; border-color: blue; display: inline-block;">
+<h3>User Audio</h3>
+<button class="btn btn-primary" onclick="window.open('user_uploaded_audio.php', '_blank')">Listen to User Uploaded Audio</button>
+<button  class="btn btn-primary" onclick="window.open('recordAudio.php', '_blank')">Record Audio/Video</button>
+<form action="upload.php" method="post" enctype="multipart/form-data" target="_blank">
+Select an audio or video file to upload (please use a descriptive file name): 
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload File" target="_blank" name="submit" class="btn" background-color="blue"  >
 </div>
-<div style="border-style: solid; border-color: green; display: inline-block;">
+</form>
+<div style="border-style: solid; border-color: blue; display: inline-block;">
+<h3>Calendars</h3>
+<button class="btn" onclick="window.open('calendar.html', '_blank')">View Torah Readings Calendar</button>
+<button class="btn" onclick="window.open('lessons-calendar.html', '_blank')">View Lessons Calendar</button>
+</div>
+<div style="border-style: solid; border-color: blue; display: inline-block;">
 <h3>Printing and Exporting</h3>
 <button class="btn" onclick="window.print()">Print or Export This Page</button>
 </div>
-<div style="border-style: solid; border-color: green; display: inline-block;">
+<div style="border-style: solid; border-color: blue; display: inline-block;">
 <h3>Zoom</h3>
-<form action="https://zoom.us/meeting/schedule">
-<input class="btn" type="submit" value="Schedule a Zoom meeting"/>
+<form action="https://zoom.us/meeting/schedule" target="_blank">
+<input class="btn" type="submit" target="_blank" value="Schedule a Zoom meeting"/>
 </form>
 </div>
-<div id="gUMArea">
-<div style="border-style: solid; border-color: green; display: inline-block;">
-<h3>Recording</h3>
-Record:
-<input type="radio" name="media" value="video" checked id="mediaVideo">Video
-<input type="radio" name="media" value="audio">Audio
-<button class="btn btn-primary"  id="gUMbtn">Grant permission to use mic and camera</button>
-<div id="btns">
-<button  class="btn btn-primary" id="start">Start Recording</button>
-<button  class="btn btn-primary" id="stop">Stop Recording</button>
-</div>
-</div>
-<div style="border-style: solid; border-color: green; display: inline-block;">
-<h3>User Audio</h3>
-<button class="btn btn-primary" onclick="document.location='user_uploaded_audio.php'">Listen to User Uploaded Audio</button>
-Select an audio or video file to upload (please use a descriptive file name): 
-  <input type="file" name="fileToUpload" id="fileToUpload">
-  <input type="submit" value="Upload File" name="submit" class="btn" background-color="green"  >
-</div>
-</form>
+
+<script>
+'use strict'
+
+let log = console.log.bind(console),
+  id = val => document.getElementById(val),
+  ul = id('ul'),
+  gUMbtn = id('gUMbtn'),
+  start = id('start'),
+  stop = id('stop'),
+  stream,
+  recorder,
+  counter=1,
+  chunks,
+  media;
+
+
+gUMbtn.onclick = e => {
+  let mv = id('mediaVideo'),
+      mediaOptions = {
+        video: {
+          tag: 'video',
+          type: 'video/webm',
+          ext: '.webm',
+          gUM: {video: true, audio: true}
+        },
+        audio: {
+          tag: 'audio',
+          type: 'audio/ogg',
+          ext: '.ogg',
+          gUM: {audio: true}
+        }
+      };
+  media = mv.checked ? mediaOptions.video : mediaOptions.audio;
+  navigator.mediaDevices.getUserMedia(media.gUM).then(_stream => {
+    stream = _stream;
+    id('gUMArea').style.display = 'none';
+    id('btns').style.display = 'inherit';
+    start.removeAttribute('disabled');
+    recorder = new MediaRecorder(stream);
+    recorder.ondataavailable = e => {
+      chunks.push(e.data);
+      if(recorder.state == 'inactive')  makeLink();
+    };
+    log('got media successfully');
+  }).catch(log);
+}
+
+start.onclick = e => {
+  start.disabled = true;
+  stop.removeAttribute('disabled');
+  chunks=[];
+  recorder.start();
+}
+
+
+stop.onclick = e => {
+  stop.disabled = true;
+  recorder.stop();
+  start.removeAttribute('disabled');
+}
+
+
+
+function makeLink(){
+  let blob = new Blob(chunks, {type: media.type })
+    , url = URL.createObjectURL(blob)
+    , li = document.createElement('li')
+    , mt = document.createElement(media.tag)
+    , hf = document.createElement('a')
+  ;
+  mt.controls = true;
+  mt.src = url;
+  hf.href = url;
+  hf.download = `CantorRecording${counter++}${media.ext}`;
+  hf.innerHTML = `Download ${hf.download}`;
+  li.appendChild(mt);
+  li.appendChild(hf);
+  ul.appendChild(li);
+
+
+  const formData = new FormData();
+  formData.append('_token',  $('meta[name="csrf-token"]').attr('content'));
+  formData.append('video', blob);
+  fetch('/save', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => {
+      console.log(response);
+  })
+  .catch(error => {});
+}
+</script>
 <script>
 var y = document.getElementById("b");
 y.style.display = "none";
@@ -686,9 +769,19 @@ $highlighting = $_POST['highlighting'];
 $layout = $_POST['layout'];
 $speed = $_POST['speed'];
 $pitch = $_POST['pitch'];
-$tropeMarkOne = $_POST['tropeMarkOne'];
-$tropeMarkTwo = $_POST['tropeMarkTwo'];
-$tropeMarkThree = $_POST['tropeMarkThree'];
+$sofPasuk = $_POST['sofPasuk'];
+$zakefKaton = $_POST['zakefKaton'];
+$tevir = $_POST['tevir'];
+$geresh = $_POST['geresh'];
+$telishaGedola = $_POST['telishaGedola'];
+$pazer = $_POST['pazer'];
+$karnePara = $_POST['karnePara'];
+$etnachta = $_POST['etnachta'];
+$revia = $_POST['revia'];
+$segol = $_POST['segol'];
+$gershayim = $_POST['gershayim'];
+$zakefGadol = $_POST['zakefGadol'];
+$shalshelet = $_POST['shalshelet'];
 if ($cycle == 'Triennial') {
 	$chTri = fopen("triennial_calendar.csv", "r");
 	$triMatches = [];
@@ -801,401 +894,88 @@ if ($highlighting == "Yes") {
 	$newEnglishString = "";
 $hebrewArray = explode(" ", $hebrewString);
 $englishArray = explode(" ", $englishString);
-if ($tropeMarkOne == 'merkha') {
-	$tropeMarkOne = ' ֥';
-	$tropeMarkOne = trim($tropeMarkOne);
+$sofPasukChar = ' ׃';
+$sofPasukChar = trim($sofPasukChar);
+$zakefKatonChar = ' ֔';
+$zakefKatonChar = trim($zakefKatonChar);
+$tevirChar = ' ֛';
+$tevirChar = trim($tevirChar);
+$gereshChar = ' ֜';
+$gereshChar = trim($gereshChar);
+$telishaGedolaChar = ' ֠';
+$telishaGedolaChar = trim($telishaGedolaChar);
+$pazerChar = ' ֡';
+$pazerChar = trim($pazerChar);
+$karneParaChar = ' ֟';
+$karneParaChar = trim($karneParaChar);
+$etnachtaChar = ' ֑';
+$etnachtaChar = trim($etnachtaChar);
+$reviaChar = ' ֗';
+$reviaChar = trim($reviaChar);
+$segolChar = ' ֒';
+$segolChar = trim($segolChar);
+$gershayimChar = ' ֞';
+$gershayimChar = trim($gershayimChar);
+$zakefGadolChar = ' ֕';
+$zakefGadolChar = trim($zakefGadolChar);
+$shalsheletChar = ' ֓';
+$shalsheletChar = trim($shalsheletChar);
 }
-        elseif ($tropeMarkOne == 'etnahta') {
-		                $tropeMarkOne = ' ֑';
-				                $tropeMarkOne = trim($tropeMarkOne);
-				        }
-        elseif ($tropeMarkOne == 'segol') {
-		                $tropeMarkOne = ' ֒';
-				                $tropeMarkOne = trim($tropeMarkOne);
-				        }
-        elseif ($tropeMarkOne == 'shalshelet') {
-		                $tropeMarkOne = ' ֓';
-				                $tropeMarkOne = trim($tropeMarkOne);
-				        }
-        elseif ($tropeMarkOne == 'zakef qatan') {
-		                $tropeMarkOne = ' ֔';
-				                $tropeMarkOne = trim($tropeMarkOne);
-				        }
-	elseif ($tropeMarkOne == 'zakef qatan') {
-                                $tropeMarkOne = ' ֔';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'tipeha') {
-                                $tropeMarkOne = ' ֖';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'revia') {
-                                $tropeMarkOne = ' ֗';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'zarqa') {
-                                $tropeMarkOne = ' ֘';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'pashta') {
-                                $tropeMarkOne = ' ֙';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'yetiv') {
-                                $tropeMarkOne = ' ֚';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'tevir') {
-                                $tropeMarkOne = ' ֛';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'geresh') {
-                                $tropeMarkOne = ' ֜';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'muqdam') {
-                                $tropeMarkOne = ' ֝';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'gershayim') {
-                                $tropeMarkOne = ' ֞';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'qarney para') {
-                                $tropeMarkOne = ' ֟';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'telisha gedola') {
-                                $tropeMarkOne = ' ֠';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'pazer') {
-                                $tropeMarkOne = ' ֡';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'atnah hafukh') {
-                                $tropeMarkOne = ' ֢';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'munah') {
-                                $tropeMarkOne = ' ֣';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'mahapakh') {
-                                $tropeMarkOne = ' ֤';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'merkha kefula') {
-                                $tropeMarkOne = ' ֦';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'darga') {
-                                $tropeMarkOne = ' ֧';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'qadma') {
-                                $tropeMarkOne = ' ֨';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'telisha qetana') {
-                                $tropeMarkOne = ' ֩';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'yerah ben yomo') {
-                                $tropeMarkOne = ' ֪';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'ole') {
-                                $tropeMarkOne = ' ֫';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'iluy') {
-                                $tropeMarkOne = ' ֬';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'dehi') {
-                                $tropeMarkOne = ' ֭';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'zinor') {
-                                $tropeMarkOne = ' ֮';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-elseif ($tropeMarkOne == 'masora circle') {
-                                $tropeMarkOne = ' ֯';
-                                                $tropeMarkOne = trim($tropeMarkOne);
-                                        }
-	else { 
-		$tropeMarkOne = "";
-	}
-								        
-if ($tropeMarkTwo == 'merkha') {
-	$tropeMarkTwo = ' ֥';
-	$tropeMarkTwo = trim($tropeMarkTwo);
-}
-        elseif ($tropeMarkTwo == 'etnahta') {
-		                $tropeMarkTwo = ' ֑';
-				                $tropeMarkTwo = trim($tropeMarkTwo);
-				        }
-        elseif ($tropeMarkTwo == 'segol') {
-		                $tropeMarkTwo = ' ֒';
-				                $tropeMarkTwo = trim($tropeMarkTwo);
-				        }
-        elseif ($tropeMarkTwo == 'shalshelet') {
-		                $tropeMarkTwo = ' ֓';
-				                $tropeMarkTwo = trim($tropeMarkTwo);
-				        }
-        elseif ($tropeMarkTwo == 'zakef qatan') {
-		                $tropeMarkTwo = ' ֔';
-				                $tropeMarkTwo = trim($tropeMarkTwo);
-				        }
-elseif ($tropeMarkTwo == 'tipeha') {
-                                $tropeMarkTwo = ' ֖';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'revia') {
-                                $tropeMarkTwo = ' ֗';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'zarqa') {
-                                $tropeMarkTwo = ' ֘';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'pashta') {
-                                $tropeMarkTwo = ' ֙';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'yetiv') {
-                                $tropeMarkTwo = ' ֚';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'tevir') {
-                                $tropeMarkTwo = ' ֛';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'geresh') {
-                                $tropeMarkTwo = ' ֜';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'muqdam') {
-                                $tropeMarkTwo = ' ֝';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'gershayim') {
-                                $tropeMarkTwo = ' ֞';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'qarney para') {
-                                $tropeMarkTwo = ' ֟';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'telisha gedola') {
-                                $tropeMarkTwo = ' ֠';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'pazer') {
-                                $tropeMarkTwo = ' ֡';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'atnah hafukh') {
-                                $tropeMarkTwo = ' ֢';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-
-elseif ($tropeMarkTwo == 'munah') {
-                                $tropeMarkTwo = ' ֣';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'mahapakh') {
-                                $tropeMarkTwo = ' ֤';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'merkha kefula') {
-                                $tropeMarkTwo = ' ֦';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'darga') {
-                                $tropeMarkTwo = ' ֧';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'qadma') {
-                                $tropeMarkTwo = ' ֨';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'telisha qetana') {
-                                $tropeMarkTwo = ' ֩';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'yerah ben yomo') {
-                                $tropeMarkTwo = ' ֪';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'ole') {
-                                $tropeMarkTwo = ' ֫';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'iluy') {
-                                $tropeMarkTwo = ' ֬';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'dehi') {
-                                $tropeMarkTwo = ' ֭';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'zinor') {
-                                $tropeMarkTwo = ' ֮';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-                                        }
-elseif ($tropeMarkTwo == 'masora circle') {
-                                $tropeMarkTwo = ' ֯';
-                                                $tropeMarkTwo = trim($tropeMarkTwo);
-}
-	else { 
-		$tropeMarkTwo = "";
-	}
-
-if ($tropeMarkThree == 'merkha') {
-	$tropeMarkThree = ' ֥';
-	$tropeMarkThree = trim($tropeMarkThree);
-}
-        elseif ($tropeMarkThree == 'etnahta') {
-		                $tropeMarkThree = ' ֑';
-				                $tropeMarkThree = trim($tropeMarkThree);
-				        }
-        elseif ($tropeMarkThree == 'segol') {
-		                $tropeMarkThree = ' ֒';
-				                $tropeMarkThree = trim($tropeMarkThree);
-				        }
-        elseif ($tropeMarkThree == 'shalshelet') {
-		                $tropeMarkThree = ' ֓';
-				                $tropeMarkThree = trim($tropeMarkThree);
-				        }
-        elseif ($tropeMarkThree == 'zakef qatan') {
-		                $tropeMarkThree = ' ֔';
-				                $tropeMarkThree = trim($tropeMarkThree);
-				        }
-elseif ($tropeMarkThree == 'tipeha') {
-                                $tropeMarkThree = ' ֖';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'revia') {
-                                $tropeMarkThree = ' ֗';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'zarqa') {
-                                $tropeMarkThree = ' ֘';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'pashta') {
-                                $tropeMarkThree = ' ֙';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'yetiv') {
-                                $tropeMarkThree = ' ֚';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'tevir') {
-                                $tropeMarkThree = ' ֛';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'geresh') {
-                                $tropeMarkThree = ' ֜';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'muqdam') {
-                                $tropeMarkThree = ' ֝';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'gershayim') {
-                                $tropeMarkThree = ' ֞';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'qarney para') {
-                                $tropeMarkThree = ' ֟';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'telisha gedola') {
-                                $tropeMarkThree = ' ֠';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'pazer') {
-                                $tropeMarkThree = ' ֡';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'atnah hafukh') {
-                                $tropeMarkThree = ' ֢';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'munah') {
-                                $tropeMarkThree = ' ֣';
-}
-elseif ($tropeMarkThree == 'mahapakh') {
-                                $tropeMarkThree = ' ֤';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'merkha kefula') {
-                                $tropeMarkThree = ' ֦';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'darga') {
-                                $tropeMarkThree = ' ֧';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'qadma') {
-                                $tropeMarkThree = ' ֨';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'telisha qetana') {
-                                $tropeMarkThree = ' ֩';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'yerah ben yomo') {
-                                $tropeMarkThree = ' ֪';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'ole') {
-                                $tropeMarkThree = ' ֫';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'iluy') {
-                                $tropeMarkThree = ' ֬';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'dehi') {
-                                $tropeMarkThree = ' ֭';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'zinor') {
-                                $tropeMarkThree = ' ֮';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                        }
-elseif ($tropeMarkThree == 'masora circle') {
-                                $tropeMarkThree = ' ֯';
-                                                $tropeMarkThree = trim($tropeMarkThree);
-                                                                                                                                                                                               
-}
-
-	else { 
-		$tropeMarkThree = "";
-	}
-
 foreach ($hebrewArray as $hebrewWord) {
 $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
-	
-        if (strpos($hebrewWord, $tropeMarkOne) !=  false) {
-		$hebrewWord = "<span style='background-color:#FF00FF'>$hebrewWord</span>";
+        if (strpos($hebrewWord, $sofPasukChar) !=  false) {
+		$hebrewWord = "<span style='background-color:$sofPasuk'>$hebrewWord</span>";
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
-	} elseif (strpos($hebrewWord, $tropeMarkTwo) !=  false) {
-		                $hebrewWord = "<span style='background-color:#FCF803'>$hebrewWord</span>";
+	} elseif (strpos($hebrewWord, $zakefKatonChar) !=  false) {
+		                $hebrewWord = "<span style='background-color:$zakefKaton'>$hebrewWord</span>";
 				$newHebrewString .= $hebrewWord;
 				$newHebrewString .= " ";
-	} elseif (strpos($hebrewWord, $tropeMarkThree) !=  false) {
-	                $hebrewWord = "<span style='background-color:#41FC03'>$hebrewWord</span>";
+	} elseif (strpos($hebrewWord, $tevirChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$tevir'>$hebrewWord</span>";
 			$newHebrewString .= $hebrewWord;
 			$newHebrewString .= " ";
-			        }
-	        else {
+	} elseif (strpos($hebrewWord, $gereshChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$geresh'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $telishaGedolaChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$telishaGedola'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $pazerChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$pazer'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $karneParaChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$karnePara'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $etnachtaChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$etnachta'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $reviaChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$revia'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $segolChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$segol'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $gershayimChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$gershayim'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $zakefGadolChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$zakefGadol'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} elseif (strpos($hebrewWord, $shalsheletChar) !=  false) {
+	                $hebrewWord = "<span style='background-color:$shalshelet'>$hebrewWord</span>";
+			$newHebrewString .= $hebrewWord;
+			$newHebrewString .= " ";
+	} else {
 
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
@@ -1203,8 +983,6 @@ $newHebrewString .= " ";
 		}
 }
 $hebrewString = $newHebrewString;
-}
-
 ?>  
 
 <div class="row">
