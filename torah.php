@@ -463,6 +463,8 @@ $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
 		$hebrewWord = "<span style='background-color:$sofPasuk'>$hebrewWord</span>";
 $newHebrewString .= $hebrewWord;
 $newHebrewString .= " ";
+$newHebrewString .= "<br>";
+$newHebrewString .= "<br>";
 	} elseif (strpos($hebrewWord, $zakefKatonChar) !=  false) {
 		                $hebrewWord = "<span style='background-color:$zakefKaton'>$hebrewWord</span>";
 				$newHebrewString .= $hebrewWord;
@@ -527,9 +529,9 @@ $hebrewString = $newHebrewString;
 <?php
 if ($layout == 'tikkun') {
 
-echo '<div style="font-size: 35pt; font-family: stam;">'. $hebrewString . '</div>';
+echo '<div style="font-size: 25pt; font-family: stam;">'. $hebrewString . '</div>';
 } else {
-	echo '<div style="font-family: stam; font-size: 35pt">' . $hebrewString . '</div>';
+	echo '<div style="font-family: stam; font-size: 25pt">' . $hebrewString . '</div>';
 }
 ?>
 
@@ -539,7 +541,7 @@ echo '<div style="font-size: 35pt; font-family: stam;">'. $hebrewString . '</div
 <div class="left-column" style="text-align: right;">
 <?php
 if ($layout == 'tikkun') {
-echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
+echo '<div style="font-size: 25pt">'. $hebrewString . '</div>';
 } else {
 echo '';
 }	
@@ -562,7 +564,7 @@ echo "</audio>";
 	echo "<source src='audio/$pitch$parasha-$aliyah.mp3' type='audio/mp3'>";
 	echo "</audio>";
 }
-	echo '<div style="font-size: 23pt">'. $englishString . '</div>';
+	echo '<div style="font-size: 20pt">'. $englishString . '</div>';
 ?>
 </audio>
 </div>

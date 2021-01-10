@@ -53,6 +53,7 @@ input.invalid {
 /* Hide all steps by default: */
 .tab {
   display: none;
+  text-align: center;
 }
 
 button {
@@ -185,7 +186,7 @@ input[type=submit] {
 <option value="H">Haftara</option>
 	</select>
 </div>
-<div class="tab">Highlighted Trope Marks
+<div class="tab">Highlighted Trope Marks:
 	<select name="highlighting" id="highlighting">
 		<option value="No">No</option>
 		<option value="Yes">Yes</option>
