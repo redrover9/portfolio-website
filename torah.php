@@ -1,4 +1,4 @@
-        <?php
+<?php
         session_start();
 if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] == true){
 }  else {
@@ -26,7 +26,7 @@ echo "<script language='javascript'>
 <head>
 <link rel="stylesheet" href="main.550dcf66.css?v=<?php echo time(); ?>">
 <title>Torah Reader</title>
-<div class='some-page-wrapper'>
+<div class='page-wrapper'>
 <style>
 <?php include "main.550dcf66.css" ?>
 @font-face {
@@ -37,7 +37,7 @@ echo "<script language='javascript'>
 	font-family: chumash;
 	src url(TaameyAshkenaz.ttf);
 }
-.some-page-wrapper {
+.page-wrapper {
 margin: 15px;
 }
 
@@ -72,7 +72,6 @@ flex: 3;
 column-width:350px;
 }
 .left-column {
-justify-content: right;
 }
 .box {
   border: 3px solid white;
@@ -81,15 +80,9 @@ justify-content: right;
   justify-content: right;
   align-items: right;
 }
-
-
-
 .middle-column {
-    font-family: stam;
-
 }
 .right-column {
-
 }
 .btn {
 	border: none;
@@ -189,7 +182,6 @@ input[type="radio"] {
 </div>
 </head>
 <body>
-<script src="recordAudio.js"></script>
 
 <script>
 'use strict'
