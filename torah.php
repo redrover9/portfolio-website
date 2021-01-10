@@ -884,12 +884,10 @@ $hebrewString = str_replace('b', '', $hebrewString);
 $hebrewString = str_replace('r', '', $hebrewString);
 $hebrewString = str_replace('<', '', $hebrewString);
 $hebrewString = str_replace('>', '', $hebrewString);
-
 $_SESSION['heb'] = $hebrewString;
 $_SESSION['eng'] = $englishString;
 ?>
 <?php
-if ($highlighting == "Yes") {
 	$newHebrewString = "";
 	$newEnglishString = "";
 $hebrewArray = explode(" ", $hebrewString);
@@ -920,7 +918,6 @@ $zakefGadolChar = ' ֕';
 $zakefGadolChar = trim($zakefGadolChar);
 $shalsheletChar = ' ֓';
 $shalsheletChar = trim($shalsheletChar);
-}
 foreach ($hebrewArray as $hebrewWord) {
 $hebrewLetter = preg_split('//u', $hebrewWord, -1, PREG_SPLIT_NO_EMPTY);
         if (strpos($hebrewWord, $sofPasukChar) !=  false) {
@@ -987,9 +984,14 @@ $hebrewString = $newHebrewString;
 
 <div class="row">
 <div class="column">
-<div class="middle-column" style="text-align: right;">
+<div class="left-column" style="text-align: right;">
 <?php
+if ($layout == 'tikkun') {
+
 echo '<div style="font-size: 35pt">'. $hebrewString . '</div>';
+} else {
+	echo '<div style="font-family: stam; font-size: 35pt">' . $hebrewString . '</div>';
+}
 ?>
 
 </div>

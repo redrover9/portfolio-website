@@ -25,11 +25,11 @@ body {
 
 #regForm {
   background-color: #ffffff;
-  margin: 100px auto;
+  margin: 50px auto;
   font-family: Raleway;
-  padding: 40px;
-  width: 70%;
-  min-width: 300px;
+  padding: 20px;
+  width: 35%;
+  min-width: 200px;
 }
 
 h1 {
