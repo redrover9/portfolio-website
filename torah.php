@@ -209,8 +209,8 @@ gUMbtn.onclick = e => {
         },
         audio: {
           tag: 'audio',
-          type: 'audio/ogg',
-          ext: '.ogg',
+          type: 'audio/mp3',
+          ext: '.mp3',
           gUM: {audio: true}
         }
       };
@@ -415,6 +415,8 @@ $hebrewString = str_replace('b', '', $hebrewString);
 $hebrewString = str_replace('r', '', $hebrewString);
 $hebrewString = str_replace('<', '', $hebrewString);
 $hebrewString = str_replace('>', '', $hebrewString);
+$hebrewString = str_replace('(פ)', '', $hebrewString);
+$hebrewString = str_replace('(ס)', '', $hebrewString);
 $_SESSION['heb'] = $hebrewString;
 $_SESSION['eng'] = $englishString;
 ?>
@@ -422,7 +424,29 @@ $_SESSION['eng'] = $englishString;
 echo "<h3> $ref </h3>";
 	$newHebrewString = "";
 	$newEnglishString = "";
-$hebrewArray = explode(" ", $hebrewString);
+	$hebrewArray = explode(" ", $hebrewString);
+	foreach ($hebrewArray as $indvWord) {
+	$wordCounter += 1;
+	echo "<audio preload='none' id=$wordCounter src=$wordCounter.mp3></audio>";
+	echo "<button onclick=document.getElementById($wordCounter).play() type=button>$indvWord</button>";
+	echo "<script>";
+	echo "</script>";
+	//echo "<audio preload='none' id='indvAudio$wordCounter'>";
+	//echo "<source src=$wordCounter.mp3 type='audio/mpeg'> ";
+	//echo "</audio>";
+	//echo "<script>";
+	//echo "var x = document.getElementById('indvAudio$wordCounter');";
+	//echo "function aud() {";
+	//echo "x.play();";
+	//echo "}";
+	//echo "</script>";
+	//echo "<button onclick=aud() type=button>$indvWord</button>";
+}
+?>
+<script>
+var jsHebrewArray = [<?php json_encode($hebrewArray);?>];
+</script>
+<?php
 $englishArray = explode(" ", $englishString);
 $sofPasukChar = ' ׃';
 $sofPasukChar = trim($sofPasukChar);
@@ -518,7 +542,7 @@ $hebrewString = $newHebrewString;
 <div style="border-style: solid; border-color: crimson; display: inline-block;">
 <h2>User Audio</h2>
 <button class="btn btn-primary" onclick="window.open('user_uploaded_audio.php', '_blank')">Listen to User Uploaded Audio</button>
-<button  class="btn btn-primary" onclick="window.open('recordAudio.php', '_blank')">Record Audio/Video</button>
+<button  class="btn btn-primary" onclick="window.open('recordAudio.php', '_blank')">Record Audio</button>
 <form action="upload.php" method="post" enctype="multipart/form-data" target="_blank">
 Select an audio or video file to upload (please use a descriptive file name):
   <input type="file" name="fileToUpload" id="fileToUpload">
