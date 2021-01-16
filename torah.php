@@ -118,6 +118,9 @@ text-align: left;
 }
 .b {
 }
+.rtl {
+direction: rtl;
+}
 .menu {
 <?php
 if (isset($_POST['parasha'])) {
@@ -421,16 +424,17 @@ $_SESSION['heb'] = $hebrewString;
 $_SESSION['eng'] = $englishString;
 ?>
 <?php
+echo "<div id=rtl class=rtl >";
 echo "<h3> $ref </h3>";
 	$newHebrewString = "";
 	$newEnglishString = "";
 	$hebrewArray = explode(" ", $hebrewString);
 	foreach ($hebrewArray as $indvWord) {
-	$wordCounter += 1;
-	echo "<audio preload='none' id=$wordCounter src=$wordCounter.mp3></audio>";
-	echo "<button onclick=document.getElementById($wordCounter).play() type=button>$indvWord</button>";
-	echo "<script>";
-	echo "</script>";
+	//$wordCounter += 1;
+	//echo "<audio preload='none' id=$wordCounter src=Bereshit-1-$wordCounter.mp3></audio>";
+	//echo "<button onclick=document.getElementById($wordCounter).play() type=button>$indvWord</button>";
+	//echo "<script>";
+	//echo "</script>";
 	//echo "<audio preload='none' id='indvAudio$wordCounter'>";
 	//echo "<source src=$wordCounter.mp3 type='audio/mpeg'> ";
 	//echo "</audio>";
@@ -442,6 +446,7 @@ echo "<h3> $ref </h3>";
 	//echo "</script>";
 	//echo "<button onclick=aud() type=button>$indvWord</button>";
 }
+echo "</div>";
 ?>
 <script>
 var jsHebrewArray = [<?php json_encode($hebrewArray);?>];
