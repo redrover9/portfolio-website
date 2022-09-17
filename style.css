@@ -19,3 +19,6 @@ body {
     margin-right: auto;
     width: 25%;
 }
+.blurbs {
+    display: block;
+}
