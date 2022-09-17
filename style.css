@@ -51,6 +51,7 @@ a:active {
 }
 .blurbsText {
     position: absolute;
-    bottom: 8px;
-    left: 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
