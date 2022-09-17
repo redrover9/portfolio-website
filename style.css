@@ -19,6 +19,13 @@ body {
     margin-right: auto;
     width: 25%;
 }
+.centerText {
+    font-size: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 .blurbs {
     display: block;
 }
