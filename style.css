@@ -6,6 +6,18 @@ body {
     font-family: "Kufam";
     background-color: #baf5ff;
 }
+a:link {
+    color: black;
+}
+a:visited {
+    color: black;
+}
+a:hover {
+    color: darkblue;
+}
+a:active {
+    color: blue;
+}
 .headerText {
     font-size: 200%;
     display: block;
@@ -14,7 +26,7 @@ body {
     text-align: center;
 }
 .subHeaderText {
-    font-size: 100%;
+    font-size: 50%;
     display: block;
     margin-left: auto;
     margin-right: auto;
