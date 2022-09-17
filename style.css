@@ -22,8 +22,7 @@ body {
 .centerText {
     display: block;
     font-size: 25%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     text-align: center;
 }
 .blurbs {
