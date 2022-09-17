@@ -5,8 +5,14 @@
 body {
     font-family: "Kufam";
 }
-.header {
-    font-size: 150%;
+.headerText {
+    font-size: 200%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.headerImage {
     display: block;
     margin-left: auto;
     margin-right: auto;
