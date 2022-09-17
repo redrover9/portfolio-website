@@ -1,7 +1,3 @@
-@font-face {
-    font-family: "Kufam";
-    src: url("Kufam/Kufam-VariableFont_wght.ttf");
-}
 html {
     font-family: "Kufam", Helvetica, sans-serif;
 }
