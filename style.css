@@ -45,4 +45,12 @@ a:active {
 }
 .blurbs {
     display: block;
+    position: relative;
+    text-align: center;
+    color: black;
+}
+.blurbsText {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
 }
