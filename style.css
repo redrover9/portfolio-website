@@ -81,7 +81,7 @@ a:active {
 .leftRectangle {
   height: 350px;
   width: 550px;
-  background-color: rgb(174, 174, 174);
+  background-color: rgb(115, 115, 115);
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -95,7 +95,7 @@ a:active {
 .rightRectangle {
   height: 350px;
   width: 550px;
-  background-color: rgb(174, 174, 174);
+  background-color: rgb(115, 115, 115);
   margin-left: auto;
   margin-right: auto;
   display: block;
